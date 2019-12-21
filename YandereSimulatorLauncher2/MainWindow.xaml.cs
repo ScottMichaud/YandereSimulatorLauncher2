@@ -23,6 +23,38 @@ namespace YandereSimulatorLauncher2
         public MainWindow()
         {
             InitializeComponent();
+            HandleVisualStyles();
+        }
+
+        private void HandleVisualStyles()
+        {
+            if (NativeMethods.DwmCompositionIsEnabled)
+            //if (false)
+            {
+                EnableHighQuality();
+            }
+            else
+            {
+                DisableHighQuality();
+            }
+        }
+
+        private void EnableHighQuality()
+        {
+            Width = 906;
+            Height = 701;
+            AllowsTransparency = true;
+            Background = Brushes.Transparent;
+            ShadowBorder.Margin = new Thickness(10);
+        }
+
+        private void DisableHighQuality()
+        {
+            Width = 882;
+            Height = 677;
+            AllowsTransparency = false;
+            Background = Brushes.Black;
+            ShadowBorder.Margin = new Thickness(1);
         }
     }
 }

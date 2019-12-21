@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YandereSimulatorLauncher2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
-    </Grid>
+        Title="Yandere Simulator Launcher"
+        Height="677" Width="882"
+        WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent">
+    <Border x:Name="ShadowBorder" Margin="10">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.4" Direction="300" BlurRadius="9" ShadowDepth="2"/>
+        </Border.Effect>
+        <Grid Background="White">
+
+        </Grid>
+    </Border>
 </Window>
