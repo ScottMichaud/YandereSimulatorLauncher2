@@ -11,8 +11,7 @@ namespace YandereSimulatorLauncher2
         {
             get
             {
-                bool isEnabled;
-                if (DwmIsCompositionEnabled(out isEnabled) == 0)
+                if (DwmIsCompositionEnabled(out bool isEnabled) == 0)
                 {
                     return isEnabled;
                 }

@@ -41,20 +41,34 @@ namespace YandereSimulatorLauncher2
 
         private void EnableHighQuality()
         {
+            // Allow shadows
             Width = 906;
             Height = 701;
             AllowsTransparency = true;
             Background = Brushes.Transparent;
             ShadowBorder.Margin = new Thickness(10);
+
+            //
         }
 
         private void DisableHighQuality()
         {
+            // Disable shadows
             Width = 882;
             Height = 677;
             AllowsTransparency = false;
             Background = Brushes.Black;
             ShadowBorder.Margin = new Thickness(1);
+
+            //
+        }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs evt)
+        {
+            if (evt.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
         }
     }
 }

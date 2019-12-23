@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:YandereSimulatorLauncher2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="LeagueGothic">pack://applicaiton:,,,/EmbeddedAssets/Fonts/#League Gothic</FontFamily>
     </Application.Resources>
 </Application>

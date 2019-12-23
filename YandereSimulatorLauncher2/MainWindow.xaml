@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:YandereSimulatorLauncher2.Controls"
         xmlns:local="clr-namespace:YandereSimulatorLauncher2"
         mc:Ignorable="d"
         
@@ -14,8 +15,49 @@
         <Border.Effect>
             <DropShadowEffect Color="Black" Opacity="0.4" Direction="300" BlurRadius="9" ShadowDepth="2"/>
         </Border.Effect>
+        <!-- Inside the shadow (or 1-pixel border) -->
         <Grid Background="White">
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="135"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!-- Title bar -->
+            <Grid Background="#ff80d3" Grid.Row="0" MouseDown="TitleBar_MouseDown">
+                <Image x:Name="YandereSimulatorLogo" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="131"/>
+            </Grid>
+            <!-- Link bar -->
+            <Grid Background="#ee63bb" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <controls:HyperlinkFromText DisplayText="About" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0"/>
+                <controls:HyperlinkFromText DisplayText="Blog" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0"/>
+                <controls:HyperlinkFromText DisplayText="Contact" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0"/>
+                <controls:HyperlinkFromText DisplayText="Donate" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0"/>
+                <controls:HyperlinkFromText DisplayText="Volunteer" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0"/>
+                <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/twitter-white.png" Width="25" Height="20" Grid.Column="6" Grid.Row="1" Margin="12,0,12,0"/>
+                <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/youtube-white.png" Width="28" Height="20" Grid.Column="7" Grid.Row="1" Margin="12,0,12,0"/>
+                <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/twitch-white.png" Width="19" Height="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0"/>
+            </Grid>
+            <!-- Main Panel -->
+            <Canvas Background="#ff80d3" Grid.Row="2">
+                
+            </Canvas>
         </Grid>
     </Border>
 </Window>
