@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Image x:Name="MyDisplayImage" HorizontalAlignment="Center" VerticalAlignment="Center">    
+        <Image x:Name="MyDisplayImage" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">    
             <Image.Effect>
                 <DropShadowEffect BlurRadius="18" ShadowDepth="0" Color="White" Opacity="0.9"/>
             </Image.Effect>

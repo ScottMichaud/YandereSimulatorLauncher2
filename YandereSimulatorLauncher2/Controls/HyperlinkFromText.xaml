@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock x:Name="MyDisplayText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" Foreground="White" Text="DisplayText" FontFamily="{StaticResource LeagueGothic}">
+        <TextBlock x:Name="MyDisplayText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" Foreground="White" Text="DisplayText" FontFamily="{StaticResource LeagueGothic}" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
             <TextBlock.Effect>
                 <DropShadowEffect BlurRadius="18" ShadowDepth="0" Color="White" Opacity="0.9"/>
             </TextBlock.Effect>

@@ -20,19 +20,20 @@ namespace YandereSimulatorLauncher2.Controls
     /// </summary>
     public partial class HyperlinkFromText : UserControl
     {
+        #region XAML Properties
         public static readonly DependencyProperty DisplayTextProperty = DependencyProperty.Register("DisplayText", typeof(string), typeof(HyperlinkFromText), new PropertyMetadata(string.Empty, DisplayTextChanged));
-        
+        public static readonly DependencyProperty LinkedUrlProperty = DependencyProperty.Register("LinkedUrl", typeof(string), typeof(HyperlinkFromText), new PropertyMetadata(string.Empty, LinkedUrlChanged));
+
         public string DisplayText
         {
-            get
-            {
-                return (string)GetValue(DisplayTextProperty);
-            }
+            get { return (string)GetValue(DisplayTextProperty); }
+            set { SetValue(DisplayTextProperty, value); }
+        }
 
-            set
-            {
-                SetValue(DisplayTextProperty, value);
-            }
+        public string LinkedUrl
+        {
+            get { return (string)GetValue(LinkedUrlProperty); }
+            set { SetValue(LinkedUrlProperty, value); }
         }
 
         private static void DisplayTextChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -44,11 +45,46 @@ namespace YandereSimulatorLauncher2.Controls
             }
         }
 
+        private static void LinkedUrlChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            // No effects
+        }
+        #endregion
+
+        #region C# Properties
+
+        private bool IsButtonPrimed { get; set; }
+
+        #endregion
+
         public HyperlinkFromText()
         {
             InitializeComponent();
         }
 
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            IsButtonPrimed = true;
+        }
 
+        private void OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (IsButtonPrimed == true)
+            {
+                System.Diagnostics.Process.Start(LinkedUrl);
+            }
+
+            IsButtonPrimed = false;
+        }
+
+        private void OnMouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            IsButtonPrimed = false;
+        }
     }
 }
