@@ -21,7 +21,7 @@ namespace YandereSimulatorLauncher2.Controls
     public partial class HyperlinkFromImage : UserControl
     {
         #region XAML Properties
-        public static readonly DependencyProperty DisplayImageProperty = DependencyProperty.Register("DisplayImage", typeof(string), typeof(HyperlinkFromImage), new PropertyMetadata(string.Empty, DisplayTextChanged));
+        public static readonly DependencyProperty DisplayImageProperty = DependencyProperty.Register("DisplayImage", typeof(string), typeof(HyperlinkFromImage), new PropertyMetadata(string.Empty, DisplayImageChanged));
         public static readonly DependencyProperty LinkedUrlProperty = DependencyProperty.Register("LinkedUrl", typeof(string), typeof(HyperlinkFromImage), new PropertyMetadata(string.Empty, LinkedUrlChanged));
 
         public string DisplayImage
@@ -36,7 +36,7 @@ namespace YandereSimulatorLauncher2.Controls
             set { SetValue(LinkedUrlProperty, value); }
         }
 
-        private static void DisplayTextChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        private static void DisplayImageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             if (obj is HyperlinkFromImage)
             {
