@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace YandereSimulatorLauncher2.Controls
 {
@@ -62,6 +63,8 @@ namespace YandereSimulatorLauncher2.Controls
             InitializeComponent();
         }
 
+        #region Events
+
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             IsButtonPrimed = true;
@@ -86,5 +89,7 @@ namespace YandereSimulatorLauncher2.Controls
         {
             IsButtonPrimed = false;
         }
+
+        #endregion
     }
 }
