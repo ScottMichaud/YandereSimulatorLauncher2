@@ -54,7 +54,7 @@ namespace YandereSimulatorLauncher2.Controls
 
         #region C# Properties
 
-        private bool IsButtonPrimed { get; set; }
+        private bool IsButtonPrimed { get; set; } = false;
 
         #endregion
 
