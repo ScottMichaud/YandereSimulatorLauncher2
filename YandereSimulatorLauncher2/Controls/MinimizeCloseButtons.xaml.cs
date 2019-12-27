@@ -23,6 +23,10 @@ namespace YandereSimulatorLauncher2.Controls
 
         #region C# Properties
 
+        // The "primed" pattern (seen here and other controls) allows the user
+        // to cancel button presses by dragging the cursor off the button before
+        // releasing it (to confirm). It's the difference between a "click" and
+        // an action directly on MouseDown.
         private bool IsMinimizePrimed { get; set; } = false;
         private bool IsClosePrimed { get; set; } = false;
 
