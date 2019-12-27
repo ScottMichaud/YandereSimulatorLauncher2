@@ -65,7 +65,7 @@ namespace YandereSimulatorLauncher2
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs evt)
         {
-            if (evt.ChangedButton == MouseButton.Left)
+            if (evt.ChangedButton == MouseButton.Left && evt.Handled == false)
             {
                 DragMove();
             }

@@ -23,8 +23,10 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <!-- Title bar -->
-            <Grid Background="#ff80d3" Grid.Row="0" MouseDown="TitleBar_MouseDown">
-                <Image x:Name="YandereSimulatorLogo" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="131"/>
+            <Grid Background="#ff80d3" Grid.Row="0">
+                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDown="TitleBar_MouseDown" Fill="Red" Opacity="0"></Rectangle>
+                <Image x:Name="YandereSimulatorLogo" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png" MouseDown="TitleBar_MouseDown" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="131"/>
+                <controls:MinimizeCloseButtons HorizontalAlignment="Right" VerticalAlignment="Top"/>
             </Grid>
             <!-- Link bar -->
             <Grid Background="#ee63bb" Grid.Row="1">

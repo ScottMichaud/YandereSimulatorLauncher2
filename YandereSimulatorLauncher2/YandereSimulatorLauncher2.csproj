@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\MinimizeCloseButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +79,9 @@
     </Compile>
     <Compile Include="Controls\HyperlinkFromText.xaml.cs">
       <DependentUpon>HyperlinkFromText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MinimizeCloseButtons.xaml.cs">
+      <DependentUpon>MinimizeCloseButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -106,10 +113,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="EmbeddedAssets\Images\launcher-close.png" />
-    <Resource Include="EmbeddedAssets\Images\launcher-minimize.png" />
+    <Resource Include="EmbeddedAssets\Images\close-black.png" />
+    <Resource Include="EmbeddedAssets\Images\close-white.png" />
+    <Resource Include="EmbeddedAssets\Images\minimize-black.png" />
+    <Resource Include="EmbeddedAssets\Images\minimize-white.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="EmbeddedAssets\Images\twitch-black.png" />
     <Resource Include="EmbeddedAssets\Images\twitch-white.png" />
     <Resource Include="EmbeddedAssets\Images\twitter-black.png" />
