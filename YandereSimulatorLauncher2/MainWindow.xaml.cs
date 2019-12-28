@@ -73,6 +73,8 @@ namespace YandereSimulatorLauncher2
 
         private void UnpackVideoResources()
         {
+            // On my PC, these two operations add a total of ~19ms to load time.
+            // Probably don't need to do anything fancy.
             UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_dere, "mainpanel-dere.wmv");
             UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, "mainpanel-yan.wmv");
         }
