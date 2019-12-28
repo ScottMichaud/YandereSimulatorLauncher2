@@ -58,7 +58,7 @@
             </Grid>
             <!-- Main Panel -->
             <Canvas Background="#ff80d3" Grid.Row="2">
-                <MediaElement x:Name="MainPanelDereVideo" Source="mainpanel-dere.wmv" Width="880" Height="496" LoadedBehavior="Play" MediaEnded="MainPanelDereVideo_OnMediaEnded">
+                <MediaElement x:Name="MainPanelDereVideo" Source="mainpanel-dere.wmv" Width="880" Height="496" LoadedBehavior="Manual" Loaded="MainPanelDereVideo_OnLoaded" MediaEnded="MainPanelDereVideo_OnMediaEnded">
                     
                 </MediaElement>
             </Canvas>

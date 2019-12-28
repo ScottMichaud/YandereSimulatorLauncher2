@@ -32,11 +32,6 @@ namespace YandereSimulatorLauncher2
         protected override sealed void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-
-            if (e.Cancel == false)
-            {
-                DeleteVideoResources();
-            }
         }
 
         private void HandleVisualStyles()
@@ -82,22 +77,17 @@ namespace YandereSimulatorLauncher2
             UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, "mainpanel-yan.wmv");
         }
 
-        private void DeleteVideoResources()
-        {
-            if (File.Exists("mainpanel-dere.wmv"))
-            {
-                File.Delete("mainpanel-dere.wmv");
-            }
-
-            if (File.Exists("mainpanel-yan.wmv"))
-            {
-                File.Delete("mainpanel-yan.wmv");
-            }
-        }
-
         private static void UnpackVideoFile(byte[] inResource, string inFilename)
         {
-            File.WriteAllBytes(inFilename, inResource);
+            try
+            {
+                File.WriteAllBytes(inFilename, inResource);
+            }
+            catch (Exception)
+            {
+                // Just cosmetic.
+                // Probably lock to just the static images.
+            }
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs evt)
@@ -111,6 +101,11 @@ namespace YandereSimulatorLauncher2
         private void MainPanelDereVideo_OnMediaEnded(object sender, RoutedEventArgs e)
         {
             MainPanelDereVideo.Position = new TimeSpan(0, 0, 1);
+        }
+
+        private void MainPanelDereVideo_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            MainPanelDereVideo.Play();
         }
     }
 }
