@@ -18,27 +18,33 @@ namespace YandereSimulatorLauncher2
         {
             base.OnExit(e);
 
-            DeleteVideoResources();
+            //DeleteVideoResources();
         }
 
-        private void DeleteVideoResources()
-        {
-            try
-            {
-                if (File.Exists("mainpanel-dere.wmv"))
-                {
-                    File.Delete("mainpanel-dere.wmv");
-                }
+        //
+        // Currently unused.
+        // Don't waste time deleting the file on shutdown. 
+        // It'll get overwritten next launch anyway.
+        //
 
-                if (File.Exists("mainpanel-yan.wmv"))
-                {
-                    File.Delete("mainpanel-yan.wmv");
-                }
-            }
-            catch (Exception)
-            {
-                // If we fail to delete -- let it remain.
-            }
-        }
+        //private void DeleteVideoResources()
+        //{
+        //    try
+        //    {
+        //        if (File.Exists("mainpanel-dere.wmv"))
+        //        {
+        //            File.Delete("mainpanel-dere.wmv");
+        //        }
+
+        //        if (File.Exists("mainpanel-yan.wmv"))
+        //        {
+        //            File.Delete("mainpanel-yan.wmv");
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // If we fail to delete -- let it remain.
+        //    }
+        //}
     }
 }
