@@ -26,8 +26,8 @@ namespace YandereSimulatorLauncher2
         private DispatcherTimer flipFlopTimerYanDere;
         private bool isDere = true;
         private DateTime nextYanDereFlip = DateTime.MinValue;
-        private double secondsToDisplayDere = 15.0;
-        private double secondsToDisplayYan = 1.0;
+        private const double secondsToDisplayDere = 15.0;
+        private const double secondsToDisplayYan = 1.0;
 
         public MainWindow()
         {
