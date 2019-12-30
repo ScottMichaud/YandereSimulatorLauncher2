@@ -79,5 +79,14 @@ namespace YandereSimulatorLauncher2.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 514c7d78-0c49-4426-948e-883dd850a91f.
+        /// </summary>
+        internal static string VideoLocationGuid {
+            get {
+                return ResourceManager.GetString("VideoLocationGuid", resourceCulture);
+            }
+        }
     }
 }

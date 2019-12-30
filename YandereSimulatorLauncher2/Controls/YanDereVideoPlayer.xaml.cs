@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace YandereSimulatorLauncher2.Controls
 {
     /// <summary>
-    /// Interaction logic for YanDereVideo.xaml
+    /// Interaction logic for YanDereVideoPlayer.xaml
     /// </summary>
-    public partial class YanDereVideo : UserControl
+    public partial class YanDereVideoPlayer : UserControl
     {
-        public YanDereVideo()
+        public YanDereVideoPlayer()
         {
             InitializeComponent();
         }

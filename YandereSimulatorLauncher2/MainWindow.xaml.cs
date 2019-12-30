@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Windows.Data;
@@ -22,11 +23,18 @@ namespace YandereSimulatorLauncher2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DispatcherTimer flipFlopTimerYanDere;
+        private bool isDere = true;
+        private DateTime nextYanDereFlip = DateTime.MinValue;
+        private double secondsToDisplayDere = 15.0;
+        private double secondsToDisplayYan = 1.0;
+
         public MainWindow()
         {
             UnpackVideoResources();
             InitializeComponent();
             HandleVisualStyles();
+            StartYanDereFlipFlop();
         }
 
         protected override sealed void OnClosing(CancelEventArgs e)
@@ -75,8 +83,9 @@ namespace YandereSimulatorLauncher2
         {
             // On my PC, these two operations add a total of ~19ms to load time.
             // Probably don't need to do anything fancy.
-            UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_dere, "mainpanel-dere.wmv");
-            UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, "mainpanel-yan.wmv");
+            Directory.CreateDirectory(App.LauncherTempFileDirectory);
+            UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_dere, App.MainPanelDereFileLocation);
+            UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, App.MainPanelYanFileLocation);
         }
 
         private static void UnpackVideoFile(byte[] inResource, string inFilename)
@@ -92,6 +101,25 @@ namespace YandereSimulatorLauncher2
             }
         }
 
+        private void StartYanDereFlipFlop()
+        {
+            flipFlopTimerYanDere = new DispatcherTimer(TimeSpan.FromMilliseconds(100.0), DispatcherPriority.Normal, FlipFlopTimerYanDere_OnTick, Dispatcher.CurrentDispatcher);
+            nextYanDereFlip = DateTime.Now + TimeSpan.FromSeconds(secondsToDisplayDere);
+            flipFlopTimerYanDere.Start();
+        }
+
+        private void FlipFlopTimerYanDere_OnTick(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            if (currentTime < nextYanDereFlip) { return; }
+
+            // Perform the flip.
+            // NOTE: Basing the next flip time off of now, rather than when nextYanDereFlip expired.
+            isDere = !isDere;
+            nextYanDereFlip = currentTime + TimeSpan.FromSeconds(isDere ? secondsToDisplayDere : secondsToDisplayYan);
+            Console.WriteLine("I am " + (isDere ? "Dere" : "Yan"));
+        }
+
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs evt)
         {
             if (evt.ChangedButton == MouseButton.Left && evt.Handled == false)
@@ -102,12 +130,12 @@ namespace YandereSimulatorLauncher2
 
         private void MainPanelDereVideo_OnMediaEnded(object sender, RoutedEventArgs e)
         {
-            MainPanelDereVideo.Position = new TimeSpan(0, 0, 1);
+            //MainPanelDereVideo.Position = new TimeSpan(0, 0, 1);
         }
 
         private void MainPanelDereVideo_OnLoaded(object sender, RoutedEventArgs e)
         {
-            MainPanelDereVideo.Play();
+            //MainPanelDereVideo.Play();
         }
     }
 }

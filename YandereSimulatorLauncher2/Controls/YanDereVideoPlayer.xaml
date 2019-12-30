@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="YandereSimulatorLauncher2.Controls.YanDereVideoPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid x:Name="VideoBackgroundAttachPoint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image x:Name="ImageBackgroundDere" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/mainpanel-dere.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                
+            </Image>
+            <Image x:Name="ImageBackgroundYan" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/mainpanel-yan.png" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                
+            </Image>
+            <MediaElement x:Name="VideoBackgroundDere" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                
+            </MediaElement>
+            <MediaElement x:Name="VideoBackgroundYan" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            </MediaElement>
+        </Grid>
+        <Canvas>
+            <CheckBox Margin="5, 5, 5, 5" Focusable="False">
+                <TextBlock x:Name="VideoEnabledCheckbox" Background="#44FFFFFF" Padding="5, 0, 5, 1">
+                Video Background
+                </TextBlock>
+            </CheckBox>
+        </Canvas>
+    </Grid>
+</UserControl>

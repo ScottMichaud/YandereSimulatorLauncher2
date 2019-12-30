@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.IO;
 
 namespace YandereSimulatorLauncher2
 {
@@ -19,6 +18,30 @@ namespace YandereSimulatorLauncher2
             base.OnExit(e);
 
             //DeleteVideoResources();
+        }
+
+        public static string LauncherTempFileDirectory 
+        { 
+            get
+            {
+                return System.IO.Path.Combine(System.IO.Path.GetTempPath(), "{" + YandereSimulatorLauncher2.Properties.Resources.VideoLocationGuid.ToUpper() + "}");
+            }
+        }
+
+        public static string MainPanelDereFileLocation
+        {
+            get
+            {
+                return System.IO.Path.Combine(LauncherTempFileDirectory, "mainpanel-dere.wmv");
+            }
+        }
+
+        public static string MainPanelYanFileLocation
+        {
+            get
+            {
+                return System.IO.Path.Combine(LauncherTempFileDirectory, "mainpanel-yan.wmv");
+            }
         }
 
         //

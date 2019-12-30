@@ -66,7 +66,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\YanDereVideo.xaml">
+    <Page Include="Controls\YanDereVideoPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,8 +87,8 @@
     <Compile Include="Controls\MinimizeCloseButtons.xaml.cs">
       <DependentUpon>MinimizeCloseButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\YanDereVideo.xaml.cs">
-      <DependentUpon>YanDereVideo.xaml</DependentUpon>
+    <Compile Include="Controls\YanDereVideoPlayer.xaml.cs">
+      <DependentUpon>YanDereVideoPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -135,6 +135,10 @@
     <Resource Include="EmbeddedAssets\Images\yandere-simulator-logo.png" />
     <Resource Include="EmbeddedAssets\Images\youtube-black.png" />
     <Resource Include="EmbeddedAssets\Images\youtube-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="EmbeddedAssets\Images\mainpanel-dere.png" />
+    <Resource Include="EmbeddedAssets\Images\mainpanel-yan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -57,11 +57,14 @@
                 <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/twitch-white.png" Width="19" Height="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0" LinkedUrl="https://www.twitch.tv/yanderedev"/>
             </Grid>
             <!-- Main Panel -->
-            <Canvas Background="#ff80d3" Grid.Row="2">
-                <MediaElement x:Name="MainPanelDereVideo" Source="mainpanel-dere.wmv" Width="880" Height="496" LoadedBehavior="Manual" Loaded="MainPanelDereVideo_OnLoaded" MediaEnded="MainPanelDereVideo_OnMediaEnded">
+            <Grid Background="#ff80d3" Grid.Row="2">
+                <controls:YanDereVideoPlayer Canvas.Left="0" Canvas.Right="0" Canvas.Top="0" Canvas.Bottom="0">
                     
-                </MediaElement>
-            </Canvas>
+                </controls:YanDereVideoPlayer>
+                <!--<MediaElement x:Name="MainPanelDereVideo" Source="mainpanel-dere.wmv" Width="880" Height="496" LoadedBehavior="Manual" Loaded="MainPanelDereVideo_OnLoaded" MediaEnded="MainPanelDereVideo_OnMediaEnded">
+                    
+                </MediaElement>-->
+            </Grid>
         </Grid>
     </Border>
 </Window>
