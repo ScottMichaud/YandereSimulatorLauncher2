@@ -23,13 +23,13 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <!-- Title bar -->
-            <Grid Background="#ff80d3" Grid.Row="0">
+            <Grid x:Name="GridTopbar" Background="#ff80d3" Grid.Row="0">
                 <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDown="TitleBar_MouseDown" Fill="Red" Opacity="0"></Rectangle>
                 <Image x:Name="YandereSimulatorLogo" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png" MouseDown="TitleBar_MouseDown" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="131"/>
-                <controls:MinimizeCloseButtons HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <controls:MinimizeCloseButtons x:Name="ElementMinimizeCloseButtons" HorizontalAlignment="Right" VerticalAlignment="Top"/>
             </Grid>
             <!-- Link bar -->
-            <Grid Background="#ee63bb" Grid.Row="1">
+            <Grid x:Name="GridLinkbar" Background="#ee63bb" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -47,17 +47,17 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <controls:HyperlinkFromText DisplayText="About" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0" LinkedUrl="https://yanderesimulator.com/about/"/>
-                <controls:HyperlinkFromText DisplayText="Blog" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/blog/"/>
-                <controls:HyperlinkFromText DisplayText="Contact" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/contact/"/>
-                <controls:HyperlinkFromText DisplayText="Donate" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/donate/"/>
-                <controls:HyperlinkFromText DisplayText="Volunteer" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/volunteer/"/>
-                <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/twitter-white.png" Width="25" Height="20" Grid.Column="6" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://twitter.com/yanderedev"/>
-                <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/youtube-white.png" Width="28" Height="20" Grid.Column="7" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://www.youtube.com/yanderedev"/>
-                <controls:HyperlinkFromImage DisplayImage="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/twitch-white.png" Width="19" Height="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0" LinkedUrl="https://www.twitch.tv/yanderedev"/>
+                <controls:HyperlinkFromText x:Name="LinkAbout" DisplayText="About" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0" LinkedUrl="https://yanderesimulator.com/about/"/>
+                <controls:HyperlinkFromText x:Name="LinkBlog" DisplayText="Blog" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/blog/"/>
+                <controls:HyperlinkFromText x:Name="LinkContact" DisplayText="Contact" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/contact/"/>
+                <controls:HyperlinkFromText x:Name="LinkDonate" DisplayText="Donate" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/donate/"/>
+                <controls:HyperlinkFromText x:Name="LinkVolunteer" DisplayText="Volunteer" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/volunteer/"/>
+                <controls:HyperlinkFromImage x:Name="LinkTwitter" DisplayImage="twitter" Width="25" Height="20" Grid.Column="6" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://twitter.com/yanderedev"/>
+                <controls:HyperlinkFromImage x:Name="LinkYoutube" DisplayImage="youtube" Width="28" Height="20" Grid.Column="7" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://www.youtube.com/yanderedev"/>
+                <controls:HyperlinkFromImage x:Name="LinkTwitch" DisplayImage="twitch" Width="19" Height="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0" LinkedUrl="https://www.twitch.tv/yanderedev"/>
             </Grid>
             <!-- Main Panel -->
-            <Grid Background="#ff80d3" Grid.Row="2">
+            <Grid x:Name="GridMainPanel" Background="#ff80d3" Grid.Row="2">
                 <controls:YanDereVideoPlayer x:Name="ElementYanDereVideoPlayer">
                     
                 </controls:YanDereVideoPlayer>

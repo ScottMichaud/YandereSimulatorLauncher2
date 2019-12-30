@@ -56,11 +56,45 @@ namespace YandereSimulatorLauncher2.Controls
 
         private bool IsButtonPrimed { get; set; } = false;
 
+        private bool mIsDere = true;
+        public bool IsDere
+        {
+            get { return mIsDere; }
+            set
+            {
+                if (mIsDere != value)
+                {
+                    mIsDere = value;
+
+                    if (mIsDere)
+                    {
+                        SetDere();
+                    }
+                    else
+                    {
+                        SetYan();
+                    }
+                }
+            }
+        }
+
+
+
         #endregion
 
         public HyperlinkFromText()
         {
             InitializeComponent();
+        }
+
+        private void SetDere()
+        {
+            MyDisplayText.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        }
+
+        private void SetYan()
+        {
+            MyDisplayText.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         #region Events

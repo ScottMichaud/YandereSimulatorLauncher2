@@ -36,12 +36,36 @@ namespace YandereSimulatorLauncher2.Controls
             set { SetValue(LinkedUrlProperty, value); }
         }
 
+        private bool mIsDere = true;
+        public bool IsDere
+        {
+            get { return mIsDere; }
+            set
+            {
+                if (mIsDere != value)
+                {
+                    mIsDere = value;
+
+                    if (mIsDere)
+                    {
+                        SetDere();
+                    }
+                    else
+                    {
+                        SetYan();
+                    }
+                }
+            }
+        }
+
         private static void DisplayImageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             if (obj is HyperlinkFromImage)
             {
                 HyperlinkFromImage castControl = obj as HyperlinkFromImage;
-                castControl.MyDisplayImage.Source = new BitmapImage(new Uri(castControl.DisplayImage, UriKind.Relative));
+                ///YandereSimulatorLauncher2;component/EmbeddedAssets/Images/twitter-white.png
+                //castControl.MyDisplayImage.Source = new BitmapImage(new Uri(castControl.DisplayImage, UriKind.Relative));
+                castControl.MyDisplayImage.Source = new BitmapImage(castControl.ConvertImageTokenToUri(castControl.DisplayImage));
             }
         }
 
@@ -85,6 +109,21 @@ namespace YandereSimulatorLauncher2.Controls
         private void OnMouseLeave(object sender, MouseEventArgs e)
         {
             IsButtonPrimed = false;
+        }
+
+        private Uri ConvertImageTokenToUri(string inToken)
+        {
+            return new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/" + inToken + (IsDere ? "-white.png" : "-black.png"), UriKind.Relative);
+        }
+
+        private void SetDere()
+        {
+            MyDisplayImage.Source = new BitmapImage(ConvertImageTokenToUri(DisplayImage));
+        }
+
+        private void SetYan()
+        {
+            MyDisplayImage.Source = new BitmapImage(ConvertImageTokenToUri(DisplayImage));
         }
     }
 }

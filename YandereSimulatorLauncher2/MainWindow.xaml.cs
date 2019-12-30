@@ -131,11 +131,39 @@ namespace YandereSimulatorLauncher2
         private void SetDere()
         {
             ElementYanDereVideoPlayer.IsDere = true;
+            ElementMinimizeCloseButtons.IsDere = true;
+            YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png", UriKind.Relative));
+
+            GridTopbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff80d3"));
+            GridLinkbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ee63bb"));
+
+            LinkAbout.IsDere = true;
+            LinkBlog.IsDere = true;
+            LinkContact.IsDere = true;
+            LinkDonate.IsDere = true;
+            LinkVolunteer.IsDere = true;
+            LinkYoutube.IsDere = true;
+            LinkTwitch.IsDere = true;
+            LinkTwitter.IsDere = true;
         }
 
         private void SetYan()
         {
             ElementYanDereVideoPlayer.IsDere = false;
+            ElementMinimizeCloseButtons.IsDere = false;
+            YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo-black.png", UriKind.Relative));
+
+            GridTopbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff0000"));
+            GridLinkbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#bb0000"));
+
+            LinkAbout.IsDere = false;
+            LinkBlog.IsDere = false;
+            LinkContact.IsDere = false;
+            LinkDonate.IsDere = false;
+            LinkVolunteer.IsDere = false;
+            LinkYoutube.IsDere = false;
+            LinkTwitch.IsDere = false;
+            LinkTwitter.IsDere = false;
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs evt)

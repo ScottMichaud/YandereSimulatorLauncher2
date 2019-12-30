@@ -30,6 +30,28 @@ namespace YandereSimulatorLauncher2.Controls
         private bool IsMinimizePrimed { get; set; } = false;
         private bool IsClosePrimed { get; set; } = false;
 
+        private bool mIsDere = true;
+        public bool IsDere
+        {
+            get { return mIsDere; }
+            set
+            {
+                if (mIsDere != value)
+                {
+                    mIsDere = value;
+
+                    if (mIsDere)
+                    {
+                        SetDere();
+                    }
+                    else
+                    {
+                        SetYan();
+                    }
+                }
+            }
+        }
+
         #endregion
 
         public MinimizeCloseButtons()
@@ -90,5 +112,22 @@ namespace YandereSimulatorLauncher2.Controls
             IsClosePrimed = false;
         }
         #endregion
+
+        private Uri ConvertImageTokenToUri(string inToken)
+        {
+            return new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/" + inToken + (IsDere ? "-white.png" : "-black.png"), UriKind.Relative);
+        }
+
+        private void SetDere()
+        {
+            MyCloseButton.Source = new BitmapImage(ConvertImageTokenToUri("close"));
+            MyMinimizeButton.Source = new BitmapImage(ConvertImageTokenToUri("minimize"));
+        }
+
+        private void SetYan()
+        {
+            MyCloseButton.Source = new BitmapImage(ConvertImageTokenToUri("close"));
+            MyMinimizeButton.Source = new BitmapImage(ConvertImageTokenToUri("minimize"));
+        }
     }
 }
