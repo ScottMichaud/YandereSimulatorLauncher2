@@ -96,13 +96,13 @@ namespace YandereSimulatorLauncher2
             }
             catch (Exception)
             {
-                // Just cosmetic.
-                // Probably lock to just the static images.
+                
             }
         }
 
         private void StartYanDereFlipFlop()
         {
+            // Create a 100ms timer that calls FlipFlopTimerYanDere_OnTick() on the UI thread.
             flipFlopTimerYanDere = new DispatcherTimer(TimeSpan.FromMilliseconds(100.0), DispatcherPriority.Normal, FlipFlopTimerYanDere_OnTick, Dispatcher.CurrentDispatcher);
             nextYanDereFlip = DateTime.Now + TimeSpan.FromSeconds(secondsToDisplayDere);
             flipFlopTimerYanDere.Start();
@@ -117,7 +117,25 @@ namespace YandereSimulatorLauncher2
             // NOTE: Basing the next flip time off of now, rather than when nextYanDereFlip expired.
             isDere = !isDere;
             nextYanDereFlip = currentTime + TimeSpan.FromSeconds(isDere ? secondsToDisplayDere : secondsToDisplayYan);
-            Console.WriteLine("I am " + (isDere ? "Dere" : "Yan"));
+            
+            if (isDere)
+            {
+                SetDere();
+            }
+            else
+            {
+                SetYan();
+            }
+        }
+
+        private void SetDere()
+        {
+            ElementYanDereVideoPlayer.IsDere = true;
+        }
+
+        private void SetYan()
+        {
+            ElementYanDereVideoPlayer.IsDere = false;
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs evt)
@@ -126,16 +144,6 @@ namespace YandereSimulatorLauncher2
             {
                 DragMove();
             }
-        }
-
-        private void MainPanelDereVideo_OnMediaEnded(object sender, RoutedEventArgs e)
-        {
-            //MainPanelDereVideo.Position = new TimeSpan(0, 0, 1);
-        }
-
-        private void MainPanelDereVideo_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            //MainPanelDereVideo.Play();
         }
     }
 }

@@ -14,16 +14,16 @@
             <Image x:Name="ImageBackgroundYan" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/mainpanel-yan.png" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 
             </Image>
-            <MediaElement x:Name="VideoBackgroundDere" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <MediaElement x:Name="VideoBackgroundDere" LoadedBehavior="Manual" Loaded="VideoDere_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 
             </MediaElement>
-            <MediaElement x:Name="VideoBackgroundYan" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <MediaElement x:Name="VideoBackgroundYan" Visibility="Hidden" LoadedBehavior="Manual" Loaded="VideoYan_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
             </MediaElement>
         </Grid>
         <Canvas>
-            <CheckBox Margin="5, 5, 5, 5" Focusable="False">
-                <TextBlock x:Name="VideoEnabledCheckbox" Background="#44FFFFFF" Padding="5, 0, 5, 1">
+            <CheckBox x:Name="VideoEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False">
+                <TextBlock x:Name="VideoEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
                 Video Background
                 </TextBlock>
             </CheckBox>
