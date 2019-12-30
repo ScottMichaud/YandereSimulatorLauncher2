@@ -92,7 +92,10 @@ namespace YandereSimulatorLauncher2
         {
             try
             {
-                File.WriteAllBytes(inFilename, inResource);
+                if (File.Exists(inFilename) == false)
+                {
+                    File.WriteAllBytes(inFilename, inResource);
+                }
             }
             catch (Exception)
             {
