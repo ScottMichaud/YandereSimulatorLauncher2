@@ -44,6 +44,11 @@ namespace YandereSimulatorLauncher2
             }
         }
 
+        public static System.Windows.Media.SolidColorBrush HexToBrush(string inHex)
+        {
+            return new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(inHex));
+        }
+
         //
         // Currently unused.
         // Don't waste time deleting the file on shutdown. 

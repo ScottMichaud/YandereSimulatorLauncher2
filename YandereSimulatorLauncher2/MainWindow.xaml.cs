@@ -134,6 +134,7 @@ namespace YandereSimulatorLauncher2
         private void SetDere()
         {
             ElementYanDereVideoPlayer.IsDere = true;
+            ElementMainPanelActionButtons.IsDere = true;
             ElementMinimizeCloseButtons.IsDere = true;
             YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png", UriKind.Relative));
 
@@ -153,6 +154,7 @@ namespace YandereSimulatorLauncher2
         private void SetYan()
         {
             ElementYanDereVideoPlayer.IsDere = false;
+            ElementMainPanelActionButtons.IsDere = false;
             ElementMinimizeCloseButtons.IsDere = false;
             YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo-black.png", UriKind.Relative));
 

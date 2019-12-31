@@ -66,6 +66,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\MainPanelActionButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\MinimizeCloseButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +91,9 @@
     </Compile>
     <Compile Include="Controls\HyperlinkFromText.xaml.cs">
       <DependentUpon>HyperlinkFromText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPanelActionButtons.xaml.cs">
+      <DependentUpon>MainPanelActionButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MinimizeCloseButtons.xaml.cs">
       <DependentUpon>MinimizeCloseButtons.xaml</DependentUpon>

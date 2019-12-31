@@ -61,9 +61,11 @@
                 <controls:YanDereVideoPlayer x:Name="ElementYanDereVideoPlayer">
                     
                 </controls:YanDereVideoPlayer>
-                <!--<MediaElement x:Name="MainPanelDereVideo" Source="mainpanel-dere.wmv" Width="880" Height="496" LoadedBehavior="Manual" Loaded="MainPanelDereVideo_OnLoaded" MediaEnded="MainPanelDereVideo_OnMediaEnded">
-                    
-                </MediaElement>-->
+                <Canvas>
+                    <controls:MainPanelActionButtons x:Name="ElementMainPanelActionButtons" Canvas.Bottom="50" Canvas.Left="50">
+                        
+                    </controls:MainPanelActionButtons>
+                </Canvas>
             </Grid>
         </Grid>
     </Border>
