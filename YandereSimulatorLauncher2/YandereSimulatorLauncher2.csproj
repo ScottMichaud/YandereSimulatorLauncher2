@@ -101,6 +101,7 @@
     <Compile Include="Controls\YanDereVideoPlayer.xaml.cs">
       <DependentUpon>YanDereVideoPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\UpdatePlayHelpers.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

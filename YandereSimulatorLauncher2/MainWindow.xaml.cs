@@ -34,7 +34,13 @@ namespace YandereSimulatorLauncher2
             UnpackVideoResources();
             InitializeComponent();
             HandleVisualStyles();
+            AddEventHandlers();
             StartYanDereFlipFlop();
+        }
+
+        private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            await DoCheckForUpdates();
         }
 
         protected override sealed void OnClosing(CancelEventArgs e)
@@ -77,6 +83,12 @@ namespace YandereSimulatorLauncher2
             ShadowBorder.Margin = new Thickness(1);
 
             //
+        }
+
+        private void AddEventHandlers()
+        {
+            ElementMainPanelActionButtons.InstallButtonClicked += InstallButton_OnClick;
+            ElementMainPanelActionButtons.PlayButtonClicked += PlayButton_OnClick;
         }
 
         private void UnpackVideoResources()
@@ -177,6 +189,106 @@ namespace YandereSimulatorLauncher2
             {
                 DragMove();
             }
+        }
+
+        private async void InstallButton_OnClick(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                await DoRelevantInstallTask();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Install button failed with the following exception: " + ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private async void PlayButton_OnClick(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                await DoPlay();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Play button failed with the following exception: " + ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private async Task DoRelevantInstallTask()
+        {
+            switch (ElementMainPanelActionButtons.CurrentMode)
+            {
+                case Controls.YsInstallMode.Unset:
+                    throw new NotImplementedException("The install button should be locked.");
+                case Controls.YsInstallMode.RetryInstall:
+                    await DoInstall();
+                    break;
+                case Controls.YsInstallMode.PromptToInstall:
+                    await DoInstall();
+                    break;
+                case Controls.YsInstallMode.CheckingForUpdates:
+                    throw new NotImplementedException("The install button should be locked.");
+                case Controls.YsInstallMode.ConfirmingUpdate:
+                    throw new NotImplementedException("The install button should be locked.");
+                case Controls.YsInstallMode.PromptToCheck:
+                    await DoCheckForUpdates();
+                    break;
+                case Controls.YsInstallMode.PromptToUpdate:
+                    await DoUpdate();
+                    break;
+                case Controls.YsInstallMode.Downloading:
+                    throw new NotImplementedException("The install button should be locked.");
+                case Controls.YsInstallMode.Unpacking:
+                    throw new NotImplementedException("The install button should be locked.");
+                case Controls.YsInstallMode.Launching:
+                    throw new NotImplementedException("The install button should be locked.");
+                case Controls.YsInstallMode.UpdatingLauncher:
+                    throw new NotImplementedException("The install button should be locked.");
+                default:
+                    throw new NotImplementedException("The install button should be locked.");
+            }
+        }
+
+        private async Task DoInstall()
+        {
+            await Logic.UpdatePlayHelpers.AsynchronousWait(250);
+        }
+
+        private async Task DoCheckForUpdates()
+        {
+            ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.CheckingForUpdates;
+
+            if (Logic.UpdatePlayHelpers.DoesGameExist())
+            {
+                if (await Logic.UpdatePlayHelpers.DoesUpdateExist())
+                {
+                    ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.PromptToUpdate;
+                }
+                else
+                { 
+                    ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.PromptToCheck;
+                }
+            }
+            else
+            {
+                ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.PromptToInstall;
+            }
+        }
+
+        private async Task DoUpdate()
+        {
+            await Logic.UpdatePlayHelpers.AsynchronousWait(250);
+        }
+
+        private async Task DoPlay()
+        {
+            ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Launching;
+            Logic.UpdatePlayHelpers.StartGame();
+            await Logic.UpdatePlayHelpers.AsynchronousWait(250);
+            Close();
         }
     }
 }

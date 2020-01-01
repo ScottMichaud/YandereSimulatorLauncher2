@@ -15,11 +15,43 @@ using System.Windows.Shapes;
 
 namespace YandereSimulatorLauncher2.Controls
 {
+    public enum YsInstallMode
+    {
+        Unset,
+        RetryInstall,
+        PromptToInstall,
+        CheckingForUpdates,
+        ConfirmingUpdate,
+        PromptToCheck,
+        PromptToUpdate,
+        Downloading,
+        Unpacking,
+        Launching,
+        UpdatingLauncher
+    }
+
     /// <summary>
     /// Interaction logic for MainPanelActionButtons.xaml
     /// </summary>
     public partial class MainPanelActionButtons : UserControl
     {
+        public event EventHandler InstallButtonClicked;
+        public event EventHandler PlayButtonClicked;
+
+        private YsInstallMode mCurrentMode;
+        public YsInstallMode CurrentMode
+        {
+            get { return mCurrentMode; }
+            set
+            {
+                if (mCurrentMode != value)
+                {
+                    mCurrentMode = value;
+                    DoRender();
+                }
+            }
+        }
+
         private bool mIsDere = true;
         public bool IsDere
         {
@@ -45,21 +77,105 @@ namespace YandereSimulatorLauncher2.Controls
         public MainPanelActionButtons()
         {
             InitializeComponent();
+            DoRender();
         }
 
         private void DoRender()
         {
-            RenderButton(mutBorder: InstallUpdateButton, inIsPrimed: mIsInstallPrimed, inIsUserHovering: mIsUserHoveringInstall, inIsDere: IsDere);
-            RenderButton(mutBorder: PlayButton, inIsPrimed: mIsPlayPrimed, inIsUserHovering: mIsUserHoveringPlay, inIsDere: IsDere);
+            RenderCurrentMode();
+            ColorButton(mutBorder: InstallUpdateButton, inIsPrimed: mIsInstallPrimed, inIsUserHovering: mIsUserHoveringInstall, inIsDere: IsDere);
+            ColorButton(mutBorder: PlayButton, inIsPrimed: mIsPlayPrimed, inIsUserHovering: mIsUserHoveringPlay, inIsDere: IsDere);
             InstallUpdateButtonText.Foreground = IsDere ? App.HexToBrush("#ffffff") : App.HexToBrush("#000000");
             PlayButtonText.Foreground = IsDere ? App.HexToBrush("#ffffff") : App.HexToBrush("#000000");
+
+            InstallUpdateButton.Opacity = InstallUpdateButton.IsEnabled ? 1 : 0.5;
+            PlayButton.Opacity = PlayButton.IsEnabled ? 1 : 0.5;
         }
 
-        private static void RenderButton(Border mutBorder, bool inIsPrimed, bool inIsUserHovering, bool inIsDere)
+        private void RenderCurrentMode()
+        {
+            switch (CurrentMode)
+            {
+                case YsInstallMode.Unset:
+                    InstallUpdateButtonText.Text = "";
+                    PlayButtonText.Text = "";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.RetryInstall:
+                    InstallUpdateButtonText.Text = "Retry install";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = true;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.PromptToInstall:
+                    InstallUpdateButtonText.Text = "Install";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = true;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.CheckingForUpdates:
+                    InstallUpdateButtonText.Text = "Checking for updates...";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = true;
+                    break;
+                case YsInstallMode.ConfirmingUpdate:
+                    InstallUpdateButtonText.Text = "Confirming...";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.PromptToCheck:
+                    InstallUpdateButtonText.Text = "Check for updates";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = true;
+                    PlayButton.IsEnabled = true;
+                    break;
+                case YsInstallMode.PromptToUpdate:
+                    InstallUpdateButtonText.Text = "Update available";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = true;
+                    PlayButton.IsEnabled = true;
+                    break;
+                case YsInstallMode.Downloading:
+                    InstallUpdateButtonText.Text = "Downloading...";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.Unpacking:
+                    InstallUpdateButtonText.Text = "Unpacking...";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.Launching:
+                    InstallUpdateButtonText.Text = "Launching...";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+                case YsInstallMode.UpdatingLauncher:
+                    InstallUpdateButtonText.Text = "Downloading...";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+                default:
+                    InstallUpdateButtonText.Text = "";
+                    PlayButtonText.Text = "";
+                    InstallUpdateButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    break;
+            }
+        }
+
+        private static void ColorButton(Border mutBorder, bool inIsPrimed, bool inIsUserHovering, bool inIsDere)
         {
             if (inIsPrimed)
             {
-                mutBorder.Background = inIsDere ? App.HexToBrush("#ffade3") : App.HexToBrush("#ff5555");
+                mutBorder.Background = inIsDere ? App.HexToBrush("#ff91da") : App.HexToBrush("#ff5555");
             }
             else if (inIsUserHovering)
             {
@@ -81,7 +197,7 @@ namespace YandereSimulatorLauncher2.Controls
         {
             if (mIsInstallPrimed == true)
             {
-                //Do action
+                InstallButtonClicked?.Invoke(this, new EventArgs());
             }
 
             mIsInstallPrimed = false;
@@ -111,7 +227,7 @@ namespace YandereSimulatorLauncher2.Controls
         {
             if (mIsPlayPrimed == true)
             {
-                //Do action
+                PlayButtonClicked?.Invoke(this, new EventArgs());
             }
 
             mIsPlayPrimed = false;

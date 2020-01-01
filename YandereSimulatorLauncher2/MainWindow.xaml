@@ -10,7 +10,7 @@
         Title="Yandere Simulator Launcher"
         Height="677" Width="882"
         WindowStyle="None" ResizeMode="NoResize"
-        AllowsTransparency="True" Background="Transparent">
+        AllowsTransparency="True" Background="Transparent" Loaded="MainWindow_OnLoaded">
     <Border x:Name="ShadowBorder" Margin="10">
         <Border.Effect>
             <DropShadowEffect Color="Black" Opacity="0.4" Direction="300" BlurRadius="9" ShadowDepth="2"/>
@@ -58,13 +58,9 @@
             </Grid>
             <!-- Main Panel -->
             <Grid x:Name="GridMainPanel" Background="#ff80d3" Grid.Row="2">
-                <controls:YanDereVideoPlayer x:Name="ElementYanDereVideoPlayer">
-                    
-                </controls:YanDereVideoPlayer>
+                <controls:YanDereVideoPlayer x:Name="ElementYanDereVideoPlayer" />
                 <Canvas>
-                    <controls:MainPanelActionButtons x:Name="ElementMainPanelActionButtons" Canvas.Bottom="50" Canvas.Left="50">
-                        
-                    </controls:MainPanelActionButtons>
+                    <controls:MainPanelActionButtons x:Name="ElementMainPanelActionButtons" Canvas.Bottom="50" Canvas.Left="50" />
                 </Canvas>
             </Grid>
         </Grid>
