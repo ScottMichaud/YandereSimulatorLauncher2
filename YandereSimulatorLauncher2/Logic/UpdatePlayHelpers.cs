@@ -33,7 +33,7 @@ namespace YandereSimulatorLauncher2.Logic
             // Queue
             Task<string> versionOnSite = FetchHttpText(GameVersionHttp);
             Task<string> versionOnDisk = FetchTextFileContents(GameVersionFilePath);
-            Task minimumCheckTime = AsynchronousWait(250);
+            Task minimumCheckTime = AsynchronousWait(750);
 
             // Consume
             string siteVersion = await versionOnSite;
