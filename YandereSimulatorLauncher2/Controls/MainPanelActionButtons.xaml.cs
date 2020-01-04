@@ -27,7 +27,8 @@ namespace YandereSimulatorLauncher2.Controls
         Downloading,
         Unpacking,
         Launching,
-        UpdatingLauncher
+        UpdatingLauncher,
+        YouAreUpToDate
     }
 
     /// <summary>
@@ -136,6 +137,12 @@ namespace YandereSimulatorLauncher2.Controls
                     InstallUpdateButtonText.Text = "Update available";
                     PlayButtonText.Text = "Play";
                     InstallUpdateButton.IsEnabled = true;
+                    PlayButton.IsEnabled = true;
+                    break;
+                case YsInstallMode.YouAreUpToDate:
+                    InstallUpdateButtonText.Text = "No update available";
+                    PlayButtonText.Text = "Play";
+                    InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = true;
                     break;
                 case YsInstallMode.Downloading:

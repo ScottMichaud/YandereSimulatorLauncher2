@@ -1,31 +1,75 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace YandereSimulatorLauncher2.Logic
 {
+    public delegate void DownloadProgressCallback(double bytes);
+    public delegate void UnzipStartCallback();
+
     class UpdatePlayHelpers
     {
-        public const string GamePath = "YandereSimulator\\YandereSimulator.exe";
-        public const string GameVersionHttp = "https://www.yanderesimulator.com/version.txt";
-        public const string GameVersionFilePath = "YandereSimulator\\GameVersion.txt";
+        public static string GameExePath { get { return "YandereSimulator\\YandereSimulator.exe"; } }
+        public static string GameDirectoryPath { get { return "YandereSimulator"; } }
+        public static string GameVersionHttp { get { return "https://www.yanderesimulator.com/version.txt" + AntiCacheToken; } }
+        public static string GameFileHttpMinusCacheBuster = "https://dl.yanderesimulator.com/latest.zip"; //Add ?{{versionOnSite}} to it.
+        public static string GameVersionFilePath = "YandereSimulator\\GameVersion.txt";
+        public static string GameZipSaveLocation = "YandereSimulator.zip";
+
+        private static string AntiCacheToken
+        {
+            get
+            {
+                DateTime currentTime = DateTime.UtcNow;
+                return "?" + currentTime.Ticks.ToString();
+            }
+        }
 
         public static void StartGame()
         {
             using (Process game = new Process())
             {
                 game.StartInfo.UseShellExecute = false;
-                game.StartInfo.FileName = GamePath;
+                game.StartInfo.FileName = GameExePath;
                 game.Start();
             }
         }
 
         public static bool DoesGameExist()
         {
-            return System.IO.File.Exists(GamePath);
+            return System.IO.File.Exists(GameExePath);
+        }
+
+        public async static Task DownloadAndInstall(DownloadProgressCallback delDownloadProgress, UnzipStartCallback delUnzipStart)
+        {
+            // Fetch the current version.
+            // NOTE: YandereDev says that he always updates version.txt *after* the new build upload is complete.
+            //       As such, we should be able to rely upon version.txt as a cache buster.
+            //       If he goofs, he can just re-increment version.txt.
+            string versionOnSite = await FetchHttpText(GameVersionHttp);
+            await FetchHttpFile(inUrl: GameFileHttpMinusCacheBuster + "?" + versionOnSite, inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
+
+            if (System.IO.Directory.Exists(GameDirectoryPath))
+            {
+                // C# struggles to delete folders if, for example, there's an active Windows Explorer looking into them.
+                bool successful = DeleteAsMuchAsPossible(GameDirectoryPath);
+                Console.WriteLine("The delete was " + (successful ? "" : "not ") + "successful.");
+            }
+
+            delUnzipStart();
+            await UnpackZipFile(inFile: GameZipSaveLocation, inUnpackLocation: GameDirectoryPath);
+
+            using (System.IO.StreamWriter gameVersionFile = System.IO.File.CreateText(GameVersionFilePath))
+            {
+                gameVersionFile.WriteLine(versionOnSite);
+            }
+
+            System.IO.File.Delete(GameZipSaveLocation);
         }
 
         public async static Task<bool> DoesUpdateExist()
@@ -33,7 +77,8 @@ namespace YandereSimulatorLauncher2.Logic
             // Queue
             Task<string> versionOnSite = FetchHttpText(GameVersionHttp);
             Task<string> versionOnDisk = FetchTextFileContents(GameVersionFilePath);
-            Task minimumCheckTime = AsynchronousWait(750);
+            // Add a little lag so it doesn't instantly complete (which flickers text on the update/install button).
+            Task minimumCheckTime = AsynchronousWait(500);
 
             // Consume
             string siteVersion = await versionOnSite;
@@ -99,6 +144,66 @@ namespace YandereSimulatorLauncher2.Logic
             if (double.TryParse(inSiteVersion, out siteAsDouble) == false) { return false; }
 
             return siteAsDouble > diskAsDouble;
+        }
+
+        private async static Task FetchHttpFile(string inUrl, string inSaveLocation, DownloadProgressCallback delProgress)
+        {
+            using (WebClient downloader = new WebClient())
+            {
+                downloader.DownloadProgressChanged += (object sender, DownloadProgressChangedEventArgs args) =>
+                {
+                    delProgress(args.BytesReceived);
+                };
+
+                await downloader.DownloadFileTaskAsync(inUrl, inSaveLocation);
+            }
+        }
+
+        private async static Task UnpackZipFile(string inFile, string inUnpackLocation)
+        {
+            await Task.Run(() =>
+            {
+                ZipFile.ExtractToDirectory(sourceArchiveFileName: inFile, destinationDirectoryName: inUnpackLocation);
+            });
+        }
+
+        private static bool DeleteAsMuchAsPossible(string inPath)
+        {
+            bool totalSuccess = true;
+            string[] childFiles = System.IO.Directory.GetFiles(inPath);
+            string[] childDirectories = System.IO.Directory.GetDirectories(inPath);
+
+            foreach (string currentFile in childFiles)
+            {
+                try
+                {
+                    if (System.IO.File.GetAttributes(currentFile).HasFlag(System.IO.FileAttributes.ReparsePoint)) { continue; }
+                    System.IO.File.SetAttributes(currentFile, System.IO.FileAttributes.Normal);
+                    System.IO.File.Delete(currentFile);
+                }
+                catch (Exception)
+                {
+                    //Skip it.
+                    totalSuccess = false;
+                }
+            }
+
+            foreach (string currentDir in childDirectories)
+            {
+                DeleteAsMuchAsPossible(currentDir);
+            }
+
+            try
+            {
+                System.IO.Directory.Delete(inPath, false);
+            }
+            catch (Exception)
+            {
+                //Skip it.
+                totalSuccess = false;
+            }
+
+            return totalSuccess;
         }
     }
 }
