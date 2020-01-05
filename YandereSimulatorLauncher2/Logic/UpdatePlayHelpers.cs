@@ -183,14 +183,16 @@ namespace YandereSimulatorLauncher2.Logic
                 }
                 catch (Exception)
                 {
-                    //Skip it.
                     totalSuccess = false;
                 }
             }
 
             foreach (string currentDir in childDirectories)
             {
-                DeleteAsMuchAsPossible(currentDir);
+                if (DeleteAsMuchAsPossible(currentDir) == false)
+                {
+                    totalSuccess = false;
+                }
             }
 
             try
@@ -199,7 +201,6 @@ namespace YandereSimulatorLauncher2.Logic
             }
             catch (Exception)
             {
-                //Skip it.
                 totalSuccess = false;
             }
 
