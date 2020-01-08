@@ -9,7 +9,11 @@
     <Grid>
         <Border ClipToBounds="True">
             <Canvas>
-                <Border Width="508" Height="95" Background="#ff80d3" CornerRadius="23" Canvas.Bottom="53" Canvas.Right="50">
+                <Border Width="508" Height="95" Background="#ff80d3" BorderThickness="1" BorderBrush="#95286d" CornerRadius="23" Canvas.Bottom="53" Canvas.Right="50">
+                    <Border Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" VerticalAlignment="Bottom" Margin="0, 0, 0, 20">
+                        <Rectangle Fill="#ee63bb"/>
+                    </Border>
+                    
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Opacity="0.5" Direction="300" BlurRadius="9" ShadowDepth="2"/>
                     </Border.Effect>
