@@ -180,6 +180,8 @@ namespace YandereSimulatorLauncher2.Controls
 
         private static void ColorButton(Border mutBorder, bool inIsPrimed, bool inIsUserHovering, bool inIsDere)
         {
+            mutBorder.BorderBrush = inIsDere ? App.HexToBrush("#95286d") : App.HexToBrush("#330000");
+
             if (inIsPrimed)
             {
                 mutBorder.Background = inIsDere ? App.HexToBrush("#ff91da") : App.HexToBrush("#ff5555");
