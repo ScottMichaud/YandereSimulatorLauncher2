@@ -148,6 +148,7 @@ namespace YandereSimulatorLauncher2
             ElementYanDereVideoPlayer.IsDere = true;
             ElementMainPanelActionButtons.IsDere = true;
             ElementMinimizeCloseButtons.IsDere = true;
+            ElementDownloadBar.IsDere = true;
             YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png", UriKind.Relative));
 
             GridTopbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff80d3"));
@@ -168,6 +169,7 @@ namespace YandereSimulatorLauncher2
             ElementYanDereVideoPlayer.IsDere = false;
             ElementMainPanelActionButtons.IsDere = false;
             ElementMinimizeCloseButtons.IsDere = false;
+            ElementDownloadBar.IsDere = false;
             YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo-black.png", UriKind.Relative));
 
             GridTopbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff0000"));

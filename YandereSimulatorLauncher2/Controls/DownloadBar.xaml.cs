@@ -20,6 +20,31 @@ namespace YandereSimulatorLauncher2.Controls
     /// </summary>
     public partial class DownloadBar : UserControl
     {
+        public static readonly DependencyProperty IsDereProperty = DependencyProperty.Register("IsDere", typeof(bool), typeof(DownloadBar), new PropertyMetadata(true, IsDereChanged));
+
+        public bool IsDere
+        {
+            get { return (bool)GetValue(IsDereProperty); }
+            set { SetValue(IsDereProperty, value); }
+        }
+
+        private static void IsDereChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (obj is DownloadBar)
+            {
+                DownloadBar castControl = obj as DownloadBar;
+
+                if (castControl.IsDere)
+                {
+                    castControl.SetDere();
+                }
+                else
+                {
+                    castControl.SetYan();
+                }
+            }
+        }
+
         public DownloadBar()
         {
             InitializeComponent();
@@ -28,6 +53,22 @@ namespace YandereSimulatorLauncher2.Controls
         private void DoRender()
         {
             
+        }
+
+        private void SetDere()
+        {
+            SlidingContainer.Background = App.HexToBrush("#ff80d3");
+            BarContainer.Background = App.HexToBrush("#ee63bb");
+            SlidingContainer.BorderBrush = App.HexToBrush("#95286d");
+            BarContainer.BorderBrush = App.HexToBrush("#95286d");
+        }
+
+        private void SetYan()
+        {
+            SlidingContainer.Background = App.HexToBrush("#ff0000");
+            BarContainer.Background = App.HexToBrush("#bb0000");
+            SlidingContainer.BorderBrush = App.HexToBrush("#330000");
+            BarContainer.BorderBrush = App.HexToBrush("#330000");
         }
     }
 }

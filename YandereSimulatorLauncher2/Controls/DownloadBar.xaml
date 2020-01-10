@@ -9,9 +9,9 @@
     <Grid>
         <Border ClipToBounds="True">
             <Canvas>
-                <Border Width="508" Height="95" Background="#ff80d3" BorderThickness="1" BorderBrush="#95286d" CornerRadius="23" Canvas.Bottom="53" Canvas.Right="50">
-                    <Border Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" VerticalAlignment="Bottom" Margin="0, 0, 0, 20">
-                        <Rectangle Fill="#ee63bb"/>
+                <Border x:Name="SlidingContainer" Width="508" Height="95" Background="#ff80d3" BorderThickness="1" BorderBrush="#95286d" CornerRadius="23" Canvas.Bottom="53" Canvas.Right="50">
+                    <Border x:Name="BarContainer" Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" Background="#ee63bb" VerticalAlignment="Bottom" Margin="0, 0, 0, 20">
+                        <!--<Rectangle Fill="#ee63bb"/>-->
                     </Border>
                     
                     <Border.Effect>
