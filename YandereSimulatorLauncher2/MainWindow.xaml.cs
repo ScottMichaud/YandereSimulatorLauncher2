@@ -129,7 +129,7 @@ namespace YandereSimulatorLauncher2
             if (currentTime < nextYanDereFlip) { return; }
 
             // Perform the flip.
-            // NOTE: Basing the next flip time off of now, rather than when nextYanDereFlip expired.
+            // NOTE: Basing the next flip time off of now, rather than when next YanDereFlip expired.
             isDere = !isDere;
             nextYanDereFlip = currentTime + TimeSpan.FromSeconds(isDere ? secondsToDisplayDere : secondsToDisplayYan);
             
