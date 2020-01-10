@@ -151,8 +151,8 @@ namespace YandereSimulatorLauncher2
             ElementDownloadBar.IsDere = true;
             YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png", UriKind.Relative));
 
-            GridTopbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff80d3"));
-            GridLinkbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ee63bb"));
+            GridTopbar.Background = App.HexToBrush("#ff80d3");
+            GridLinkbar.Background = App.HexToBrush("#ee63bb");
 
             LinkAbout.IsDere = true;
             LinkBlog.IsDere = true;
@@ -172,8 +172,8 @@ namespace YandereSimulatorLauncher2
             ElementDownloadBar.IsDere = false;
             YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo-black.png", UriKind.Relative));
 
-            GridTopbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff0000"));
-            GridLinkbar.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#bb0000"));
+            GridTopbar.Background = App.HexToBrush("#ff0000");
+            GridLinkbar.Background = App.HexToBrush("#bb0000");
 
             LinkAbout.IsDere = false;
             LinkBlog.IsDere = false;
