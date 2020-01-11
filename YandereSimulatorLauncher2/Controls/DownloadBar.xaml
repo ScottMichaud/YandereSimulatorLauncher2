@@ -12,7 +12,7 @@
                 <Border x:Name="SlidingContainer" Width="508" Height="95" Background="#ff80d3" BorderThickness="1" BorderBrush="#95286d" CornerRadius="23" Canvas.Bottom="53" Canvas.Right="50">
                     <Canvas>
                         <TextBlock x:Name="BarLabel" Canvas.Left="22" Canvas.Bottom="54" FontSize="24" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
-                            Downloading Yandere Simulator...
+
                         </TextBlock>
                         <Border x:Name="BarContainer" Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" Background="#ee63bb" Canvas.Bottom="18" Canvas.Left="22">
                             <!--<Rectangle Fill="#ee63bb"/>-->

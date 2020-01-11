@@ -44,6 +44,14 @@ namespace YandereSimulatorLauncher2
             }
         }
 
+        public static double ExpectedDownloadSize
+        {
+            get
+            {
+                return 1.15 * (1024.0 * 1024.0 * 1024.0); //Assume ~1.15 GB.
+            }
+        }
+
         public static System.Windows.Media.SolidColorBrush HexToBrush(string inHex)
         {
             return new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(inHex));

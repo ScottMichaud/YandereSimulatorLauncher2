@@ -270,21 +270,43 @@ namespace YandereSimulatorLauncher2
             }
         }
 
+        private double mLastDownloadBytes = 0.0;
+        private DateTime mLastReportTime = DateTime.Now;
         private async Task DoInstall()
         {
             ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Downloading;
+            ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
+
+            mLastDownloadBytes = 0.0;
+            mLastReportTime = DateTime.Now;
 
             await Logic.UpdatePlayHelpers.DownloadAndInstall(
-                (double bytes) =>
-                    { 
-                        Console.WriteLine("Bytes received: " + bytes.ToString());
+                (double currentBytes) =>
+                    {
+                        DateTime now = DateTime.Now;
+                        if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
+
+                        double currentPercent = (currentBytes / App.ExpectedDownloadSize) * 100.0;
+                        currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
+                        double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
+                        double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
+                        
+                        ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
+
+                        mLastReportTime = now;
+                        mLastDownloadBytes = currentBytes;
+
+                        //Console.WriteLine("Bytes received: " + currentBytes.ToString());
                     },
                 () =>
                     {
                         ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Unpacking;
-                        Console.WriteLine("Zip file has started extracting");
+                        ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Extracting);
+                        //Console.WriteLine("Zip file has started extracting");
                     }
                 );
+
+            ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
 
             await DoCheckForUpdates();
         }
@@ -346,6 +368,17 @@ namespace YandereSimulatorLauncher2
             Logic.UpdatePlayHelpers.StartGame();
             await Logic.UpdatePlayHelpers.AsynchronousWait(500);
             Close();
+        }
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            if (ElementMainPanelActionButtons.CurrentMode == Controls.YsInstallMode.Unpacking)
+            {
+                if (MessageBox.Show("Closing the launcher while unpacking files will corrupt them.\n\nDo you wish to force-close the launcher anyway?", "Busy Extracting Files", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) != MessageBoxResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

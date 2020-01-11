@@ -10,7 +10,7 @@
         Title="Yandere Simulator Launcher"
         Height="677" Width="882"
         WindowStyle="None" ResizeMode="NoResize"
-        AllowsTransparency="True" Background="Transparent" Loaded="MainWindow_OnLoaded">
+        AllowsTransparency="True" Background="Transparent" Loaded="MainWindow_OnLoaded" Closing="MainWindow_OnClosing">
     <Border x:Name="ShadowBorder" Margin="10">
         <Border.Effect>
             <DropShadowEffect Color="Black" Opacity="0.5" Direction="300" BlurRadius="9" ShadowDepth="2"/>

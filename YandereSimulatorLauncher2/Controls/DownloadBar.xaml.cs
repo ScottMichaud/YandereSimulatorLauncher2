@@ -15,18 +15,70 @@ using System.Windows.Shapes;
 
 namespace YandereSimulatorLauncher2.Controls
 {
+    public enum DownloadBarMode
+    {
+        DownloadingGame,
+        DownloadingLauncher,
+        Extracting,
+        Waiting
+    }
+
     /// <summary>
     /// Interaction logic for DownloadBar.xaml
     /// </summary>
     public partial class DownloadBar : UserControl
     {
         public static readonly DependencyProperty IsDereProperty = DependencyProperty.Register("IsDere", typeof(bool), typeof(DownloadBar), new PropertyMetadata(true, IsDereChanged));
+        public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(DownloadBar), new PropertyMetadata(true, IsOpenChanged));
+        //public static readonly DependencyProperty BarTextProperty = DependencyProperty.Register("BarText", typeof(string), typeof(DownloadBar), new PropertyMetadata("", BarTextChanged));
+        //public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register("ProgressPercent", typeof(double), typeof(DownloadBar), new PropertyMetadata(0.0, ProgressPercentChanged));
 
         public bool IsDere
         {
             get { return (bool)GetValue(IsDereProperty); }
             set { SetValue(IsDereProperty, value); }
         }
+
+        public bool IsOpen
+        {
+            get { return (bool)GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); }
+        }
+
+        public void ChangeProgress(DownloadBarMode inMode, double inPercentComplete = -1, double inSpeed = -1)
+        {
+            string taskToken = ConvertDownloadBarModeToDisplayString(inMode);
+            string speedToken = ConvertBytesPerSecondToSpeedString(inSpeed);
+            string percentToken = ConvertPercentToDisplayString(inPercentComplete);
+
+            BarLabel.Text = taskToken + percentToken + speedToken;
+        }
+
+        //public string BarText
+        //{
+        //    get { return (string)GetValue(BarTextProperty); }
+        //    set { SetValue(BarTextProperty, value); }
+        //}
+
+        //public double ProgressPercent
+        //{
+        //    get { return (double)GetValue(ProgressProperty); }
+        //    set { SetValue(ProgressProperty, value); }
+        //}
+
+        //private double mDownloadRateBytes;
+        //public double DownloadRateBytes
+        //{
+        //    get { return mDownloadRateBytes; }
+        //    set 
+        //    { 
+        //        if (mDownloadRateBytes != value) 
+        //        { 
+        //            mDownloadRateBytes = value;
+        //            RenderText();
+        //        } 
+        //    }
+        //}
 
         private static void IsDereChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
@@ -45,6 +97,41 @@ namespace YandereSimulatorLauncher2.Controls
             }
         }
 
+        private static void IsOpenChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (obj is DownloadBar)
+            {
+                DownloadBar castControl = obj as DownloadBar;
+
+                if (castControl.IsOpen)
+                {
+                    castControl.SetOpen();
+                }
+                else
+                {
+                    castControl.SetClosed();
+                }
+            }
+        }
+
+        //private static void BarTextChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        //{
+        //    if (obj is DownloadBar)
+        //    {
+        //        DownloadBar castControl = obj as DownloadBar;
+        //        castControl.RenderText();
+        //    }
+        //}
+
+        //private static void ProgressPercentChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        //{
+        //    if (obj is DownloadBar)
+        //    {
+        //        DownloadBar castControl = obj as DownloadBar;
+        //        castControl.RenderText();
+        //    }
+        //}
+
         public DownloadBar()
         {
             InitializeComponent();
@@ -54,6 +141,12 @@ namespace YandereSimulatorLauncher2.Controls
         {
             
         }
+
+        //private void RenderText()
+        //{
+        //    //string 
+        //    BarLabel.Text = "";
+        //}
 
         private void SetDere()
         {
@@ -71,6 +164,76 @@ namespace YandereSimulatorLauncher2.Controls
             SlidingContainer.BorderBrush = App.HexToBrush("#330000");
             BarContainer.BorderBrush = App.HexToBrush("#330000");
             BarLabel.Foreground = App.HexToBrush("#000000");
+        }
+
+        private void SetOpen()
+        {
+
+        }
+
+        private void SetClosed()
+        {
+
+        }
+
+        private static string ConvertPercentToDisplayString(double inPercent)
+        {
+            if (inPercent < 0) { return ""; }
+
+            return " " + ((int)Math.Round(inPercent)).ToString() + "%";
+        }
+
+        private static string ConvertBytesPerSecondToSpeedString(double inBytesPerSecond)
+        {
+            // Pattern: If less than {number of 1024s multiplied together} then divide
+            //          by {one less than the number of 1024s multiplied together}
+            //
+            //          - If less than 1.0 kB/s: measure in B/s.
+            //          - If less than 1.0 MB/s: measure in kB/s.
+            //          (etc.)
+            if (inBytesPerSecond < 0)
+            {
+                return "";
+            }
+
+            if (inBytesPerSecond < 1024.0)
+            {
+                return " (" + inBytesPerSecond.ToString("0.##") + " B/s)";
+            }
+
+            if (inBytesPerSecond < (1024.0 * 1024.0))
+            {
+                return " (" + (inBytesPerSecond / 1024.0).ToString("0.##") + " kB/s)";
+            }
+
+            if (inBytesPerSecond < (1024.0 * 1024.0 * 1024.0))
+            {
+                return " (" + (inBytesPerSecond / (1024.0 * 1024.0)).ToString("0.##") + " MB/s)";
+            }
+
+            if (inBytesPerSecond < (1024.0 * 1024.0 * 1024.0 * 1024.0))
+            {
+                return " (" + (inBytesPerSecond / (1024.0 * 1024.0 * 1024.0)).ToString("0.##") + " GB/s)";
+            }
+
+            return " (" + (inBytesPerSecond / (1024.0 * 1024.0 * 1024.0 * 1024.0)).ToString("0.##") + " TB/s)";
+        }
+
+        private static string ConvertDownloadBarModeToDisplayString(DownloadBarMode inMode)
+        {
+            switch (inMode)
+            {
+                case DownloadBarMode.Waiting:
+                    return "";
+                case DownloadBarMode.DownloadingGame:
+                    return "Downloading Yandere Simulator:";
+                case DownloadBarMode.DownloadingLauncher:
+                    return "Downloading new launcher";
+                case DownloadBarMode.Extracting:
+                    return "Extracting files";
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
