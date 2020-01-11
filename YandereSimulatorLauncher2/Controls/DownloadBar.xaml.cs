@@ -61,6 +61,7 @@ namespace YandereSimulatorLauncher2.Controls
             BarContainer.Background = App.HexToBrush("#ee63bb");
             SlidingContainer.BorderBrush = App.HexToBrush("#95286d");
             BarContainer.BorderBrush = App.HexToBrush("#95286d");
+            BarLabel.Foreground = App.HexToBrush("#FFFFFF");
         }
 
         private void SetYan()
@@ -69,6 +70,7 @@ namespace YandereSimulatorLauncher2.Controls
             BarContainer.Background = App.HexToBrush("#bb0000");
             SlidingContainer.BorderBrush = App.HexToBrush("#330000");
             BarContainer.BorderBrush = App.HexToBrush("#330000");
+            BarLabel.Foreground = App.HexToBrush("#000000");
         }
     }
 }

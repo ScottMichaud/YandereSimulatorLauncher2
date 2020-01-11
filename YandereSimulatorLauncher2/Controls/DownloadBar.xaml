@@ -10,9 +10,14 @@
         <Border ClipToBounds="True">
             <Canvas>
                 <Border x:Name="SlidingContainer" Width="508" Height="95" Background="#ff80d3" BorderThickness="1" BorderBrush="#95286d" CornerRadius="23" Canvas.Bottom="53" Canvas.Right="50">
-                    <Border x:Name="BarContainer" Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" Background="#ee63bb" VerticalAlignment="Bottom" Margin="0, 0, 0, 20">
-                        <!--<Rectangle Fill="#ee63bb"/>-->
-                    </Border>
+                    <Canvas>
+                        <TextBlock x:Name="BarLabel" Canvas.Left="22" Canvas.Bottom="54" FontSize="24" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
+                            Downloading Yandere Simulator...
+                        </TextBlock>
+                        <Border x:Name="BarContainer" Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" Background="#ee63bb" Canvas.Bottom="18" Canvas.Left="22">
+                            <!--<Rectangle Fill="#ee63bb"/>-->
+                        </Border>
+                    </Canvas>
                     
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Opacity="0.5" Direction="300" BlurRadius="9" ShadowDepth="2"/>
