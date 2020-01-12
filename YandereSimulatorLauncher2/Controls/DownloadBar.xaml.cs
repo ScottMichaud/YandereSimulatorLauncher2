@@ -117,7 +117,7 @@ namespace YandereSimulatorLauncher2.Controls
 
         private void SetOpen()
         {
-            DoubleAnimation openAnimation = new DoubleAnimation(50.0, new Duration(new TimeSpan(0, 0, 0, 0, 750)));
+            DoubleAnimation openAnimation = new DoubleAnimation(50.0, new Duration(new TimeSpan(0, 0, 0, 0, 500)));
             openAnimation.EasingFunction = new BackEase();
             SlidingContainer.BeginAnimation(Canvas.RightProperty, openAnimation);
         }
