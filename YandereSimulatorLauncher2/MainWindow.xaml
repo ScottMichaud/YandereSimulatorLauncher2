@@ -62,7 +62,7 @@
                 <Canvas>
                     <controls:MainPanelActionButtons x:Name="ElementMainPanelActionButtons" Canvas.Bottom="50" Canvas.Left="50" />
                 </Canvas>
-                <controls:DownloadBar x:Name="ElementDownloadBar" />
+                <controls:DownloadBar x:Name="ElementDownloadBar" IsOpen="False"/>
             </Grid>
         </Grid>
     </Border>

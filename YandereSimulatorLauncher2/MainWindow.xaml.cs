@@ -276,6 +276,7 @@ namespace YandereSimulatorLauncher2
         {
             ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Downloading;
             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
+            ElementDownloadBar.IsOpen = true;
 
             mLastDownloadBytes = 0.0;
             mLastReportTime = DateTime.Now;
@@ -307,6 +308,7 @@ namespace YandereSimulatorLauncher2
                 );
 
             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
+            ElementDownloadBar.IsOpen = false;
 
             await DoCheckForUpdates();
         }

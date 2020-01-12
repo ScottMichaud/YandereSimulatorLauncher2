@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace YandereSimulatorLauncher2.Controls
 {
@@ -29,9 +30,7 @@ namespace YandereSimulatorLauncher2.Controls
     public partial class DownloadBar : UserControl
     {
         public static readonly DependencyProperty IsDereProperty = DependencyProperty.Register("IsDere", typeof(bool), typeof(DownloadBar), new PropertyMetadata(true, IsDereChanged));
-        public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(DownloadBar), new PropertyMetadata(true, IsOpenChanged));
-        //public static readonly DependencyProperty BarTextProperty = DependencyProperty.Register("BarText", typeof(string), typeof(DownloadBar), new PropertyMetadata("", BarTextChanged));
-        //public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register("ProgressPercent", typeof(double), typeof(DownloadBar), new PropertyMetadata(0.0, ProgressPercentChanged));
+        public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(DownloadBar), new PropertyMetadata(false, IsOpenChanged));
 
         public bool IsDere
         {
@@ -53,32 +52,6 @@ namespace YandereSimulatorLauncher2.Controls
 
             BarLabel.Text = taskToken + percentToken + speedToken;
         }
-
-        //public string BarText
-        //{
-        //    get { return (string)GetValue(BarTextProperty); }
-        //    set { SetValue(BarTextProperty, value); }
-        //}
-
-        //public double ProgressPercent
-        //{
-        //    get { return (double)GetValue(ProgressProperty); }
-        //    set { SetValue(ProgressProperty, value); }
-        //}
-
-        //private double mDownloadRateBytes;
-        //public double DownloadRateBytes
-        //{
-        //    get { return mDownloadRateBytes; }
-        //    set 
-        //    { 
-        //        if (mDownloadRateBytes != value) 
-        //        { 
-        //            mDownloadRateBytes = value;
-        //            RenderText();
-        //        } 
-        //    }
-        //}
 
         private static void IsDereChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
@@ -114,24 +87,6 @@ namespace YandereSimulatorLauncher2.Controls
             }
         }
 
-        //private static void BarTextChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
-        //{
-        //    if (obj is DownloadBar)
-        //    {
-        //        DownloadBar castControl = obj as DownloadBar;
-        //        castControl.RenderText();
-        //    }
-        //}
-
-        //private static void ProgressPercentChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
-        //{
-        //    if (obj is DownloadBar)
-        //    {
-        //        DownloadBar castControl = obj as DownloadBar;
-        //        castControl.RenderText();
-        //    }
-        //}
-
         public DownloadBar()
         {
             InitializeComponent();
@@ -141,12 +96,6 @@ namespace YandereSimulatorLauncher2.Controls
         {
             
         }
-
-        //private void RenderText()
-        //{
-        //    //string 
-        //    BarLabel.Text = "";
-        //}
 
         private void SetDere()
         {
@@ -168,12 +117,15 @@ namespace YandereSimulatorLauncher2.Controls
 
         private void SetOpen()
         {
-
+            DoubleAnimation openAnimation = new DoubleAnimation(50.0, new Duration(new TimeSpan(0, 0, 0, 0, 750)));
+            openAnimation.EasingFunction = new BackEase();
+            SlidingContainer.BeginAnimation(Canvas.RightProperty, openAnimation);
         }
 
         private void SetClosed()
         {
-
+            DoubleAnimation closeAnimation = new DoubleAnimation(-520.0, new Duration(new TimeSpan(0, 0, 0, 0, 250)));
+            SlidingContainer.BeginAnimation(Canvas.RightProperty, closeAnimation);
         }
 
         private static string ConvertPercentToDisplayString(double inPercent)
