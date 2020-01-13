@@ -20,6 +20,11 @@ namespace YandereSimulatorLauncher2
             //DeleteVideoResources();
         }
 
+        public static int LauncherVersion
+        {
+            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major; }
+        }
+
         public static string LauncherTempFileDirectory 
         { 
             get
