@@ -32,6 +32,9 @@ namespace YandereSimulatorLauncher2.Controls
         public static readonly DependencyProperty IsDereProperty = DependencyProperty.Register("IsDere", typeof(bool), typeof(DownloadBar), new PropertyMetadata(true, IsDereChanged));
         public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register("IsOpen", typeof(bool), typeof(DownloadBar), new PropertyMetadata(false, IsOpenChanged));
 
+        // I'd normally use a list but it cannot be any other value. Fixed sizes.
+        private readonly Rectangle[] barSegments = new Rectangle[93];
+
         public bool IsDere
         {
             get { return (bool)GetValue(IsDereProperty); }
@@ -90,6 +93,7 @@ namespace YandereSimulatorLauncher2.Controls
         public DownloadBar()
         {
             InitializeComponent();
+            CreateBarSegments();
         }
 
         private void DoRender()
@@ -126,6 +130,21 @@ namespace YandereSimulatorLauncher2.Controls
         {
             DoubleAnimation closeAnimation = new DoubleAnimation(-520.0, new Duration(new TimeSpan(0, 0, 0, 0, 250)));
             SlidingContainer.BeginAnimation(Canvas.RightProperty, closeAnimation);
+        }
+
+        private void CreateBarSegments()
+        {
+            for (int i = 0; i < 93; i += 1)
+            {
+                Rectangle newRectangle = new Rectangle();
+                newRectangle.Width = 2;
+                newRectangle.Height = 22;
+                newRectangle.Fill = App.HexToBrush("#FFF");
+                BarSegmentContainer.Children.Add(newRectangle);
+                barSegments[i] = newRectangle;
+                Canvas.SetLeft(newRectangle, 5 * i);
+                Canvas.SetTop(newRectangle, 4);
+            }
         }
 
         private static string ConvertPercentToDisplayString(double inPercent)

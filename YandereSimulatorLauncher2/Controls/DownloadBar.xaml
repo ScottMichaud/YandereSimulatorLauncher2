@@ -15,7 +15,9 @@
 
                         </TextBlock>
                         <Border x:Name="BarContainer" Width="464" Height="32" BorderThickness="1" BorderBrush="#95286d" Background="#ee63bb" Canvas.Bottom="18" Canvas.Left="22">
-                            <!--<Rectangle Fill="#ee63bb"/>-->
+                            <Canvas x:Name="BarSegmentContainer">
+                                
+                            </Canvas>
                         </Border>
                     </Canvas>
                     
