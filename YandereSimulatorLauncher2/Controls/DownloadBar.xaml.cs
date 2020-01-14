@@ -87,7 +87,15 @@ namespace YandereSimulatorLauncher2.Controls
 
             for (int i = 0; i < 93; i += 1)
             {
-                barSegments[i].Visibility = Visibility.Hidden;
+                double portion = i / 0.93;
+                if (portion < inPercentComplete)
+                {
+                    barSegments[i].Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    barSegments[i].Visibility = Visibility.Hidden;
+                }
             }
         }
 
