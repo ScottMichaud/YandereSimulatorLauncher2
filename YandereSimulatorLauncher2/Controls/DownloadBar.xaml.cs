@@ -47,13 +47,48 @@ namespace YandereSimulatorLauncher2.Controls
             set { SetValue(IsOpenProperty, value); }
         }
 
+        DownloadBarMode mPreviousBarMode = DownloadBarMode.Waiting;
         public void ChangeProgress(DownloadBarMode inMode, double inPercentComplete = -1, double inSpeed = -1)
         {
+            ChangeBarModeIfApplicable(inMode);
+
             string taskToken = ConvertDownloadBarModeToDisplayString(inMode);
             string speedToken = ConvertBytesPerSecondToSpeedString(inSpeed);
             string percentToken = ConvertPercentToDisplayString(inPercentComplete);
 
             BarLabel.Text = taskToken + percentToken + speedToken;
+
+            FillLoadingBars(inPercentComplete);
+        }
+
+        private void ChangeBarModeIfApplicable(DownloadBarMode inMode)
+        {
+            if (inMode != mPreviousBarMode)
+            {
+                // If leaving Extracting
+                if (mPreviousBarMode == DownloadBarMode.Extracting)
+                {
+                    CompositionTarget.Rendering -= DoThrobbingRender;
+                }
+
+                mPreviousBarMode = inMode;
+
+                // If entering Extracting
+                if (mPreviousBarMode == DownloadBarMode.Extracting)
+                {
+                    CompositionTarget.Rendering += DoThrobbingRender;
+                }
+            }
+        }
+
+        private void FillLoadingBars(double inPercentComplete)
+        {
+            if (inPercentComplete < 0) { return; }
+
+            for (int i = 0; i < 93; i += 1)
+            {
+                barSegments[i].Visibility = Visibility.Hidden;
+            }
         }
 
         private static void IsDereChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -96,9 +131,29 @@ namespace YandereSimulatorLauncher2.Controls
             CreateBarSegments();
         }
 
-        private void DoRender()
+        const double mThrobberSpeed = 3.0;
+        const int mNumberActive = 30;
+        private void DoThrobbingRender(object inSender, EventArgs args)
         {
-            
+            // We'll see if this is enough precision...
+            RenderingEventArgs castArgs = args as RenderingEventArgs;
+            double throbberProgress = Math.Sin(castArgs.RenderingTime.TotalSeconds * mThrobberSpeed);
+            throbberProgress += 1;
+            throbberProgress *= 0.5;
+            int numberDisabled = 93 - mNumberActive;
+            int startIndex = (int)Math.Floor(throbberProgress * numberDisabled);
+
+            for (int i = 0; i < 93; i += 1)
+            {
+                if (i > startIndex && i < (startIndex + mNumberActive))
+                {
+                    barSegments[i].Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    barSegments[i].Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void SetDere()
@@ -108,6 +163,13 @@ namespace YandereSimulatorLauncher2.Controls
             SlidingContainer.BorderBrush = App.HexToBrush("#95286d");
             BarContainer.BorderBrush = App.HexToBrush("#95286d");
             BarLabel.Foreground = App.HexToBrush("#FFFFFF");
+
+            Brush dereBarBrush = App.HexToBrush("#FFFFFF");
+
+            for (int i = 0; i < 93; i += 1)
+            {
+                barSegments[i].Fill = dereBarBrush;
+            }
         }
 
         private void SetYan()
@@ -117,6 +179,13 @@ namespace YandereSimulatorLauncher2.Controls
             SlidingContainer.BorderBrush = App.HexToBrush("#330000");
             BarContainer.BorderBrush = App.HexToBrush("#330000");
             BarLabel.Foreground = App.HexToBrush("#000000");
+
+            Brush yanBarBrush = App.HexToBrush("#000000");
+
+            for (int i = 0; i < 93; i += 1)
+            {
+                barSegments[i].Fill = yanBarBrush;
+            }
         }
 
         private void SetOpen()
@@ -140,6 +209,7 @@ namespace YandereSimulatorLauncher2.Controls
                 newRectangle.Width = 2;
                 newRectangle.Height = 22;
                 newRectangle.Fill = App.HexToBrush("#FFF");
+                newRectangle.Visibility = Visibility.Hidden;
                 BarSegmentContainer.Children.Add(newRectangle);
                 barSegments[i] = newRectangle;
                 Canvas.SetLeft(newRectangle, 5 * i);
