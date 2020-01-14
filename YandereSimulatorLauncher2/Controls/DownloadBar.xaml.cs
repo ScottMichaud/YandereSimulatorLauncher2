@@ -149,11 +149,11 @@ namespace YandereSimulatorLauncher2.Controls
             throbberProgress += 1;
             throbberProgress *= 0.5;
             int numberDisabled = 93 - mNumberActive;
-            int startIndex = (int)Math.Floor(throbberProgress * numberDisabled);
+            int startIndex = (int)Math.Round(throbberProgress * numberDisabled) - 1;
 
             for (int i = 0; i < 93; i += 1)
             {
-                if (i > startIndex && i < (startIndex + mNumberActive))
+                if (i > startIndex && i < (startIndex + mNumberActive + 1))
                 {
                     barSegments[i].Visibility = Visibility.Visible;
                 }
