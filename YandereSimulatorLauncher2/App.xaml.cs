@@ -66,6 +66,7 @@ namespace YandereSimulatorLauncher2
         // Currently unused.
         // Don't waste time deleting the file on shutdown. 
         // It'll get overwritten next launch anyway.
+        // Videos were moved since this was written anyway.
         //
 
         //private void DeleteVideoResources()
