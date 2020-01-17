@@ -22,7 +22,7 @@ namespace YandereSimulatorLauncher2
 
         public static int LauncherVersion
         {
-            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major; }
+            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor; }
         }
 
         public static string LauncherTempFileDirectory 
