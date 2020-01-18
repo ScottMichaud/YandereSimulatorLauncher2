@@ -141,10 +141,8 @@ namespace YandereSimulatorLauncher2.Logic
             if (string.IsNullOrWhiteSpace(inDiskVersion)) { return true; }
             if (string.IsNullOrWhiteSpace(inSiteVersion)) { return false; }
 
-            double diskAsDouble;
-            double siteAsDouble;
-            if (double.TryParse(inDiskVersion, out diskAsDouble) == false) { return true; }
-            if (double.TryParse(inSiteVersion, out siteAsDouble) == false) { return false; }
+            if (double.TryParse(inDiskVersion, out double diskAsDouble) == false) { return true; }
+            if (double.TryParse(inSiteVersion, out double siteAsDouble) == false) { return false; }
 
             return siteAsDouble > diskAsDouble;
         }
