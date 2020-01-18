@@ -41,6 +41,7 @@ namespace YandereSimulatorLauncher2
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             await DoCheckForUpdates();
+            await DoCheckForLauncherUpdate();
         }
 
         protected override sealed void OnClosing(CancelEventArgs e)
@@ -136,12 +137,12 @@ namespace YandereSimulatorLauncher2
             if (isDere)
             {
                 SetDere();
-                UpdateFlyin.IsOpen = false;
+                //UpdateFlyin.IsOpen = false;
             }
             else
             {
                 SetYan();
-                UpdateFlyin.IsOpen = true;
+                //UpdateFlyin.IsOpen = true;
             }
         }
 
@@ -339,6 +340,14 @@ namespace YandereSimulatorLauncher2
             else
             {
                 ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.PromptToInstall;
+            }
+        }
+
+        private async Task DoCheckForLauncherUpdate()
+        {
+            if (await Logic.UpdatePlayHelpers.DoesLauncherUpdateExist(App.LauncherVersion))
+            {
+                UpdateFlyin.IsOpen = true;
             }
         }
 

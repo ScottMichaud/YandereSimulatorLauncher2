@@ -9,7 +9,7 @@
     <Grid>
         <TextBlock x:Name="MyDisplayText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="{StaticResource LeagueGothic}" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
             <TextBlock.Foreground>
-                <SolidColorBrush x:Name="MyFontColor" Color="#3d9eff"/>
+                <SolidColorBrush x:Name="MyFontColor" Color="#006ef5"/>
             </TextBlock.Foreground>
             <TextBlock.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
@@ -22,7 +22,7 @@
                 <EventTrigger RoutedEvent="MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="MyFontColor" Storyboard.TargetProperty="Color" To="#3d9eff" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                            <ColorAnimation Storyboard.TargetName="MyFontColor" Storyboard.TargetProperty="Color" To="#006ef5" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>

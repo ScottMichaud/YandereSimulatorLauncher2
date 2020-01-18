@@ -14,7 +14,7 @@
                         <TextBlock x:Name="UpdateLabel" Canvas.Left="22" Canvas.Bottom="4" FontSize="24" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
                             Launcher update available...
                         </TextBlock>
-                        <local:OtherHyperlinkFromText Canvas.Bottom="4" Canvas.Right="22" DisplayText="Download" LinkedUrl="https://yanderesimulator.com/download/"/>
+                        <local:OtherHyperlinkFromText Canvas.Bottom="4" Canvas.Right="22" DisplayText="Open YandereSimulator.com" LinkedUrl="https://yanderesimulator.com/download/"/>
                     </Canvas>
                 </Border>
             </Canvas>

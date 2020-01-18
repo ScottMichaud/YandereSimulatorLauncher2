@@ -21,6 +21,8 @@ namespace YandereSimulatorLauncher2.Logic
         public static string GameVersionFilePath = "YandereSimulator\\GameVersion.txt";
         public static string GameZipSaveLocation = "YandereSimulator.zip";
 
+        public static string LauncherVersionHttp { get { return "https://www.yanderesimulator.com/launcherversion.txt" + AntiCacheToken; } }
+
         private static string AntiCacheToken
         {
             get
@@ -91,6 +93,17 @@ namespace YandereSimulatorLauncher2.Logic
             return IsUpdateRequired(inSiteVersion: siteVersion, inDiskVersion: diskVersion);
         }
 
+        public async static Task<bool> DoesLauncherUpdateExist(int inLauncherVersion)
+        {
+            Task<string> versionOnSite = FetchHttpText(LauncherVersionHttp);
+            Task minimumCheckTime = AsynchronousWait(500);
+
+            string siteVersion = await versionOnSite;
+            await minimumCheckTime;
+
+            return IsLauncherUpdateRequired(inSiteVersion: siteVersion, inAssemblyVersion: inLauncherVersion);
+        }
+
         public async static Task AsynchronousWait(int inMilliseconds)
         {
             await Task.Delay(inMilliseconds);
@@ -144,6 +157,15 @@ namespace YandereSimulatorLauncher2.Logic
             if (double.TryParse(inSiteVersion, out double siteAsDouble) == false) { return false; }
 
             return siteAsDouble > diskAsDouble;
+        }
+
+        private static bool IsLauncherUpdateRequired(string inSiteVersion, int inAssemblyVersion)
+        {
+            if (string.IsNullOrWhiteSpace(inSiteVersion)) { return false; }
+
+            if (double.TryParse(inSiteVersion, out double siteAsDouble) == false) { return false; }
+
+            return siteAsDouble > inAssemblyVersion;
         }
 
         private async static Task FetchHttpFile(string inUrl, string inSaveLocation, DownloadProgressCallback delProgress)
