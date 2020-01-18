@@ -58,7 +58,6 @@ namespace YandereSimulatorLauncher2.Logic
             {
                 // C# struggles to delete folders if, for example, there's an active Windows Explorer looking into them.
                 bool successful = DeleteAsMuchAsPossible(GameDirectoryPath);
-                //Console.WriteLine("The delete was " + (successful ? "" : "not ") + "successful.");
             }
 
             delUnzipStart();
