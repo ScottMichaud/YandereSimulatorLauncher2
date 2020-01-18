@@ -136,10 +136,12 @@ namespace YandereSimulatorLauncher2
             if (isDere)
             {
                 SetDere();
+                UpdateFlyin.IsOpen = false;
             }
             else
             {
                 SetYan();
+                UpdateFlyin.IsOpen = true;
             }
         }
 
@@ -153,6 +155,8 @@ namespace YandereSimulatorLauncher2
 
             GridTopbar.Background = App.HexToBrush("#ff80d3");
             GridLinkbar.Background = App.HexToBrush("#ee63bb");
+
+            UpdateFlyin.IsDere = true;
 
             LinkAbout.IsDere = true;
             LinkBlog.IsDere = true;
@@ -174,6 +178,8 @@ namespace YandereSimulatorLauncher2
 
             GridTopbar.Background = App.HexToBrush("#ff0000");
             GridLinkbar.Background = App.HexToBrush("#bb0000");
+
+            UpdateFlyin.IsDere = false;
 
             LinkAbout.IsDere = false;
             LinkBlog.IsDere = false;

@@ -42,6 +42,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,6 +81,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\OtherHyperlinkFromText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UpdatePromptFlyin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\YanDereVideoPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +115,12 @@
     </Compile>
     <Compile Include="Controls\MinimizeCloseButtons.xaml.cs">
       <DependentUpon>MinimizeCloseButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherHyperlinkFromText.xaml.cs">
+      <DependentUpon>OtherHyperlinkFromText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UpdatePromptFlyin.xaml.cs">
+      <DependentUpon>UpdatePromptFlyin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\YanDereVideoPlayer.xaml.cs">
       <DependentUpon>YanDereVideoPlayer.xaml</DependentUpon>

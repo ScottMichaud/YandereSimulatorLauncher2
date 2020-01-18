@@ -63,6 +63,7 @@
                     <controls:MainPanelActionButtons x:Name="ElementMainPanelActionButtons" Canvas.Bottom="50" Canvas.Left="50" />
                 </Canvas>
                 <controls:DownloadBar x:Name="ElementDownloadBar" IsOpen="False"/>
+                <controls:UpdatePromptFlyin x:Name="UpdateFlyin" IsOpen="False" />
             </Grid>
         </Grid>
     </Border>
