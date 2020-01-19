@@ -291,6 +291,31 @@ namespace YandereSimulatorLauncher2
             await Logic.UpdatePlayHelpers.DownloadAndInstall(
                 (double currentBytes) =>
                     {
+                        //
+                        // INTENTIONALLY BROKEN TEST CODE (only kept for an example of invoking)
+                        //this.Dispatcher.Invoke
+                        //(
+                        //    (Action<double>)((inCurrentBytes) =>
+                        //    {
+
+                        //        DateTime now = DateTime.Now;
+                        //        if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
+
+                        //        double currentPercent = (currentBytes / App.ExpectedDownloadSize) * 100.0;
+                        //        currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
+                        //        double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
+                        //        double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
+
+                        //        ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
+
+                        //        mLastReportTime = now;
+                        //        mLastDownloadBytes = currentBytes;
+
+                        //        //Console.WriteLine("Bytes received: " + currentBytes.ToString());
+
+                        //    }), new object[] { currentBytes }
+                        //);
+
                         DateTime now = DateTime.Now;
                         if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
 
@@ -298,7 +323,7 @@ namespace YandereSimulatorLauncher2
                         currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
                         double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
                         double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
-                        
+
                         ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
 
                         mLastReportTime = now;

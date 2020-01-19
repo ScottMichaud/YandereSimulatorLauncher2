@@ -3,9 +3,11 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Net.Http;
 
 namespace YandereSimulatorLauncher2.Logic
 {
@@ -14,6 +16,8 @@ namespace YandereSimulatorLauncher2.Logic
 
     class UpdatePlayHelpers
     {
+        private static readonly HttpClient staticHttpClient = new HttpClient();
+
         public static string GameExePath { get { return "YandereSimulator\\YandereSimulator.exe"; } }
         public static string GameDirectoryPath { get { return "YandereSimulator"; } }
         public static string GameVersionHttp { get { return "https://www.yanderesimulator.com/version.txt" + AntiCacheToken; } }
@@ -130,10 +134,8 @@ namespace YandereSimulatorLauncher2.Logic
         {
             try
             {
-                using (System.Net.Http.HttpClient getClient = new System.Net.Http.HttpClient())
+                using (HttpResponseMessage response = await staticHttpClient.GetAsync(inUrl))
                 {
-                    System.Net.Http.HttpResponseMessage response = await getClient.GetAsync(inUrl);
-
                     if (response.IsSuccessStatusCode)
                     {
                         return await response.Content.ReadAsStringAsync();
@@ -170,14 +172,43 @@ namespace YandereSimulatorLauncher2.Logic
 
         private async static Task FetchHttpFile(string inUrl, string inSaveLocation, DownloadProgressCallback delProgress)
         {
-            using (WebClient downloader = new WebClient())
-            {
-                downloader.DownloadProgressChanged += (object sender, DownloadProgressChangedEventArgs args) =>
-                {
-                    delProgress(args.BytesReceived);
-                };
+            //INTENTIONALLY BROKEN TEST CODE
+            //await Task.Run(() =>
+            //{
+            //    using (WebClient downloader = new WebClient())
+            //    {
+            //        downloader.DownloadProgressChanged += (object sender, DownloadProgressChangedEventArgs args) =>
+            //        {
+            //            delProgress(args.BytesReceived);
+            //        };
 
-                await downloader.DownloadFileTaskAsync(inUrl, inSaveLocation);
+            //        downloader.DownloadFileAsync(new Uri(inUrl), inSaveLocation);
+            //    }
+            //});
+            try
+            {
+                byte[] byteBuffer = new byte[5 * 1024 * 1024];
+                long totalBytesRead = 0;
+                using (HttpResponseMessage response = await staticHttpClient.GetAsync(inUrl, HttpCompletionOption.ResponseHeadersRead))
+                using (Stream httpStream = await response.Content.ReadAsStreamAsync())
+                using (Stream fileStream = File.Open(inSaveLocation, FileMode.Create))
+                {
+                    
+                    int bytesRead = await httpStream.ReadAsync(byteBuffer, 0, byteBuffer.Length);
+
+                    while (bytesRead > 0)
+                    {
+                        await fileStream.WriteAsync(byteBuffer, 0, bytesRead);
+                        totalBytesRead += bytesRead;
+                        delProgress(totalBytesRead);
+                        bytesRead = await httpStream.ReadAsync(byteBuffer, 0, byteBuffer.Length);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("An exception was encountered: " + ex.Message + "\n\n" + ex.StackTrace);
+                throw;
             }
         }
 
