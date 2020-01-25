@@ -288,57 +288,41 @@ namespace YandereSimulatorLauncher2
             mLastDownloadBytes = 0.0;
             mLastReportTime = DateTime.Now;
 
-            await Logic.UpdatePlayHelpers.DownloadAndInstall(
-                (double currentBytes) =>
-                    {
-                        //
-                        // INTENTIONALLY BROKEN TEST CODE (only kept for an example of invoking)
-                        //this.Dispatcher.Invoke
-                        //(
-                        //    (Action<double>)((inCurrentBytes) =>
-                        //    {
+            try
+            {
+                await Logic.UpdatePlayHelpers.DownloadAndInstall(
+                    (double currentBytes, double totalFileBytes) =>
+                        {
+                            this.Dispatcher.Invoke
+                            (
+                                (Action<double>)((inCurrentBytes) =>
+                                {
+                                    DateTime now = DateTime.Now;
+                                    if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
 
-                        //        DateTime now = DateTime.Now;
-                        //        if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
+                                    double currentPercent = (currentBytes / totalFileBytes) * 100.0;
+                                    currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
+                                    double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
+                                    double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
 
-                        //        double currentPercent = (currentBytes / App.ExpectedDownloadSize) * 100.0;
-                        //        currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
-                        //        double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
-                        //        double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
+                                    ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
 
-                        //        ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
-
-                        //        mLastReportTime = now;
-                        //        mLastDownloadBytes = currentBytes;
-
-                        //        //Console.WriteLine("Bytes received: " + currentBytes.ToString());
-
-                        //    }), new object[] { currentBytes }
-                        //);
-
-                        DateTime now = DateTime.Now;
-                        if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
-
-                        double currentPercent = (currentBytes / App.ExpectedDownloadSize) * 100.0;
-                        currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
-                        double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
-                        double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
-
-                        ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
-
-                        mLastReportTime = now;
-                        mLastDownloadBytes = currentBytes;
-
-                        //Console.WriteLine("Bytes received: " + currentBytes.ToString());
-                    },
-                () =>
-                    {
-                        ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Unpacking;
-                        ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Extracting);
-                        //Console.WriteLine("Zip file has started extracting");
-                    }
-                );
-
+                                    mLastReportTime = now;
+                                    mLastDownloadBytes = currentBytes;
+                                }), new object[] { currentBytes }
+                            );
+                        },
+                    () =>
+                        {
+                            ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Unpacking;
+                            ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Extracting);
+                        }
+                    );
+            }
+            catch(Logic.ServiceNotFoundException)
+            {
+                MessageBox.Show("The website did not provide a download link that the launcher could recognize.\n\nIf the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.", "Cannot download game", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
             ElementDownloadBar.IsOpen = false;
 

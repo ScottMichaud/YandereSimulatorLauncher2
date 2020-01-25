@@ -8,10 +8,11 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Net.Http;
+using CG.Web.MegaApiClient;
 
 namespace YandereSimulatorLauncher2.Logic
 {
-    public delegate void DownloadProgressCallback(double bytes);
+    public delegate void DownloadProgressCallback(double bytes, double totalSizeInBytes);
     public delegate void UnzipStartCallback();
 
     class UpdatePlayHelpers
@@ -26,6 +27,8 @@ namespace YandereSimulatorLauncher2.Logic
         public static string GameZipSaveLocation = "YandereSimulator.zip";
 
         public static string LauncherVersionHttp { get { return "https://www.yanderesimulator.com/launcherversion.txt" + AntiCacheToken; } }
+
+        public static string SiteUrlsTxtUrl { get { return "http://yanderesimulator.com/urls.txt" + AntiCacheToken; } }
 
         private static string AntiCacheToken
         {
@@ -58,7 +61,7 @@ namespace YandereSimulatorLauncher2.Logic
             //       As such, we should be able to rely upon version.txt as a cache buster.
             //       If he goofs, he can just re-increment version.txt.
             string versionOnSite = await FetchHttpText(GameVersionHttp);
-            await FetchHttpFile(inUrl: GameFileHttpMinusCacheBuster + "?" + versionOnSite, inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
+            await FetchMegaFile(inUrl: GameFileHttpMinusCacheBuster + "?" + versionOnSite, inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
 
             if (System.IO.Directory.Exists(GameDirectoryPath))
             {
@@ -170,46 +173,76 @@ namespace YandereSimulatorLauncher2.Logic
             return siteAsDouble > inAssemblyVersion;
         }
 
-        private async static Task FetchHttpFile(string inUrl, string inSaveLocation, DownloadProgressCallback delProgress)
+        private async static Task FetchMegaFile(string inUrl, string inSaveLocation, DownloadProgressCallback delProgress)
         {
-            //INTENTIONALLY BROKEN TEST CODE
-            //await Task.Run(() =>
-            //{
-            //    using (WebClient downloader = new WebClient())
-            //    {
-            //        downloader.DownloadProgressChanged += (object sender, DownloadProgressChangedEventArgs args) =>
-            //        {
-            //            delProgress(args.BytesReceived);
-            //        };
+            string megaUrl = await FetchMegaUrl();
 
-            //        downloader.DownloadFileAsync(new Uri(inUrl), inSaveLocation);
-            //    }
-            //});
+            if (File.Exists(inSaveLocation))
+            {
+                File.Delete(inSaveLocation);
+            }
+
+            // Because the MegaApiClient just Task.Run()s (rather than actually parking until the native events are over)
+            // I might want to use the single-threaded API all wrapped in a single Task.Run(). Probably negligible gains
+            // though (only save ~number of commands - 1 threadpool requests) and it could be annoying if I want to handle
+            // user input for ex: "Do you want to retry?"
+            MegaApiClient client = new MegaApiClient();
             try
             {
-                byte[] byteBuffer = new byte[5 * 1024 * 1024];
-                long totalBytesRead = 0;
-                using (HttpResponseMessage response = await staticHttpClient.GetAsync(inUrl, HttpCompletionOption.ResponseHeadersRead))
-                using (Stream httpStream = await response.Content.ReadAsStreamAsync())
-                using (Stream fileStream = File.Open(inSaveLocation, FileMode.Create))
-                {
-                    
-                    int bytesRead = await httpStream.ReadAsync(byteBuffer, 0, byteBuffer.Length);
+                await client.LoginAnonymousAsync();
+                INodeInfo node = await client.GetNodeFromLinkAsync(new Uri(megaUrl));
+                await client.DownloadFileAsync(new Uri(megaUrl), inSaveLocation, new ProgressReporter(delProgress, node.Size));
+            }
+            finally
+            {
+                await client.LogoutAsync();
+            }
+        }
 
-                    while (bytesRead > 0)
-                    {
-                        await fileStream.WriteAsync(byteBuffer, 0, bytesRead);
-                        totalBytesRead += bytesRead;
-                        delProgress(totalBytesRead);
-                        bytesRead = await httpStream.ReadAsync(byteBuffer, 0, byteBuffer.Length);
-                    }
+        private async static Task<string> FetchMegaUrl()
+        {
+            List<string> urls = SplitToLines(await FetchHttpText(SiteUrlsTxtUrl));
+            string megaLine = PickRelevantLineFromList(urls, "mega.nz");
+            if (megaLine is null) { throw new ServiceNotFoundException("Mega.nz"); }
+            string megaUrl = PickUrlFromLine(megaLine);
+            if (megaUrl is null) { throw new ServiceNotFoundException("Mega.nz"); }
+            return megaUrl;
+        }
+
+        private static List<string> SplitToLines(string inString)
+        {
+            List<string> output = new List<string>();
+            
+            using (StringReader reader = new StringReader(inString))
+            {
+                string line = reader.ReadLine();
+
+                while ((line is null) == false)
+                {
+                    output.Add(line);
+                    line = reader.ReadLine();
                 }
             }
-            catch (Exception ex)
+
+            return output;
+        }
+
+        private static string PickRelevantLineFromList(List<string> inList, string inToken)
+        {
+            foreach (string currentString in inList)
             {
-                System.Windows.MessageBox.Show("An exception was encountered: " + ex.Message + "\n\n" + ex.StackTrace);
-                throw;
+                if (currentString.Contains(inToken)) { return currentString; }
             }
+
+            return null;
+        }
+
+        private static string PickUrlFromLine(string inLine)
+        {
+            if (inLine is null) { return null; }
+            string[] lineTokens = inLine.Trim().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            if (lineTokens.Length == 2) { return lineTokens[1].Trim(); }
+            return null;
         }
 
         private async static Task UnpackZipFile(string inFile, string inUnpackLocation)
@@ -258,6 +291,32 @@ namespace YandereSimulatorLauncher2.Logic
             }
 
             return totalSuccess;
+        }
+    }
+
+    public class ServiceNotFoundException : Exception
+    {
+        public ServiceNotFoundException(string inMessage)
+            : base(inMessage)
+        {
+
+        }
+    }
+
+    public class ProgressReporter : IProgress<double>
+    {
+        readonly DownloadProgressCallback callback;
+        readonly double totalFileBytes = 1;
+
+        public ProgressReporter(DownloadProgressCallback inCallback, double inTotalFileBytes)
+        {
+            callback = inCallback;
+            totalFileBytes = inTotalFileBytes;
+        }
+
+        public void Report(double value)
+        {
+            callback(value * totalFileBytes / 100.0, totalFileBytes);
         }
     }
 }
