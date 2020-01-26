@@ -61,7 +61,7 @@ namespace YandereSimulatorLauncher2.Logic
             //       As such, we should be able to rely upon version.txt as a cache buster.
             //       If he goofs, he can just re-increment version.txt.
             string versionOnSite = await FetchHttpText(GameVersionHttp);
-            await FetchMegaFile(inUrl: GameFileHttpMinusCacheBuster + "?" + versionOnSite, inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
+            await FetchMegaFile(inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
 
             if (System.IO.Directory.Exists(GameDirectoryPath))
             {
@@ -173,7 +173,7 @@ namespace YandereSimulatorLauncher2.Logic
             return siteAsDouble > inAssemblyVersion;
         }
 
-        private async static Task FetchMegaFile(string inUrl, string inSaveLocation, DownloadProgressCallback delProgress)
+        private async static Task FetchMegaFile(string inSaveLocation, DownloadProgressCallback delProgress)
         {
             string megaUrl = await FetchMegaUrl();
 
@@ -192,6 +192,11 @@ namespace YandereSimulatorLauncher2.Logic
                 await client.LoginAnonymousAsync();
                 INodeInfo node = await client.GetNodeFromLinkAsync(new Uri(megaUrl));
                 await client.DownloadFileAsync(new Uri(megaUrl), inSaveLocation, new ProgressReporter(delProgress, node.Size));
+            }
+            catch (Exception ex)
+            {
+                // Check to see if we can split up the errors any further.
+                throw new CannotConnectToServiceException("", ex); ;
             }
             finally
             {
@@ -298,6 +303,15 @@ namespace YandereSimulatorLauncher2.Logic
     {
         public ServiceNotFoundException(string inMessage)
             : base(inMessage)
+        {
+
+        }
+    }
+
+    public class CannotConnectToServiceException : Exception
+    {
+        public CannotConnectToServiceException(string inMessage, Exception inInnerException)
+            : base(inMessage, inInnerException)
         {
 
         }

@@ -295,21 +295,21 @@ namespace YandereSimulatorLauncher2
                         {
                             this.Dispatcher.Invoke
                             (
-                                (Action<double>)((inCurrentBytes) =>
+                                (Action<double, double>)((inCurrentBytes, inTotalFileBytes) =>
                                 {
                                     DateTime now = DateTime.Now;
                                     if ((now - mLastReportTime).TotalSeconds < 0.25) { return; }
 
-                                    double currentPercent = (currentBytes / totalFileBytes) * 100.0;
+                                    double currentPercent = (inCurrentBytes / inTotalFileBytes) * 100.0;
                                     currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
                                     double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
-                                    double currentSpeed = (currentBytes - mLastDownloadBytes) / timeSinceLastReport;
+                                    double currentSpeed = (inCurrentBytes - mLastDownloadBytes) / timeSinceLastReport;
 
                                     ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.DownloadingGame, currentPercent, currentSpeed);
 
                                     mLastReportTime = now;
-                                    mLastDownloadBytes = currentBytes;
-                                }), new object[] { currentBytes }
+                                    mLastDownloadBytes = inCurrentBytes;
+                                }), new object[] { currentBytes, totalFileBytes }
                             );
                         },
                     () =>
@@ -321,7 +321,26 @@ namespace YandereSimulatorLauncher2
             }
             catch(Logic.ServiceNotFoundException)
             {
-                MessageBox.Show("The website did not provide a download link that the launcher could recognize.\n\nIf the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.", "Cannot download game", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("The website did not provide a download link that the launcher could recognize." +
+                    "\n\n" +
+                    "If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.",
+                    "Cannot download game",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch(Logic.CannotConnectToServiceException)
+            {
+                System.Windows.MessageBox.Show(
+                    "Unable to download the game at this point in time." +
+                    "\n\n" +
+                    "The launcher downloads the game from Mega.nz, which might be temporarily limiting downloads to your IP address." +
+                    "\n\n" +
+                    "Please try again later, or download the game from one of the alternate links provided at:" +
+                    "\n\n" +
+                    "yanderedev.wordpress.com/downloads",
+                    "Cannot download game",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
             ElementDownloadBar.IsOpen = false;

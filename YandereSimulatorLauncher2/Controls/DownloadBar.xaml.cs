@@ -78,6 +78,10 @@ namespace YandereSimulatorLauncher2.Controls
                 {
                     CompositionTarget.Rendering += DoThrobbingRender;
                 }
+                else if (mPreviousBarMode == DownloadBarMode.Waiting)
+                {
+                    FillLoadingBars(0);
+                }
             }
         }
 
@@ -273,7 +277,7 @@ namespace YandereSimulatorLauncher2.Controls
             switch (inMode)
             {
                 case DownloadBarMode.Waiting:
-                    return "";
+                    return "Waiting for something to do...";
                 case DownloadBarMode.DownloadingGame:
                     return "Downloading Yandere Simulator:";
                 case DownloadBarMode.DownloadingLauncher:
