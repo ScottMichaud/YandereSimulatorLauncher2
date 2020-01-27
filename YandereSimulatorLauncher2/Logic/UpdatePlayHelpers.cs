@@ -60,6 +60,7 @@ namespace YandereSimulatorLauncher2.Logic
             // NOTE: YandereDev says that he always updates version.txt *after* the new build upload is complete.
             //       As such, we should be able to rely upon version.txt as a cache buster.
             //       If he goofs, he can just re-increment version.txt.
+
             string versionOnSite = await FetchHttpText(GameVersionHttp);
             await FetchMegaFile(inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
 
@@ -196,7 +197,7 @@ namespace YandereSimulatorLauncher2.Logic
             catch (Exception ex)
             {
                 // Check to see if we can split up the errors any further.
-                throw new CannotConnectToServiceException("", ex); ;
+                throw new CannotConnectToMegaException("", ex); ;
             }
             finally
             {
@@ -308,9 +309,9 @@ namespace YandereSimulatorLauncher2.Logic
         }
     }
 
-    public class CannotConnectToServiceException : Exception
+    public class CannotConnectToMegaException : Exception
     {
-        public CannotConnectToServiceException(string inMessage, Exception inInnerException)
+        public CannotConnectToMegaException(string inMessage, Exception inInnerException)
             : base(inMessage, inInnerException)
         {
 

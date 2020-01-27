@@ -328,9 +328,9 @@ namespace YandereSimulatorLauncher2
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
-            catch(Logic.CannotConnectToServiceException)
+            catch(Logic.CannotConnectToMegaException)
             {
-                System.Windows.MessageBox.Show(
+                MessageBox.Show(
                     "Unable to download the game at this point in time." +
                     "\n\n" +
                     "The launcher downloads the game from Mega.nz, which might be temporarily limiting downloads to your IP address." +
