@@ -90,6 +90,7 @@ namespace YandereSimulatorLauncher2
         {
             ElementMainPanelActionButtons.InstallButtonClicked += InstallButton_OnClick;
             ElementMainPanelActionButtons.PlayButtonClicked += PlayButton_OnClick;
+            ElementYanDereVideoPlayer.YanDereCheckboxClicked += VideoPlayer_OnDereReset;
         }
 
         private void UnpackVideoResources()
@@ -134,15 +135,18 @@ namespace YandereSimulatorLauncher2
             isDere = !isDere;
             nextYanDereFlip = currentTime + TimeSpan.FromSeconds(isDere ? secondsToDisplayDere : secondsToDisplayYan);
             
-            if (isDere)
+            if (ElementYanDereVideoPlayer.IsYanDereFlipFlopEnabled == true)
             {
-                SetDere();
-                //UpdateFlyin.IsOpen = false;
-            }
-            else
-            {
-                SetYan();
-                //UpdateFlyin.IsOpen = true;
+                if (isDere)
+                {
+                    SetDere();
+                    //UpdateFlyin.IsOpen = false;
+                }
+                else
+                {
+                    SetYan();
+                    //UpdateFlyin.IsOpen = true;
+                }
             }
         }
 
@@ -413,6 +417,11 @@ namespace YandereSimulatorLauncher2
             Logic.UpdatePlayHelpers.StartGame();
             await Logic.UpdatePlayHelpers.AsynchronousWait(500);
             Close();
+        }
+
+        private void VideoPlayer_OnDereReset(object sender, EventArgs e)
+        {
+            SetDere();
         }
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)

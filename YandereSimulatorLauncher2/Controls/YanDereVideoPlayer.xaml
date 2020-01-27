@@ -14,15 +14,20 @@
             <Image x:Name="ImageBackgroundYan" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/mainpanel-yan.png" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 
             </Image>
-            <MediaElement x:Name="VideoBackgroundDere" LoadedBehavior="Manual" Loaded="VideoDere_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <MediaElement x:Name="VideoBackgroundDere" LoadedBehavior="Manual" Loaded="VideoDere_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MediaEnded="VideoDere_OnEnded">
                 
             </MediaElement>
-            <MediaElement x:Name="VideoBackgroundYan" Visibility="Hidden" LoadedBehavior="Manual" Loaded="VideoYan_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <MediaElement x:Name="VideoBackgroundYan" Visibility="Hidden" LoadedBehavior="Manual" Loaded="VideoYan_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MediaEnded="VideoYan_OnEnded">
 
             </MediaElement>
         </Grid>
         <Canvas>
-            <CheckBox x:Name="VideoEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False">
+            <CheckBox x:Name="YanDereEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False">
+                <TextBlock x:Name="YanDereEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
+                Yan/Dere Cycle
+                </TextBlock>
+            </CheckBox>
+            <CheckBox x:Name="VideoEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False" Canvas.Top="21">
                 <TextBlock x:Name="VideoEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
                 Video Background
                 </TextBlock>

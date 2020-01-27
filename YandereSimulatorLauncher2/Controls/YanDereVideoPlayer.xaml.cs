@@ -22,6 +22,8 @@ namespace YandereSimulatorLauncher2.Controls
     {
         public static readonly DependencyProperty IsDereProperty = DependencyProperty.Register("IsDere", typeof(bool), typeof(YanDereVideoPlayer), new PropertyMetadata(true, IsDereChanged));
 
+        public event EventHandler YanDereCheckboxClicked;
+
         private bool isYanVideoLoaded = false;
         private bool isDereVideoLoaded = false;
 
@@ -29,6 +31,14 @@ namespace YandereSimulatorLauncher2.Controls
         {
             get { return (bool)GetValue(IsDereProperty); }
             set { SetValue(IsDereProperty, value); }
+        }
+
+        public bool IsYanDereFlipFlopEnabled
+        {
+            get
+            {
+                return YanDereEnabledCheckbox.IsChecked ?? false;
+            }
         }
 
         private bool IsVideoEnabledChecked
@@ -64,6 +74,7 @@ namespace YandereSimulatorLauncher2.Controls
 
         private void ConfigureComponent()
         {
+            SetInitialYanDereEnabledCheckbox();
             SetInitialVideoEnabledCheckbox();
 
             if (IsVideoEnabledChecked)
@@ -92,6 +103,14 @@ namespace YandereSimulatorLauncher2.Controls
                 VideoEnabledCheckbox.IsEnabled = false;
                 VideoEnabledCheckboxText.Text = "Video Requires Enabling Visual Styles";
             }
+        }
+
+        private void SetInitialYanDereEnabledCheckbox()
+        {
+            YanDereEnabledCheckbox.IsChecked = true;
+            YanDereEnabledCheckbox.IsEnabled = true;
+            YanDereEnabledCheckbox.Checked += YanDereEnabledCheckbox_OnChecked;
+            YanDereEnabledCheckbox.Unchecked += YanDereEnabledCheckbox_OnChecked;
         }
 
         private void LoadVideos()
@@ -134,6 +153,18 @@ namespace YandereSimulatorLauncher2.Controls
             VideoBackgroundYan.Play();
         }
 
+        private void VideoDere_OnEnded(object sender, RoutedEventArgs e)
+        {
+            VideoBackgroundDere.Position = new TimeSpan(0, 0, 0, 0, 1);
+            VideoBackgroundDere.Play();
+        }
+
+        private void VideoYan_OnEnded(object sender, RoutedEventArgs e)
+        {
+            VideoBackgroundYan.Position = new TimeSpan(0, 0, 0, 0, 1);
+            VideoBackgroundYan.Play();
+        }
+
         private void VideoEnabledCheckbox_OnChecked(object sender, EventArgs e)
         {
             VideoBackgroundDere.Visibility = Visibility.Visible;
@@ -148,6 +179,11 @@ namespace YandereSimulatorLauncher2.Controls
         {
             VideoBackgroundYan.Visibility = Visibility.Hidden;
             VideoBackgroundDere.Visibility = Visibility.Hidden;
+        }
+
+        private void YanDereEnabledCheckbox_OnChecked(object sender, EventArgs e)
+        {
+            YanDereCheckboxClicked.Invoke(this, new EventArgs());
         }
     }
 }
