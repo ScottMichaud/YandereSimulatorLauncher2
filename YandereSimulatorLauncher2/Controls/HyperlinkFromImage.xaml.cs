@@ -23,6 +23,7 @@ namespace YandereSimulatorLauncher2.Controls
         #region XAML Properties
         public static readonly DependencyProperty DisplayImageProperty = DependencyProperty.Register("DisplayImage", typeof(string), typeof(HyperlinkFromImage), new PropertyMetadata(string.Empty, DisplayImageChanged));
         public static readonly DependencyProperty LinkedUrlProperty = DependencyProperty.Register("LinkedUrl", typeof(string), typeof(HyperlinkFromImage), new PropertyMetadata(string.Empty, LinkedUrlChanged));
+        public static readonly DependencyProperty ImageHeightProperty = DependencyProperty.Register("ImageHeight", typeof(double), typeof(HyperlinkFromImage), new PropertyMetadata(0.0, ImageHeightChanged));
 
         public string DisplayImage
         {
@@ -34,6 +35,21 @@ namespace YandereSimulatorLauncher2.Controls
         {
             get { return (string)GetValue(LinkedUrlProperty); }
             set { SetValue(LinkedUrlProperty, value); }
+        }
+
+        public double ImageHeight
+        {
+            get { return (double)GetValue(ImageHeightProperty); }
+            set { SetValue(ImageHeightProperty, value); }
+        }
+
+        private static void ImageHeightChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (obj is HyperlinkFromImage)
+            {
+                HyperlinkFromImage castControl = obj as HyperlinkFromImage;
+                castControl.MyDisplayImage.Height = castControl.ImageHeight;
+            }
         }
 
         private bool mIsDere = true;
@@ -119,11 +135,13 @@ namespace YandereSimulatorLauncher2.Controls
         private void SetDere()
         {
             MyDisplayImage.Source = new BitmapImage(ConvertImageTokenToUri(DisplayImage));
+            MyDisplayImageUnderline.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         }
 
         private void SetYan()
         {
             MyDisplayImage.Source = new BitmapImage(ConvertImageTokenToUri(DisplayImage));
+            MyDisplayImageUnderline.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
     }
 }

@@ -6,45 +6,50 @@
              xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Image x:Name="MyDisplayImage" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">    
+    <Grid Height="36">
+        <Image x:Name="MyDisplayImage" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
             <Image.Effect>
                 <DropShadowEffect BlurRadius="14" ShadowDepth="0" Color="White" Opacity="0.8"/>
             </Image.Effect>
-            <Image.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="28" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="1" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="14" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="0.8" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseDown">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="0" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="0.8" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseUp">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="28" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
-                            <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="1" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Image.Triggers>
         </Image>
+        <Border x:Name="MyDisplayImageUnderline" BorderThickness="0, 0, 0, 2" VerticalAlignment="Center" BorderBrush="White" Height="36" Padding="8, 0, 8, 0" Opacity="0"/>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="28" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="1" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImageUnderline" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="14" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="0.8" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImageUnderline" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="0" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="0.8" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImageUnderline" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.BlurRadius" To="28" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImage" Storyboard.TargetProperty="Effect.Opacity" To="1" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayImageUnderline" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
     </Grid>
 </UserControl>

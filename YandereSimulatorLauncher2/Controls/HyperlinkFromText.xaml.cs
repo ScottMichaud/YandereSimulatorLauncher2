@@ -90,11 +90,13 @@ namespace YandereSimulatorLauncher2.Controls
         private void SetDere()
         {
             MyDisplayText.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            MyDisplayTextUnderline.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         }
 
         private void SetYan()
         {
             MyDisplayText.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            MyDisplayTextUnderline.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         #region Events
