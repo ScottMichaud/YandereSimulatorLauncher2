@@ -80,6 +80,7 @@ namespace YandereSimulatorLauncher2.Controls
             SlidingContainer.Background = App.HexToBrush("#ff80d3");
             SlidingContainer.BorderBrush = App.HexToBrush("#95286d");
             UpdateLabel.Foreground = App.HexToBrush("#FFFFFF");
+            UpdateLink.IsDere = true;
         }
 
         private void SetYan()
@@ -87,6 +88,7 @@ namespace YandereSimulatorLauncher2.Controls
             SlidingContainer.Background = App.HexToBrush("#ff0000");
             SlidingContainer.BorderBrush = App.HexToBrush("#330000");
             UpdateLabel.Foreground = App.HexToBrush("#000000");
+            UpdateLink.IsDere = false;
         }
 
         private void SetOpen()

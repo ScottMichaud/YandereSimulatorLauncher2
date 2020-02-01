@@ -47,11 +47,11 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <controls:HyperlinkFromText x:Name="LinkAbout" DisplayText="About" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0" LinkedUrl="https://yanderesimulator.com/about/"/>
-                <controls:HyperlinkFromText x:Name="LinkBlog" DisplayText="Blog" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/blog/"/>
-                <controls:HyperlinkFromText x:Name="LinkContact" DisplayText="Contact" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/contact/"/>
-                <controls:HyperlinkFromText x:Name="LinkDonate" DisplayText="Donate" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/donate/"/>
-                <controls:HyperlinkFromText x:Name="LinkVolunteer" DisplayText="Volunteer" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://yanderesimulator.com/volunteer/"/>
+                <controls:HyperlinkFromText x:Name="LinkAbout" DisplayText="About" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/about/"/>
+                <controls:HyperlinkFromText x:Name="LinkBlog" DisplayText="Blog" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/blog/"/>
+                <controls:HyperlinkFromText x:Name="LinkContact" DisplayText="Contact" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/contact/"/>
+                <controls:HyperlinkFromText x:Name="LinkDonate" DisplayText="Donate" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/donate/"/>
+                <controls:HyperlinkFromText x:Name="LinkVolunteer" DisplayText="Volunteer" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/volunteer/"/>
                 <controls:HyperlinkFromImage x:Name="LinkTwitter" DisplayImage="twitter" Width="25" ImageHeight="20" Grid.Column="6" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://twitter.com/yanderedev"/>
                 <controls:HyperlinkFromImage x:Name="LinkYoutube" DisplayImage="youtube" Width="28" ImageHeight="20" Grid.Column="7" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://www.youtube.com/yanderedev"/>
                 <controls:HyperlinkFromImage x:Name="LinkTwitch" DisplayImage="twitch" Width="19" ImageHeight="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0" LinkedUrl="https://www.twitch.tv/yanderedev"/>

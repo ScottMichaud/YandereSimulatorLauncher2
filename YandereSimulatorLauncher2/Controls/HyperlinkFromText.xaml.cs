@@ -24,6 +24,7 @@ namespace YandereSimulatorLauncher2.Controls
         #region XAML Properties
         public static readonly DependencyProperty DisplayTextProperty = DependencyProperty.Register("DisplayText", typeof(string), typeof(HyperlinkFromText), new PropertyMetadata(string.Empty, DisplayTextChanged));
         public static readonly DependencyProperty LinkedUrlProperty = DependencyProperty.Register("LinkedUrl", typeof(string), typeof(HyperlinkFromText), new PropertyMetadata(string.Empty, LinkedUrlChanged));
+        public static readonly DependencyProperty LinkFontSizeProperty = DependencyProperty.Register("LinkFontSize", typeof(double), typeof(HyperlinkFromText), new PropertyMetadata(0.0, LinkFontSizeChanged));
 
         public string DisplayText
         {
@@ -35,6 +36,12 @@ namespace YandereSimulatorLauncher2.Controls
         {
             get { return (string)GetValue(LinkedUrlProperty); }
             set { SetValue(LinkedUrlProperty, value); }
+        }
+
+        public double LinkFontSize
+        {
+            get { return (double)GetValue(LinkFontSizeProperty); }
+            set { SetValue(LinkFontSizeProperty, value); }
         }
 
         private static void DisplayTextChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -49,6 +56,16 @@ namespace YandereSimulatorLauncher2.Controls
         private static void LinkedUrlChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             // No effects
+        }
+
+        private static void LinkFontSizeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (obj is HyperlinkFromText)
+            {
+                HyperlinkFromText castControl = obj as HyperlinkFromText;
+                castControl.MyDisplayText.FontSize = castControl.LinkFontSize;
+                castControl.MyDisplayTextUnderline.Height = castControl.LinkFontSize + 4;
+            }
         }
         #endregion
 
