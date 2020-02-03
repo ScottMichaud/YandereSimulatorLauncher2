@@ -54,6 +54,21 @@ namespace YandereSimulatorLauncher2.Logic
             return System.IO.File.Exists(GameExePath);
         }
 
+        public static bool IsGameRunning()
+        {
+            Process[] listOfRunningProcesses = Process.GetProcesses();
+            
+            foreach (Process currentProcess in listOfRunningProcesses)
+            {
+                if (currentProcess.ProcessName.ToLower().Trim().Equals("yanderesimulator"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public async static Task DownloadAndInstall(DownloadProgressCallback delDownloadProgress, UnzipStartCallback delUnzipStart)
         {
             // Fetch the current version.

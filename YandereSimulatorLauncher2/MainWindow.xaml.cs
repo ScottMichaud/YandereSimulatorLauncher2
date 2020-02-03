@@ -263,8 +263,8 @@ namespace YandereSimulatorLauncher2
                     await DoCheckForUpdates();
                     break;
                 case Controls.YsInstallMode.PromptToUpdate:
-                    //await DoUpdate();
-                    await DoInstall();
+                    await DoUpdate();
+                    //await DoInstall();
                     break;
                 case Controls.YsInstallMode.Downloading:
                     throw new NotImplementedException("The install button should be locked.");
@@ -380,6 +380,18 @@ namespace YandereSimulatorLauncher2
             if (await Logic.UpdatePlayHelpers.DoesLauncherUpdateExist(App.LauncherVersion))
             {
                 UpdateFlyin.IsOpen = true;
+            }
+        }
+
+        private async Task DoUpdate()
+        {
+            if (Logic.UpdatePlayHelpers.IsGameRunning())
+            {
+                MessageBox.Show("Yandere Simulator is running. Please shut down the game before performing the update.", "Cannot update Yandere Simulator", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                await DoInstall();
             }
         }
 
