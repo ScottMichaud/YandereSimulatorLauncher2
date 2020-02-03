@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="RootGrid">
-        <Border x:Name="MyDisplayTextUnderline" BorderThickness="0, 0, 0, 2" VerticalAlignment="Center" BorderBrush="White" Height="36" Padding="8, 0, 8, 0" Opacity="0"/>
+        <Border x:Name="MyDisplayTextUnderline" BorderThickness="0, 0, 0, 2" Width="{Binding Path=ActualWidth, ElementName=MyDisplayText}" VerticalAlignment="Center" BorderBrush="White" Height="36" Padding="8, 0, 8, 0" Opacity="0"/>
         <TextBlock x:Name="MyDisplayText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" Foreground="White" Text="DisplayText" FontFamily="{StaticResource LeagueGothic}" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
             <TextBlock.Effect>
                 <DropShadowEffect BlurRadius="14" ShadowDepth="0" Color="White" Opacity="0.8"/>

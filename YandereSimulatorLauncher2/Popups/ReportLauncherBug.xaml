@@ -1,0 +1,102 @@
+﻿<Window x:Class="YandereSimulatorLauncher2.Popups.ReportLauncherBug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YandereSimulatorLauncher2.Popups"
+        xmlns:controls="clr-namespace:YandereSimulatorLauncher2.Controls"
+        mc:Ignorable="d"
+        Title="Reporting Bugs" Height="475" Width="900" Background="#ff80d3" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#ee63bb" Grid.Row="0">
+            <TextBlock VerticalAlignment="Center" Padding="10, 0, 0, 0" FontSize="40" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
+                Found a bug?
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="#ee63bb" />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <TextBlock FontSize="28" FontFamily="{StaticResource LeagueGothic}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        Bug in the launcher
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Row="1" Background="#ee63bb"/>
+                <Grid Grid.Row="2" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="71"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="92"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" TextWrapping="Wrap" Foreground="White" HorizontalAlignment="Center" FontSize="17.25" VerticalAlignment="Center" Background="#ee63bb" Padding="5">
+                        <Italic><Bold>Do not</Bold> submit launcher bug reports to YandereDev.</Italic>
+                    </TextBlock>
+                    <TextBlock Grid.Row="1" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15.25" Foreground="White" Padding="6, 3, 6, 3">
+                        The Yandere Simulator launcher is an open-source project that is maintained by volunteers.
+                        The project lead accepts bug reports by email at the following address:
+                    </TextBlock>
+                    <Grid Grid.Row="2">
+                        <controls:HyperlinkFromText LinkFontSize="25.75" DisplayText="scott@loosescrew.ca" LinkedUrl="mailto:scott@loosescrew.ca" />
+                    </Grid>
+                    <TextBlock Grid.Row="3" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15.25" Foreground="White" Padding="6, 3, 6, 3">
+                        Check out the status of reported bugs by looking at the project's issues tab on GitHub. If you have an account, you may also comment on issues, submit pull requests, and otherwise contribute to the launcher.
+                    </TextBlock>
+                    <Grid Grid.Row="4">
+                        <controls:HyperlinkFromText  LinkFontSize="25.75" DisplayText="YandereSimulatorLauncher2 on GitHub" LinkedUrl="https://github.com/scottmichaud/yanderesimulatorlauncher2"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2" Background="#ee63bb" />
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock FontSize="28" FontFamily="{StaticResource LeagueGothic}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        Bug in the game
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Row="1" Background="#ee63bb"/>
+                <Grid Grid.Row="2" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="52"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="65"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" TextWrapping="Wrap" FontSize="15.75" TextAlignment="Justify" Foreground="White" Padding="6, 3, 6, 3">
+                        If the bug affects the game, not the launcher, then submit the game bug to YandereDev through his website.
+                    </TextBlock>
+                    <Grid Grid.Row="1">
+                        <controls:HyperlinkFromText LinkFontSize="25.75" DisplayText="yanderesimulator.com/bug-reporting" LinkedUrl="https://yanderesimulator.com/bug-reporting/" />
+                    </Grid>
+                    <TextBlock Grid.Row="2" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="15.75" VerticalAlignment="Center" Background="#ee63bb" Padding="5" Margin="5, 0, 5, 0">
+                        <Italic><Bold>Do not</Bold> submit launcher bugs to this link. <LineBreak/> &lt;-- Report bugs affecting the launcher on the left.</Italic>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="4" Background="#ee63bb" />
+        </Grid>
+        <Grid Grid.Row="2" Background="#ee63bb"/>
+    </Grid>
+</Window>

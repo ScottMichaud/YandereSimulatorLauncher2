@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YandereSimulatorLauncher2.Popups;
 
 namespace YandereSimulatorLauncher2.Controls
 {
@@ -184,6 +185,12 @@ namespace YandereSimulatorLauncher2.Controls
         private void YanDereEnabledCheckbox_OnChecked(object sender, EventArgs e)
         {
             YanDereCheckboxClicked.Invoke(this, new EventArgs());
+        }
+
+        private void ReportBug_OnClicked(object sender, RoutedEventArgs e)
+        {
+            ReportLauncherBug reportLauncherPopup = new ReportLauncherBug();
+            reportLauncherPopup.ShowDialog();
         }
     }
 }
