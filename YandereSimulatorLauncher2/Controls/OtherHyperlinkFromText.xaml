@@ -6,41 +6,39 @@
              xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock x:Name="MyDisplayText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="{StaticResource LeagueGothic}" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
-            <TextBlock.Foreground>
-                <SolidColorBrush x:Name="MyFontColor" Color="#006ef5"/>
-            </TextBlock.Foreground>
-            <TextBlock.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="MyFontColor" Storyboard.TargetProperty="Color" To="#4576ff" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="MyFontColor" Storyboard.TargetProperty="Color" To="#006ef5" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseDown">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="MyFontColor" Storyboard.TargetProperty="Color" To="#73b9ff" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseUp">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="MyFontColor" Storyboard.TargetProperty="Color" To="#4576ff" Duration="0:0:0.05" FillBehavior="HoldEnd"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </TextBlock.Triggers>
+    <Grid x:Name="RootGrid">
+        <Border x:Name="MyDisplayTextUnderline" BorderThickness="0, 0, 0, 2" Width="{Binding Path=ActualWidth, ElementName=MyDisplayText}" VerticalAlignment="Center" BorderBrush="White" Height="36" Padding="8, 0, 8, 0" Opacity="0"/>
+        <TextBlock x:Name="MyDisplayText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" Foreground="Black" Text="DisplayText" FontFamily="{StaticResource LeagueGothic}" MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
         </TextBlock>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayTextUnderline" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayTextUnderline" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayTextUnderline" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="MyDisplayTextUnderline" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
     </Grid>
 </UserControl>

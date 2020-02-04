@@ -55,13 +55,13 @@
                         The project lead accepts bug reports by email at the following address:
                     </TextBlock>
                     <Grid Grid.Row="2">
-                        <controls:HyperlinkFromText LinkFontSize="25.75" IsDere="False" DisplayText="scott@loosescrew.ca" LinkedUrl="mailto:scott@loosescrew.ca" />
+                        <controls:OtherHyperlinkFromText LinkFontSize="25.75" IsDere="False" DisplayText="scott@loosescrew.ca" LinkedUrl="mailto:scott@loosescrew.ca" />
                     </Grid>
                     <TextBlock Grid.Row="3" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15.25" Foreground="White" Padding="6, 3, 6, 3">
                         Check out the status of reported bugs by looking at the project's issues tab on GitHub. If you have an account, you may also comment on issues, submit pull requests, and otherwise contribute to the launcher.
                     </TextBlock>
                     <Grid Grid.Row="4">
-                        <controls:HyperlinkFromText  LinkFontSize="25.75" IsDere="False" DisplayText="YandereSimulatorLauncher2 on GitHub" LinkedUrl="https://github.com/scottmichaud/yanderesimulatorlauncher2"/>
+                        <controls:OtherHyperlinkFromText  LinkFontSize="25.75" IsDere="False" DisplayText="YandereSimulatorLauncher2 on GitHub" LinkedUrl="https://github.com/scottmichaud/yanderesimulatorlauncher2"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -88,7 +88,7 @@
                         If the bug affects the game, not the launcher, then submit the game bug to YandereDev through his website.
                     </TextBlock>
                     <Grid Grid.Row="1">
-                        <controls:HyperlinkFromText LinkFontSize="25.75" IsDere="False" DisplayText="yanderesimulator.com/bug-reporting" LinkedUrl="https://yanderesimulator.com/bug-reporting/" />
+                        <controls:OtherHyperlinkFromText LinkFontSize="25.75" IsDere="False" DisplayText="yanderesimulator.com/bug-reporting" LinkedUrl="https://yanderesimulator.com/bug-reporting/" />
                     </Grid>
                     <TextBlock Grid.Row="2" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="15.75" VerticalAlignment="Center" Background="#ee63bb" Padding="5" Margin="5, 0, 5, 0">
                         <Italic><Bold>Do not</Bold> submit launcher bugs to the above link. <LineBreak/> &lt;-- Report bugs affecting the launcher on the left.</Italic>
