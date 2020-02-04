@@ -98,6 +98,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ReportBugButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\UpdatePromptFlyin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +135,9 @@
     </Compile>
     <Compile Include="Controls\OtherHyperlinkFromText.xaml.cs">
       <DependentUpon>OtherHyperlinkFromText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportBugButton.xaml.cs">
+      <DependentUpon>ReportBugButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\UpdatePromptFlyin.xaml.cs">
       <DependentUpon>UpdatePromptFlyin.xaml</DependentUpon>

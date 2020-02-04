@@ -87,6 +87,12 @@ namespace YandereSimulatorLauncher2.Controls
             {
                 UnloadVideos();
             }
+
+            ReportBugButton.PlayButtonClicked += ReportBug_OnClicked;
+
+            //ReportBugButton.Background = App.HexToBrush("#ff80d3");
+            //ReportBugButton.Foreground = App.HexToBrush("#FFFFFF");
+            
         }
 
         private void SetInitialVideoEnabledCheckbox()
@@ -132,6 +138,9 @@ namespace YandereSimulatorLauncher2.Controls
             VideoBackgroundYan.Visibility = Visibility.Hidden;
             if (isYanVideoLoaded) { VideoBackgroundYan.Stop(); }
             if (isDereVideoLoaded) { VideoBackgroundDere.Play(); }
+            ReportBugButton.IsDere = true;
+            //ReportBugButton.Background = App.HexToBrush("#ff80d3");
+            //ReportBugButton.Foreground = App.HexToBrush("#FFFFFF");
         }
 
         private void SetYan()
@@ -140,6 +149,9 @@ namespace YandereSimulatorLauncher2.Controls
             if (IsVideoEnabledChecked) { VideoBackgroundYan.Visibility = Visibility.Visible; }
             if (isYanVideoLoaded) { VideoBackgroundYan.Play(); }
             if (isDereVideoLoaded) { VideoBackgroundDere.Stop(); }
+            ReportBugButton.IsDere = false;
+            //ReportBugButton.Background = App.HexToBrush("#ff0000");
+            //ReportBugButton.Foreground = App.HexToBrush("#000000");
         }
 
         private void VideoDere_OnLoaded(object sender, RoutedEventArgs e)
@@ -187,7 +199,7 @@ namespace YandereSimulatorLauncher2.Controls
             YanDereCheckboxClicked.Invoke(this, new EventArgs());
         }
 
-        private void ReportBug_OnClicked(object sender, RoutedEventArgs e)
+        private void ReportBug_OnClicked(object sender, EventArgs e)
         {
             ReportLauncherBug reportLauncherPopup = new ReportLauncherBug();
             reportLauncherPopup.ShowDialog();

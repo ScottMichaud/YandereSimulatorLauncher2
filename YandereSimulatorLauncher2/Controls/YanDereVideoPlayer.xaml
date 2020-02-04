@@ -32,11 +32,14 @@
                 Video Background
                 </TextBlock>
             </CheckBox>
-            <Button Canvas.Right="5" Canvas.Top="4" Click="ReportBug_OnClicked">
+            <local:ReportBugButton x:Name="ReportBugButton" Canvas.Right="5" Canvas.Top="4">
+                
+            </local:ReportBugButton>
+            <!--<Button x:Name="ReportBugButton" Canvas.Right="5" Canvas.Top="4" Click="ReportBug_OnClicked">
                 <TextBlock FontSize="14" Padding="20, 3, 20, 5">
                     Report a bug
                 </TextBlock>
-            </Button>
+            </Button>-->
         </Canvas>
     </Grid>
 </UserControl>
