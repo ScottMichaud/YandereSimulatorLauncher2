@@ -1,10 +1,10 @@
 ﻿
-==================================
-    Yandere Simulator Launcher
-==================================
+====================================
+    Yandere Simulator Launcher 2
+====================================
 
 Release Notes:
-Version 2.7
+Version 2.7.1
  - Initial public release
 
 Known Issues:
@@ -13,16 +13,9 @@ Known Issues:
 
  - Some effects (ex: the video background) require Desktop Composition ("Aero") to be enabled.
 
- - Closing the launcher while it is downloading, immediately reopening it, and starting
-   a new download can cause the download to freeze (often with weird speed values).
-     => To fix: Close the launcher, wait about a few seconds to a minute, and open it again.
-     => It appears to be a known issue with System.Net.WebClient.
-     => This class is used to simplify the loading bar. (It provides progress reports.)
-
  - Closing the launcher while it is unpacking can corrupt the unzip process.
      => The next time you open the launcher, the launcher should say "Install" or
-        "Update available". That button will attempt to re-install Yandere Simulator.
-     => The launcher warns you not to do that (unless force-closed by Task Manager).
+        "Update available". That will attempt to fix (re-install) Yandere Simulator.
      => You can also download a new copy of the launcher from YandereDev's website.
 
 =========================================================================================================
@@ -170,3 +163,85 @@ not met.
 Contains Font Awesome brand icons
 Licensed under the CC BY 4.0 license.
 See: https://fontawesome.com/license/free
+
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+
+Contains MegaApiClient licensed under the MIT license.
+
+The MIT License (MIT)
+
+Copyright (c) 2015 gpailler
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+
+Contains Newtonsoft.JSON licensed under the MIT license.
+
+The MIT License (MIT)
+
+Copyright (c) 2007 James Newton-King
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in the
+Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+
+Contains Fody licensed under the MIT license.
+
+MIT License
+
+Copyright (c) Simon Cropp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
