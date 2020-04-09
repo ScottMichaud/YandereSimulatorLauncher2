@@ -40,6 +40,11 @@ namespace YandereSimulatorLauncher2
 
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            // Support all encryption schemes. 
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12 |
+                                                              System.Net.SecurityProtocolType.Tls11 |
+                                                              System.Net.SecurityProtocolType.Tls |
+                                                              System.Net.SecurityProtocolType.Ssl3;
             await DoCheckForUpdates();
             await DoCheckForLauncherUpdate();
         }

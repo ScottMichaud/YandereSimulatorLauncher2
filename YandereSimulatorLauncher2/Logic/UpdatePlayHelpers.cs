@@ -21,14 +21,14 @@ namespace YandereSimulatorLauncher2.Logic
 
         public static string GameExePath { get { return "YandereSimulator\\YandereSimulator.exe"; } }
         public static string GameDirectoryPath { get { return "YandereSimulator"; } }
-        public static string GameVersionHttp { get { return "https://www.yanderesimulator.com/version.txt" + AntiCacheToken; } }
+        public static string GameVersionHttp { get { return "://www.yanderesimulator.com/version.txt" + AntiCacheToken; } }
         public static string GameFileHttpMinusCacheBuster = "https://dl.yanderesimulator.com/latest.zip"; //Add ?{{versionOnSite}} to it.
         public static string GameVersionFilePath = "YandereSimulator\\GameVersion.txt";
         public static string GameZipSaveLocation = "YandereSimulator.zip";
 
-        public static string LauncherVersionHttp { get { return "https://www.yanderesimulator.com/launcherversion.txt" + AntiCacheToken; } }
+        public static string LauncherVersionHttp { get { return "://www.yanderesimulator.com/launcherversion.txt" + AntiCacheToken; } }
 
-        public static string SiteUrlsTxtUrl { get { return "http://yanderesimulator.com/urls.txt" + AntiCacheToken; } }
+        public static string SiteUrlsTxtUrlHttp { get { return "://www.yanderesimulator.com/urls.txt" + AntiCacheToken; } }
 
         private static string AntiCacheToken
         {
@@ -152,6 +152,18 @@ namespace YandereSimulatorLauncher2.Logic
 
         private async static Task<string> FetchHttpText(string inUrl)
         {
+            string output = await FetchHttpTextInternal("https" + inUrl);
+
+            if (string.IsNullOrWhiteSpace(output))
+            {
+                output = await FetchHttpTextInternal("http" + inUrl);
+            }
+
+            return output;
+        }
+
+        private async static Task<string> FetchHttpTextInternal(string inUrl)
+        {
             try
             {
                 using (HttpResponseMessage response = await staticHttpClient.GetAsync(inUrl))
@@ -223,7 +235,7 @@ namespace YandereSimulatorLauncher2.Logic
 
         private async static Task<string> FetchMegaUrl()
         {
-            List<string> urls = SplitToLines(await FetchHttpText(SiteUrlsTxtUrl));
+            List<string> urls = SplitToLines(await FetchHttpText(SiteUrlsTxtUrlHttp));
             string megaLine = PickRelevantLineFromList(urls, "mega.nz");
             if (megaLine is null) { throw new ServiceNotFoundException("Mega.nz"); }
             string megaUrl = PickUrlFromLine(megaLine);

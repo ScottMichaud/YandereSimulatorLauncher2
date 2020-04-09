@@ -5,6 +5,7 @@
 
 Release Notes:
 Version 2.8.0
+ - (GitHub Issue #5): Allow TLS 1.2 (and added more fallbacks in case settings are changed again).
  - Updated Mega.nz from NuGet to support new URL format.
  - (GitHub Issue #2): Fixed launcher not reseting when an unknown exception is encountered on install.
 
