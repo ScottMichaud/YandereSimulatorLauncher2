@@ -346,6 +346,21 @@ namespace YandereSimulatorLauncher2
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "The launcher encountered an unknown error." +
+                    "\n\n" +
+                    "Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist)." +
+                    "\n\n" +
+                    "You can also download the game directly from one of the alternate links provided at:" +
+                    "\n\n" +
+                    "yanderedev.wordpress.com/downloads",
+                    "Cannot download game",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+
             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
             ElementDownloadBar.IsOpen = false;
 

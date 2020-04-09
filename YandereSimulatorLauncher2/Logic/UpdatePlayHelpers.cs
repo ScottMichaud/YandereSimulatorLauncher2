@@ -77,6 +77,7 @@ namespace YandereSimulatorLauncher2.Logic
             //       If he goofs, he can just re-increment version.txt.
 
             string versionOnSite = await FetchHttpText(GameVersionHttp);
+
             await FetchMegaFile(inSaveLocation: GameZipSaveLocation, delProgress: delDownloadProgress);
 
             if (System.IO.Directory.Exists(GameDirectoryPath))
