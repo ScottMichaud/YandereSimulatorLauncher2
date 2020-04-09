@@ -4,6 +4,10 @@
 ====================================
 
 Release Notes:
+Version 2.8.0
+ - Updated Mega.nz from NuGet to support new URL format.
+ - (GitHub Issue #2): Fixed launcher not reseting when an unknown exception is encountered on install.
+
 Version 2.7.1
  - Initial public release
 
