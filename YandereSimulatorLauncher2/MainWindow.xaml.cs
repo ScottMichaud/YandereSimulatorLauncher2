@@ -45,6 +45,12 @@ namespace YandereSimulatorLauncher2
                                                               System.Net.SecurityProtocolType.Tls11 |
                                                               System.Net.SecurityProtocolType.Tls |
                                                               System.Net.SecurityProtocolType.Ssl3;
+            
+            if (Environment.Is64BitOperatingSystem == false)
+            {
+                MessageBox.Show("Your computer reports that it is running a 32-bit operating system. Yandere Simulator requires 64-bit Windows since April 10th, 2020.\n\nThe launcher will not attempt to block you from downloading or running the game, but Windows is telling the launcher that Yandere Simulator will not run.", "Yandere Simulator is not supported on this device");
+            }
+
             await DoCheckForUpdates();
             await DoCheckForLauncherUpdate();
         }
