@@ -9,13 +9,13 @@
     <Grid>
         <Grid x:Name="VideoBackgroundAttachPoint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Image x:Name="ImageBackgroundDere" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/mainpanel-dere.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                
+
             </Image>
             <Image x:Name="ImageBackgroundYan" Source="/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/mainpanel-yan.png" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                
+
             </Image>
             <MediaElement x:Name="VideoBackgroundDere" LoadedBehavior="Manual" Loaded="VideoDere_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MediaEnded="VideoDere_OnEnded">
-                
+
             </MediaElement>
             <MediaElement x:Name="VideoBackgroundYan" Visibility="Hidden" LoadedBehavior="Manual" Loaded="VideoYan_OnLoaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MediaEnded="VideoYan_OnEnded">
 
@@ -32,8 +32,13 @@
                 Video Background
                 </TextBlock>
             </CheckBox>
+            <CheckBox x:Name="AutoUpdateCheckbox" Focusable="False" Canvas.Top="48" Canvas.Left="5">
+                <TextBlock x:Name="AutoUpdateCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
+                Auto Update
+                </TextBlock>
+            </CheckBox>
             <local:ReportBugButton x:Name="ReportBugButton" Canvas.Right="5" Canvas.Top="4">
-                
+
             </local:ReportBugButton>
             <!--<Button x:Name="ReportBugButton" Canvas.Right="5" Canvas.Top="4" Click="ReportBug_OnClicked">
                 <TextBlock FontSize="14" Padding="20, 3, 20, 5">
