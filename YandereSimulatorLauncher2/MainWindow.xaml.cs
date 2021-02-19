@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Windows.Shell;
 
 namespace YandereSimulatorLauncher2
 {
@@ -305,6 +306,7 @@ namespace YandereSimulatorLauncher2
 
             try
             {
+                this.TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
                 await Logic.UpdatePlayHelpers.DownloadAndInstall(
                     (double currentBytes, double totalFileBytes) =>
                         {
@@ -317,6 +319,7 @@ namespace YandereSimulatorLauncher2
 
                                     double currentPercent = (inCurrentBytes / inTotalFileBytes) * 100.0;
                                     currentPercent = Math.Max(Math.Min(currentPercent, 100), 0); // Clamp to 0->100%
+                                    this.TaskbarItemInfo.ProgressValue = currentPercent / 100d;
                                     double timeSinceLastReport = (now - mLastReportTime).TotalSeconds;
                                     double currentSpeed = (inCurrentBytes - mLastDownloadBytes) / timeSinceLastReport;
 
@@ -329,6 +332,7 @@ namespace YandereSimulatorLauncher2
                         },
                     () =>
                         {
+                            this.TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
                             ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Unpacking;
                             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Extracting);
                         }
@@ -371,7 +375,7 @@ namespace YandereSimulatorLauncher2
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
-
+            this.TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
             ElementDownloadBar.ChangeProgress(Controls.DownloadBarMode.Waiting);
             ElementDownloadBar.IsOpen = false;
 
@@ -398,6 +402,11 @@ namespace YandereSimulatorLauncher2
             else
             {
                 ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.PromptToInstall;
+            }
+
+            if(Properties.Settings.Default.DoAutoUpdates && ElementMainPanelActionButtons.CurrentMode == Controls.YsInstallMode.PromptToUpdate)
+            {
+                await DoUpdate();
             }
         }
 

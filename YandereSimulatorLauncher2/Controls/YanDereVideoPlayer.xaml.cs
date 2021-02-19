@@ -92,7 +92,34 @@ namespace YandereSimulatorLauncher2.Controls
 
             //ReportBugButton.Background = App.HexToBrush("#ff80d3");
             //ReportBugButton.Foreground = App.HexToBrush("#FFFFFF");
-            
+
+            AutoUpdateCheckbox.Checked += AutoUpdateCheckbox_OnChecked;
+            AutoUpdateCheckbox.Unchecked += AutoUpdateCheckbox_OnUnChecked;
+
+            if(Properties.Settings.Default.DoAutoUpdates)
+            {
+                AutoUpdateCheckbox.IsChecked = true;
+            }
+
+        }
+
+        private void AutoUpdateCheckbox_OnUnChecked(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("By disabling auto updates, launcher will stop downloading updates for Yandere Simulator at startup.", "You're trying to disable auto updates", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.Yes)
+            {
+                Properties.Settings.Default.DoAutoUpdates = false;
+                Properties.Settings.Default.Save();
+            } else
+            {
+                AutoUpdateCheckbox.IsChecked = true;
+            }
+        }
+
+        private void AutoUpdateCheckbox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.DoAutoUpdates = true;
+            Properties.Settings.Default.Save();
         }
 
         private void SetInitialVideoEnabledCheckbox()
