@@ -1,185 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82830269-2B63-4033-9796-DA1C768D71A2}</ProjectGuid>
+    <TargetFramework>net45</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>YandereSimulatorLauncher2</RootNamespace>
-    <AssemblyName>YandereSimulatorLauncher2</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
     <ApplicationIcon>Resources\icon-logo.ico</ApplicationIcon>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
-      <HintPath>..\packages\Costura.Fody.4.1.0\lib\net40\Costura.dll</HintPath>
-    </Reference>
-    <Reference Include="MegaApiClient, Version=1.8.0.0, Culture=neutral, PublicKeyToken=0480d311efbeb4e2, processorArchitecture=MSIL">
-      <HintPath>..\packages\MegaApiClient.1.8.0\lib\net45\MegaApiClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <PackageReference Include="MegaApiClient" Version="1.8.0" />
+    <PackageReference Include="Fody" Version="6.0.8" />
+    <PackageReference Include="Costura.Fody" Version="4.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
+
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="Controls\DownloadBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\HyperlinkFromImage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\HyperlinkFromText.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MainPanelActionButtons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MinimizeCloseButtons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\OtherHyperlinkFromText.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ReportBugButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\UpdatePromptFlyin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\YanDereVideoPlayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controls\DownloadBar.xaml.cs">
-      <DependentUpon>DownloadBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\HyperlinkFromImage.xaml.cs">
-      <DependentUpon>HyperlinkFromImage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\HyperlinkFromText.xaml.cs">
-      <DependentUpon>HyperlinkFromText.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MainPanelActionButtons.xaml.cs">
-      <DependentUpon>MainPanelActionButtons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MinimizeCloseButtons.xaml.cs">
-      <DependentUpon>MinimizeCloseButtons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\OtherHyperlinkFromText.xaml.cs">
-      <DependentUpon>OtherHyperlinkFromText.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ReportBugButton.xaml.cs">
-      <DependentUpon>ReportBugButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\UpdatePromptFlyin.xaml.cs">
-      <DependentUpon>UpdatePromptFlyin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\YanDereVideoPlayer.xaml.cs">
-      <DependentUpon>YanDereVideoPlayer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Logic\UpdatePlayHelpers.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Popups\ReportLauncherBug.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NativeMethods.cs" />
-    <Compile Include="Popups\ReportLauncherBug.xaml.cs">
-      <DependentUpon>ReportLauncherBug.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <Resource Include="EmbeddedAssets\Fonts\leaguegothic-regular-webfont.ttf" />
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="EmbeddedAssets\Images\close-black.png" />
     <Resource Include="EmbeddedAssets\Images\close-white.png" />
     <Resource Include="EmbeddedAssets\Images\minimize-black.png" />
     <Resource Include="EmbeddedAssets\Images\minimize-white.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="EmbeddedAssets\Images\twitch-black.png" />
     <Resource Include="EmbeddedAssets\Images\twitch-white.png" />
     <Resource Include="EmbeddedAssets\Images\twitter-black.png" />
@@ -188,26 +28,29 @@
     <Resource Include="EmbeddedAssets\Images\yandere-simulator-logo.png" />
     <Resource Include="EmbeddedAssets\Images\youtube-black.png" />
     <Resource Include="EmbeddedAssets\Images\youtube-white.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="EmbeddedAssets\Images\mainpanel-dere.png" />
     <Resource Include="EmbeddedAssets\Images\mainpanel-yan.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon-logo.ico" />
-  </ItemGroup>
+
   <ItemGroup>
     <Content Include="README.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
-    <Error Condition="!Exists('..\packages\Fody.6.0.8\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.0.8\build\Fody.targets'))" />
-  </Target>
-  <Import Project="..\packages\Fody.6.0.8\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.8\build\Fody.targets')" />
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>
