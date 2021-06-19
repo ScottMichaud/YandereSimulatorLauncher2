@@ -7,6 +7,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="MegaApiClient" Version="1.8.0" />
     <PackageReference Include="Fody" Version="6.0.8" />
@@ -52,5 +56,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <!-- Delete configuration since we don't ship it anyway. -->
+  <Target Name="DeleteExeConfig" AfterTargets="Build">
+    <Delete Files="$(OutputPath)\$(AssemblyName).exe.config" />
+  </Target>
 
 </Project>
