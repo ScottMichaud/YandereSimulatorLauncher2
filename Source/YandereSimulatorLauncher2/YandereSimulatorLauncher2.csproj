@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>Resources\icon-logo.ico</ApplicationIcon>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MegaApiClient" Version="1.8.0" />
+    <PackageReference Include="Fody" Version="6.0.8" />
+    <PackageReference Include="Costura.Fody" Version="4.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="EmbeddedAssets\Fonts\leaguegothic-regular-webfont.ttf" />
+    <Resource Include="EmbeddedAssets\Images\close-black.png" />
+    <Resource Include="EmbeddedAssets\Images\close-white.png" />
+    <Resource Include="EmbeddedAssets\Images\minimize-black.png" />
+    <Resource Include="EmbeddedAssets\Images\minimize-white.png" />
+    <Resource Include="EmbeddedAssets\Images\twitch-black.png" />
+    <Resource Include="EmbeddedAssets\Images\twitch-white.png" />
+    <Resource Include="EmbeddedAssets\Images\twitter-black.png" />
+    <Resource Include="EmbeddedAssets\Images\twitter-white.png" />
+    <Resource Include="EmbeddedAssets\Images\yandere-simulator-logo-black.png" />
+    <Resource Include="EmbeddedAssets\Images\yandere-simulator-logo.png" />
+    <Resource Include="EmbeddedAssets\Images\youtube-black.png" />
+    <Resource Include="EmbeddedAssets\Images\youtube-white.png" />
+    <Resource Include="EmbeddedAssets\Images\mainpanel-dere.png" />
+    <Resource Include="EmbeddedAssets\Images\mainpanel-yan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="README.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Delete configuration since we don't ship it anyway. -->
+  <Target Name="DeleteExeConfig" AfterTargets="Build">
+    <Delete Files="$(OutputPath)\$(AssemblyName).exe.config" />
+  </Target>
+
+</Project>
