@@ -347,14 +347,36 @@ namespace YandereSimulatorLauncher2
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
-            catch(Logic.CannotConnectToMegaException)
+            catch(Logic.CannotConnectToMegaException ex)
             {
+                string innerMessage = "";
+
+                // Find the inner exception.
+                if (ex.InnerException != null)
+                {
+                    innerMessage = "\n\nError Received: " + ex.InnerException.Message;
+                }
+
                 MessageBox.Show(
                     "Unable to download the game at this point in time." +
                     "\n\n" +
                     "The launcher downloads the game from Mega.nz, which might be temporarily limiting downloads to your IP address." +
                     "\n\n" +
                     "Please try again later, or download the game from one of the alternate links provided at:" +
+                    "\n\n" +
+                    "yanderedev.wordpress.com/downloads" + innerMessage,
+                    "Cannot download game",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Logic.CannotLoginToMegaException)
+            {
+                MessageBox.Show(
+                    "Unable to download the game." +
+                    "\n\n" +
+                    "The launcher failed to login to Mega.nz's download service." +
+                    "\n\n" +
+                    "Try to download the game (without the launcher) from one of the alternate links at:" +
                     "\n\n" +
                     "yanderedev.wordpress.com/downloads",
                     "Cannot download game",

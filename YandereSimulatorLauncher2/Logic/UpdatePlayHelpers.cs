@@ -211,10 +211,6 @@ namespace YandereSimulatorLauncher2.Logic
                 File.Delete(inSaveLocation);
             }
 
-            // Because the MegaApiClient just Task.Run()s (rather than actually parking until the native events are over)
-            // I might want to use the single-threaded API all wrapped in a single Task.Run(). Probably negligible gains
-            // though (only save ~number of commands - 1 threadpool requests) and it could be annoying if I want to handle
-            // user input for ex: "Do you want to retry?"
             MegaApiClient client = new MegaApiClient();
             try
             {
@@ -224,12 +220,18 @@ namespace YandereSimulatorLauncher2.Logic
             }
             catch (Exception ex)
             {
-                // Check to see if we can split up the errors any further.
                 throw new CannotConnectToMegaException("", ex); ;
             }
             finally
             {
-                await client.LogoutAsync();
+                if (client.IsLoggedIn)
+                {
+                    await client.LogoutAsync();
+                }
+                else
+                {
+                    throw new CannotLoginToMegaException("");
+                }
             }
         }
 
@@ -341,6 +343,15 @@ namespace YandereSimulatorLauncher2.Logic
     {
         public CannotConnectToMegaException(string inMessage, Exception inInnerException)
             : base(inMessage, inInnerException)
+        {
+
+        }
+    }
+
+    public class CannotLoginToMegaException : Exception
+    {
+        public CannotLoginToMegaException(string inMessage)
+            : base(inMessage)
         {
 
         }
