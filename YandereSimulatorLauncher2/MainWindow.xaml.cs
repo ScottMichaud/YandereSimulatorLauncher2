@@ -237,10 +237,6 @@ namespace YandereSimulatorLauncher2
                 {
                     await DoInstall();
                 }
-                else
-                {
-                    Close();
-                }
             }
         }
 
