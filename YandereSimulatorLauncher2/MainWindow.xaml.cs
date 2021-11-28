@@ -64,7 +64,6 @@ namespace YandereSimulatorLauncher2
         private void HandleVisualStyles()
         {
             if (NativeMethods.DwmCompositionIsEnabled)
-            //if (false)
             {
                 EnableHighQuality();
             }
@@ -82,8 +81,6 @@ namespace YandereSimulatorLauncher2
             AllowsTransparency = true;
             Background = Brushes.Transparent;
             ShadowBorder.Margin = new Thickness(13);
-
-            //
         }
 
         private void DisableHighQuality()
@@ -94,8 +91,6 @@ namespace YandereSimulatorLauncher2
             AllowsTransparency = false;
             Background = Brushes.Black;
             ShadowBorder.Margin = new Thickness(1);
-
-            //
         }
 
         private void AddEventHandlers()
@@ -152,12 +147,10 @@ namespace YandereSimulatorLauncher2
                 if (isDere)
                 {
                     SetDere();
-                    //UpdateFlyin.IsOpen = false;
                 }
                 else
                 {
                     SetYan();
-                    //UpdateFlyin.IsOpen = true;
                 }
             }
         }
@@ -222,10 +215,9 @@ namespace YandereSimulatorLauncher2
             {
                 await DoRelevantInstallTask();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Install button failed with the following exception: " + ex.Message);
-                Console.WriteLine(ex.StackTrace);
+
             }
         }
 
@@ -235,21 +227,16 @@ namespace YandereSimulatorLauncher2
             {
                 await DoPlay();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Play button failed with the following exception: " + ex.Message);
-                Console.WriteLine(ex.StackTrace);
-
                 MessageBoxResult result = MessageBox.Show("Yandere Simulator has failed to start.\nWould you like to fresh install the latest version?", "Failed to launch Yandere Simulator", MessageBoxButton.YesNo, MessageBoxImage.Error);
 
                 if (result == MessageBoxResult.Yes)
                 {
                     await DoInstall();
-                    Console.WriteLine("Do reinstall");
                 }
                 else
                 {
-                    Console.WriteLine("Do not reinstall");
                     Close();
                 }
             }
@@ -276,7 +263,6 @@ namespace YandereSimulatorLauncher2
                     break;
                 case Controls.YsInstallMode.PromptToUpdate:
                     await DoUpdate();
-                    //await DoInstall();
                     break;
                 case Controls.YsInstallMode.Downloading:
                     throw new NotImplementedException("The install button should be locked.");
@@ -447,34 +433,6 @@ namespace YandereSimulatorLauncher2
                 await DoInstall();
             }
         }
-
-        //
-        // DoUpdate() has been merged with DoInstall().
-        //
-        // Keeping around in case I want to start prompting the user to confirm updates
-        // again (in case they don't realize that an update will nuke their mods).
-        //
-        // It currently feels like an unnecessary (and unnecessarily intimidating) click.
-        //
-
-        //private async Task DoUpdate()
-        //{
-        //    ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Downloading;
-
-        //    await Logic.UpdatePlayHelpers.DownloadAndInstall(
-        //        (double bytes) =>
-        //        {
-        //            Console.WriteLine("Bytes received: " + bytes.ToString());
-        //        },
-        //        () =>
-        //        {
-        //            ElementMainPanelActionButtons.CurrentMode = Controls.YsInstallMode.Unpacking;
-        //            Console.WriteLine("Zip file has started extracting");
-        //        }
-        //        );
-
-        //    await DoCheckForUpdates();
-        //}
 
         private async Task DoPlay()
         {
