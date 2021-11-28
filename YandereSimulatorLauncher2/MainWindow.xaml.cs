@@ -29,6 +29,8 @@ namespace YandereSimulatorLauncher2
         private DateTime nextYanDereFlip = DateTime.MinValue;
         private const double secondsToDisplayDere = 15.0;
         private const double secondsToDisplayYan = 1.0;
+        private static readonly BitmapSource dereLogoSource = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png", UriKind.Relative));
+        private static readonly BitmapSource yanLogoSource = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo-black.png", UriKind.Relative));
 
         public MainWindow()
         {
@@ -161,7 +163,7 @@ namespace YandereSimulatorLauncher2
             ElementMainPanelActionButtons.IsDere = true;
             ElementMinimizeCloseButtons.IsDere = true;
             ElementDownloadBar.IsDere = true;
-            YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo.png", UriKind.Relative));
+            YandereSimulatorLogo.Source = dereLogoSource;
 
             GridTopbar.Background = App.HexToBrush("#ff80d3");
             GridLinkbar.Background = App.HexToBrush("#ee63bb");
@@ -184,7 +186,7 @@ namespace YandereSimulatorLauncher2
             ElementMainPanelActionButtons.IsDere = false;
             ElementMinimizeCloseButtons.IsDere = false;
             ElementDownloadBar.IsDere = false;
-            YandereSimulatorLogo.Source = new BitmapImage(new Uri("/YandereSimulatorLauncher2;component/EmbeddedAssets/Images/yandere-simulator-logo-black.png", UriKind.Relative));
+            YandereSimulatorLogo.Source = yanLogoSource;
 
             GridTopbar.Background = App.HexToBrush("#ff0000");
             GridLinkbar.Background = App.HexToBrush("#bb0000");
