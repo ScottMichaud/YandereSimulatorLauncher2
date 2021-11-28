@@ -38,7 +38,6 @@ namespace YandereSimulatorLauncher2
             InitializeComponent();
             HandleVisualStyles();
             AddEventHandlers();
-            StartYanDereFlipFlop();
         }
 
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -53,6 +52,18 @@ namespace YandereSimulatorLauncher2
             {
                 MessageBox.Show("Your computer reports that it is running a 32-bit operating system. Yandere Simulator requires 64-bit Windows since April 10th, 2020.\n\nThe launcher will not attempt to block you from downloading or running the game, but Windows is telling the launcher that Yandere Simulator will not run.", "Yandere Simulator is not supported on this device");
             }
+
+            if (IsRunningFromTempFileFolder)
+            {
+                MessageBox.Show("The launcher appears to be running in the temporary files folder.\n\nThis is usually because YandereSimulatorLauncher2.exe is being run from within YandereSimLauncher.zip.\n\nPlease extract YandereSimLauncher.zip into a folder and run YandereSimulatorLauncher2.exe from that new folder (otherwise Yandere Simulator will install as temporary files).", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            if (IsRunningFromSystemFolder)
+            {
+                MessageBox.Show("The launcher appears to be running in the system folder.\n\nThis is usually because YandereSimulatorLauncher2.exe is being run from within YandereSimLauncher.zip\n\nThis is very bad.\n\nPlease extract YandereSimLauncher.zip into a folder and run YandereSimulatorLauncher2.exe from that new folder.", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            StartYanDereFlipFlop();
 
             await DoCheckForUpdates();
             await DoCheckForLauncherUpdate();
@@ -93,6 +104,33 @@ namespace YandereSimulatorLauncher2
             AllowsTransparency = false;
             Background = Brushes.Black;
             ShadowBorder.Margin = new Thickness(1);
+        }
+
+        private bool IsRunningFromTempFileFolder
+        {
+            get
+            {
+                string currentFullPath = System.IO.Path.GetFullPath("./").ToLowerInvariant();
+                string tempFullPath = System.IO.Path.GetTempPath().ToLowerInvariant();
+
+                // It would be better to base off of executing assembly location by reflection, but it has been like this
+                // for years, and I don't have much time to support a follow-up release if it introduces obscure bugs.
+                //string reflectionFullPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+
+                //MessageBox.Show(currentFullPath + "\n\n" + tempFullPath + "\n\n" + systemFullPath + "\n\n" + reflectionFullPath);
+
+                return currentFullPath.StartsWith(tempFullPath);
+            }
+        }
+
+        private bool IsRunningFromSystemFolder
+        {
+            get
+            {
+                string currentFullPath = System.IO.Path.GetFullPath("./").ToLowerInvariant();
+                string systemFullPath = Environment.SystemDirectory.ToLowerInvariant();
+                return currentFullPath.StartsWith(systemFullPath);
+            }
         }
 
         private void AddEventHandlers()
