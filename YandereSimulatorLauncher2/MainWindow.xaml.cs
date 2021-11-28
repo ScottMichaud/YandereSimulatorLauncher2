@@ -144,9 +144,55 @@ namespace YandereSimulatorLauncher2
         {
             // On my PC, these two operations add a total of ~19ms to load time.
             // Probably don't need to do anything fancy.
-            Directory.CreateDirectory(App.LauncherTempFileDirectory);
+            if (Directory.Exists(App.LauncherTempFileDirectory) == false)
+            {
+                Directory.CreateDirectory(App.LauncherTempFileDirectory);
+            }
+
+            CleanOldVideoFiles();
             UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_dere, App.MainPanelDereFileLocation);
             UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, App.MainPanelYanFileLocation);
+            SetVideoFileVersion();
+        }
+
+        private static bool AreVideoFilesOld
+        {
+            get
+            {
+                if (File.Exists(App.MainPanelVideosVersionFileLocation) == false) { return true; }
+                string versionFileContents = File.ReadAllText(App.MainPanelVideosVersionFileLocation);
+                
+                if (int.TryParse(versionFileContents, out var number))
+                {
+                    return number < 2;
+                }
+
+                return true;
+            }
+        }
+
+        private static void CleanOldVideoFiles()
+        {
+            if (AreVideoFilesOld)
+            {
+                if (File.Exists(App.MainPanelDereFileLocation))
+                {
+                    File.Delete(App.MainPanelDereFileLocation);
+                }
+
+                if (File.Exists(App.MainPanelYanFileLocation))
+                {
+                    File.Delete(App.MainPanelYanFileLocation);
+                }
+            }
+        }
+
+        private static void SetVideoFileVersion()
+        {
+            if (AreVideoFilesOld)
+            {
+                File.WriteAllText(App.MainPanelVideosVersionFileLocation, "2");
+            }
         }
 
         private static void UnpackVideoFile(byte[] inResource, string inFilename)

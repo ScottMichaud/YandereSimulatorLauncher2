@@ -33,6 +33,14 @@ namespace YandereSimulatorLauncher2
             }
         }
 
+        public static string MainPanelVideosVersionFileLocation
+        {
+            get
+            {
+                return System.IO.Path.Combine(LauncherTempFileDirectory, "video-version.txt");
+            }
+        }
+
         public static string MainPanelDereFileLocation
         {
             get
@@ -53,32 +61,5 @@ namespace YandereSimulatorLauncher2
         {
             return new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(inHex));
         }
-
-        //
-        // Currently unused.
-        // Don't waste time deleting the file on shutdown. 
-        // It'll get overwritten next launch anyway.
-        // Videos were moved since this was written anyway.
-        //
-
-        //private void DeleteVideoResources()
-        //{
-        //    try
-        //    {
-        //        if (File.Exists("mainpanel-dere.wmv"))
-        //        {
-        //            File.Delete("mainpanel-dere.wmv");
-        //        }
-
-        //        if (File.Exists("mainpanel-yan.wmv"))
-        //        {
-        //            File.Delete("mainpanel-yan.wmv");
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        // If we fail to delete -- let it remain.
-        //    }
-        //}
     }
 }
