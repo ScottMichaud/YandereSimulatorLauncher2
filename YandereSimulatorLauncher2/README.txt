@@ -4,6 +4,14 @@
 ====================================
 
 Release Notes:
+Version 2.9.0
+ - Special thanks to GitHub users: counter185, Ramobo, and nolemretaWxd.
+ - (GitHub PR #12): (Contributed by GitHub user counter185) Download progress is now updated on the launcher taskbar icon.
+ - New yan/dere images and videos.
+ - (GitHub Issue #7): Fixed "Unknown Error" if launcher could access YandereSimulator.com but not login to Mega.nz. (Logout code was called without checking that a login occurred.)
+ - (GitHub Issue #13): Launcher will now let the user know if their Windows is 32-bit (and thus cannot play Yandere Simulator since the Unity upgrade on April 10th, 2020).
+ - (GitHub Issue #3): Launcher will now attempt to warn users if they are running from a Temp folder (or the system folder). Running the launcher from within a Zip prevented the launcher from finding previous installs of Yandere Simulator. (I also found out that it could cause occasional Mega.nz issues if the user cannot write to the launcher's current working directory... although the bulk of Mega.nz failures are caused by network errors.)
+
 Version 2.8.0
  - (GitHub Issue #5): Allow TLS 1.2 (and added more fallbacks in case settings are changed again).
  - Updated Mega.nz from NuGet to support new URL format.
@@ -13,6 +21,17 @@ Version 2.7.1
  - Initial public release
 
 Known Issues:
+ - The launcher can fail to download with an error message stating "Mega.nz"
+     => Most of the time, it's just Mega.nz being overloaded. It usually fixes itself within a few (3-4) hours. Mega.nz is a free service and we connect to it anonymously.
+     => Could be caused by internet problems, often related to cellular hotspots, school or office internet, etc. interfering with large file downloads.
+     => If some progress is made (ex: 1%, 20%, etc.) then it could be unstable WiFi.
+     => You could have places the launcher in a folder that you don't have write access to.
+     => You could be running YandereSimulatorLauncher2.exe without extracting it from YandereSimLauncher.zip. I have seen Windows set the working directory to C:\Windows\System32, which the launcher cannot write to. Extract YandereSimLauncher.zip into a folder, and run the YandereSimulatorLauncher2.exe that is in that folder.
+
+ - The launcher says "Install" every time that it is run.
+     => Extract YandereSimLauncher.zip into a folder, and run the YandereSimulatorLauncher2.exe that is in that folder.
+     => The launcher install the game in a folder called YandereSimulator that is in the same folder as YandereSimulatorLauncher2.exe. This is so the game can be installed onto external (ex: USB) hard drives.
+
  - Moving the window between monitors can make the video (temporarily) freeze and/or black-out.
      => The launcher uses Windows Media Video for file size and compatibility.
 
