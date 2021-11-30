@@ -50,17 +50,19 @@ namespace YandereSimulatorLauncher2
             
             if (Environment.Is64BitOperatingSystem == false)
             {
-                MessageBox.Show("Your computer reports that it is running a 32-bit operating system. Yandere Simulator requires 64-bit Windows since April 10th, 2020.\n\nThe launcher will not attempt to block you from downloading or running the game, but Windows is telling the launcher that Yandere Simulator will not run.", "Yandere Simulator is not supported on this device");
+                MessageBox.Show("Windows is telling the launcher that it is 32-bit.\n\nYandere Simulator requires 64-bit Windows.\n\nThis change happened on April 10th, 2020.", "Yandere Simulator is not supported on this device", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             if (IsRunningFromTempFileFolder)
             {
-                MessageBox.Show("The launcher appears to be running in the temporary files folder.\n\nThis is usually because YandereSimulatorLauncher2.exe is being run from within YandereSimLauncher.zip.\n\nPlease extract YandereSimLauncher.zip into a folder and run YandereSimulatorLauncher2.exe from that new folder (otherwise Yandere Simulator will install as temporary files).", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                // Slightly different title bar message so I can tell which is which from screenshots.
+                MessageBox.Show("You are attempting to run the launcher from within the ZIP.\n\nPlease extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             if (IsRunningFromSystemFolder)
             {
-                MessageBox.Show("The launcher appears to be running in the system folder.\n\nThis is usually because YandereSimulatorLauncher2.exe is being run from within YandereSimLauncher.zip\n\nThis is very bad.\n\nPlease extract YandereSimLauncher.zip into a folder and run YandereSimulatorLauncher2.exe from that new folder.", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                // Slightly different title bar message so I can tell which is which from screenshots.
+                MessageBox.Show("You are attempting to run the launcher from within the ZIP.\n\nPlease extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.", "Extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             StartYanDereFlipFlop();
@@ -417,22 +419,10 @@ namespace YandereSimulatorLauncher2
             }
             catch(Logic.CannotConnectToMegaException ex)
             {
-                string innerMessage = "";
-
-                // Find the inner exception.
-                if (ex.InnerException != null)
-                {
-                    innerMessage = "\n\nError Received: " + ex.InnerException.Message;
-                }
-
                 MessageBox.Show(
-                    "Unable to download the game at this point in time." +
-                    "\n\n" +
-                    "The launcher downloads the game from Mega.nz, which might be temporarily limiting downloads to your IP address." +
-                    "\n\n" +
-                    "Please try again later, or download the game from one of the alternate links provided at:" +
-                    "\n\n" +
-                    "yanderedev.wordpress.com/downloads" + innerMessage,
+                    "An error has occurred.\n\n" +
+                    "Try again later or download directly from:\n" +
+                    "https://yanderedev.wordpress.com/downloads",
                     "Cannot download game",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
