@@ -16,8 +16,6 @@ namespace YandereSimulatorLauncher2
         protected override void OnExit(System.Windows.ExitEventArgs e)
         {
             base.OnExit(e);
-
-            //DeleteVideoResources();
         }
 
         public static int LauncherVersion
