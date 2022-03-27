@@ -22,12 +22,12 @@
             </MediaElement>
         </Grid>
         <Canvas>
-            <CheckBox x:Name="YanDereEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False">
+            <CheckBox x:Name="YanDereEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False" Visibility="Hidden">
                 <TextBlock x:Name="YanDereEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
                 Yan/Dere Cycle
                 </TextBlock>
             </CheckBox>
-            <CheckBox x:Name="VideoEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False" Canvas.Top="21">
+            <CheckBox x:Name="VideoEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False" Canvas.Top="0">
                 <TextBlock x:Name="VideoEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
                 Video Background
                 </TextBlock>

@@ -4,6 +4,10 @@
 ====================================
 
 Release Notes:
+Version 2.10.0
+ - Updated branding with a new background image and video.
+ - The yan/dere timer has been disabled (as the new assets do not have yan versions).
+
 Version 2.9.0
  - Special thanks to GitHub users: counter185, Ramobo, and nolemretaWxd.
  - (GitHub PR #12): (Contributed by GitHub user counter185) Download progress is now updated on the launcher taskbar icon.
@@ -49,7 +53,7 @@ Known Issues:
 Source code is licensed under the permissive MIT license
 Assets are copyright their respective owners (ex: YandereDev).
 
-Copyright 2020 Scott Michaud
+Copyright 2022 Scott Michaud
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including

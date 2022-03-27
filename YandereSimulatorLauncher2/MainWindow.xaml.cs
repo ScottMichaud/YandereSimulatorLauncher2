@@ -63,7 +63,7 @@ namespace YandereSimulatorLauncher2
                 MessageBox.Show("The launcher appears to be running in the system folder.\n\nThis is usually because YandereSimulatorLauncher2.exe is being run from within YandereSimLauncher.zip\n\nThis is very bad.\n\nPlease extract YandereSimLauncher.zip into a folder and run YandereSimulatorLauncher2.exe from that new folder.", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            StartYanDereFlipFlop();
+            //StartYanDereFlipFlop();
 
             await DoCheckForUpdates();
             await DoCheckForLauncherUpdate();
@@ -151,7 +151,7 @@ namespace YandereSimulatorLauncher2
 
             CleanOldVideoFiles();
             UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_dere, App.MainPanelDereFileLocation);
-            UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, App.MainPanelYanFileLocation);
+            //UnpackVideoFile(YandereSimulatorLauncher2.Properties.Resources.mainpanel_yan, App.MainPanelYanFileLocation);
             SetVideoFileVersion();
         }
 
@@ -164,7 +164,7 @@ namespace YandereSimulatorLauncher2
                 
                 if (int.TryParse(versionFileContents, out var number))
                 {
-                    return number < 2;
+                    return number < 3;
                 }
 
                 return true;
@@ -191,7 +191,7 @@ namespace YandereSimulatorLauncher2
         {
             if (AreVideoFilesOld)
             {
-                File.WriteAllText(App.MainPanelVideosVersionFileLocation, "2");
+                File.WriteAllText(App.MainPanelVideosVersionFileLocation, "3");
             }
         }
 

@@ -81,16 +81,6 @@ namespace YandereSimulatorLauncher2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] mainpanel_yan {
-            get {
-                object obj = ResourceManager.GetObject("mainpanel_yan", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 514c7d78-0c49-4426-948e-883dd850a91f.
         /// </summary>
         internal static string VideoLocationGuid {

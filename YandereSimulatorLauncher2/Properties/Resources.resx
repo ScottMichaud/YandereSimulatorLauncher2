@@ -124,9 +124,10 @@
   <data name="mainpanel_dere" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\EmbeddedAssets\Videos\mainpanel-dere.wmv;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mainpanel_yan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<!--
+	<data name="mainpanel_yan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\EmbeddedAssets\Videos\mainpanel-yan.wmv;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  </data>-->
   <data name="VideoLocationGuid" xml:space="preserve">
     <value>514c7d78-0c49-4426-948e-883dd850a91f</value>
   </data>
