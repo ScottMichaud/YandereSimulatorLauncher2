@@ -265,7 +265,7 @@
     <value>Mise à jour du lanceur disponible...</value>
   </data>
   <data name="update_check" xml:space="preserve">
-    <value>Vérification des mises à jour...</value>
+    <value>Vérification</value>
   </data>
   <data name="video_background" xml:space="preserve">
     <value>Fond d'écran vidéo</value>

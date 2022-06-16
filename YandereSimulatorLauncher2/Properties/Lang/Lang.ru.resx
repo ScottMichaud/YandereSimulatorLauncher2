@@ -265,7 +265,7 @@
     <value>Доступно обновление для лаунчера...</value>
   </data>
   <data name="update_check" xml:space="preserve">
-    <value>Проверка на обновления...</value>
+    <value>Проверить</value>
   </data>
   <data name="video_background" xml:space="preserve">
     <value>Видео обои</value>
