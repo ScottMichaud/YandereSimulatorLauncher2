@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:YandereSimulatorLauncher2.Popups"
         xmlns:controls="clr-namespace:YandereSimulatorLauncher2.Controls"
         mc:Ignorable="d"
-        Title="Reporting Bugs" Height="440" Width="900" Background="#ff80d3" ResizeMode="NoResize">
+        xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
+
+        Title="{x:Static language:Lang.bug_report}" Height="440" Width="900" Background="#ff80d3" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
@@ -15,7 +17,7 @@
         </Grid.RowDefinitions>
         <Grid Background="#ee63bb" Grid.Row="0">
             <TextBlock VerticalAlignment="Center" Padding="15, 0, 0, 0" FontSize="39.75" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
-                Found a bug?
+                {x:Static language:Lang.found_bug}
             </TextBlock>
         </Grid>
         <Grid Grid.Row="1">
