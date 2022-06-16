@@ -230,7 +230,7 @@
     <value>Le bouton d'installation doit être verrouillé.</value>
   </data>
   <data name="start_failed" xml:space="preserve">
-    <value>Le simulateur Yandere n'a pas pu démarrer.\n souhaitez-vous installer la dernière version?</value>
+    <value>Le simulateur Yandere n'a pas pu démarrer. souhaitez-vous installer la dernière version?</value>
   </data>
   <data name="start_failed_title" xml:space="preserve">
     <value>Échec du lancement de Yandere Simulator</value>
@@ -244,16 +244,16 @@
     <comment>Twitter title</comment>
   </data>
   <data name="unable_to_download" xml:space="preserve">
-    <value>Impossible de télécharger le jeu. \n\n Le lanceur n'a pas réussi à se connecter Mega.nz service de téléchargement. \n\n Essayez de télécharger le jeu (sans le lanceur) à partir de l'un des liens alternatifs à: \n\n yanderedev.wordpress.com/downloads</value>
+    <value>Impossible de télécharger le jeu. Le lanceur n'a pas réussi à se connecter Mega.nz service de téléchargement. Essayez de télécharger le jeu (sans le lanceur) à partir de l'un des liens alternatifs à: yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="unknown_error" xml:space="preserve">
-    <value>Le lanceur a rencontré une erreur inconnue. \n\n Veuillez réessayer. Si le problème persiste, essayez d'aller dans le dossier du lanceur et de supprimer YandereSimulator.zip et le dossier YandereSimulator (s'ils existent). \n\n Vous pouvez également télécharger le jeu directement à partir de l'un des liens alternatifs fournis sur: \n\n yanderedev.wordpress.com/downloads</value>
+    <value>Le lanceur a rencontré une erreur inconnue. Veuillez réessayer. Si le problème persiste, essayez d'aller dans le dossier du lanceur et de supprimer YandereSimulator.zip et le dossier YandereSimulator (s'ils existent). Vous pouvez également télécharger le jeu directement à partir de l'un des liens alternatifs fournis sur:  yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="unpacking_text" xml:space="preserve">
     <value>Déballage...</value>
   </data>
   <data name="unpack_error" xml:space="preserve">
-    <value>La fermeture du lanceur lors du déballage des fichiers les corrompra.\n\n Vous souhaitez de toute façon forcer la fermeture du lanceur?</value>
+    <value>La fermeture du lanceur lors du déballage des fichiers les corrompra. Vous souhaitez de toute façon forcer la fermeture du lanceur?</value>
   </data>
   <data name="updates_not_aviable" xml:space="preserve">
     <value>Aucune mise à jour disponible !</value>
@@ -278,7 +278,7 @@
     <value>En attendant quelque chose à faire...</value>
   </data>
   <data name="website_not_provide" xml:space="preserve">
-    <value>Le site Web ne fournissait pas de lien de téléchargement que le lanceur pouvait reconnaître. \n\n Si le lanceur signale qu'une nouvelle version du lanceur est disponible, téléchargez-la. Sinon, signalez un problème de lanceur à partir du lanceur.</value>
+    <value>Le site Web ne fournissait pas de lien de téléchargement que le lanceur pouvait reconnaître.  Si le lanceur signale qu'une nouvelle version du lanceur est disponible, téléchargez-la. Sinon, signalez un problème de lanceur à partir du lanceur.</value>
   </data>
   <data name="youtube" xml:space="preserve">
     <value>Youtube</value>

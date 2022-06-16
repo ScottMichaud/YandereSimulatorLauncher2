@@ -174,7 +174,7 @@
     <value>Скачивание Yandere Simulator</value>
   </data>
   <data name="download_eror" xml:space="preserve">
-    <value>Произошла ошибка.\n\n Повторите попытку позже или загрузите непосредственно с:\n https://yanderedev.wordpress.com/downloads</value>
+    <value>Произошла ошибка. Повторите попытку позже или загрузите непосредственно с: https://yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="do_not_submit_to_yandere1" xml:space="preserve">
     <value>Не</value>
@@ -189,7 +189,7 @@
     <value>Распаковка файлов...</value>
   </data>
   <data name="extract_files" xml:space="preserve">
-    <value>Вы пытаетесь запустить программу запуска из ZIP-архива.\n\n пожалуйста, извлеките YandereSimulatorLauncher2.exe из YandereSimLauncher.zip перед его запуском.</value>
+    <value>Вы пытаетесь запустить программу запуска из ZIP-архива. пожалуйста, извлеките YandereSimulatorLauncher2.exe из YandereSimLauncher.zip перед его запуском.</value>
   </data>
   <data name="extract_please_title" xml:space="preserve">
     <value>Пожалуйста, извлеките YandereSimLauncher.zip</value>
@@ -230,7 +230,7 @@
     <value>Кнопка установки должна быть заблокирована.</value>
   </data>
   <data name="start_failed" xml:space="preserve">
-    <value>Не удалось запустить Yandere Simulator.\n Хотите заново установить последнюю версию?</value>
+    <value>Не удалось запустить Yandere Simulator. Хотите заново установить последнюю версию?</value>
   </data>
   <data name="start_failed_title" xml:space="preserve">
     <value>Ошибка запуска Yandere Simulator</value>
@@ -244,16 +244,16 @@
     <comment>Twitter title</comment>
   </data>
   <data name="unable_to_download" xml:space="preserve">
-    <value>Не удалось загрузить игру. \n\n Программе запуска не удалось войти в систему Mega.nz служба загрузки. \n\n Попробуйте загрузить игру (без лаунчера) по одной из альтернативных ссылок по адресу: \n\n yanderedev.wordpress.com/downloads</value>
+    <value>Не удалось загрузить игру. Программе запуска не удалось войти в систему Mega.nz служба загрузки. Попробуйте загрузить игру (без лаунчера) по одной из альтернативных ссылок по адресу: yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="unknown_error" xml:space="preserve">
-    <value>Программа запуска столкнулась с неизвестной ошибкой. \n\n Пожалуйста, попробуйте еще раз. Если проблема не устранена, попробуйте зайти в папку запуска и удалить YandereSimulator.zip и папку YandereSimulator (если они существуют). \n\n Вы также можете скачать игру напрямую по одной из альтернативных ссылок, представленных по адресу: \n\n yanderedev.wordpress.com/downloads</value>
+    <value>Программа запуска столкнулась с неизвестной ошибкой. Пожалуйста, попробуйте еще раз. Если проблема не устранена, попробуйте зайти в папку запуска и удалить YandereSimulator.zip и папку YandereSimulator (если они существуют). Вы также можете скачать игру напрямую по одной из альтернативных ссылок, представленных по адресу: yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="unpacking_text" xml:space="preserve">
     <value>Распаковка...</value>
   </data>
   <data name="unpack_error" xml:space="preserve">
-    <value>Закрытие лаунчера во время распаковки файлов приведет к их повреждению.\n\n Вы все равно хотите принудительно закрыть лаунчер?</value>
+    <value>Закрытие лаунчера во время распаковки файлов приведет к их повреждению. Вы все равно хотите принудительно закрыть лаунчер?</value>
   </data>
   <data name="updates_not_aviable" xml:space="preserve">
     <value>Нет доступных обновлений!</value>

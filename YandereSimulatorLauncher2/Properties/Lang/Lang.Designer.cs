@@ -205,7 +205,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на An error has occurred.\n\n Try again later or download directly from:\n https://yanderedev.wordpress.com/downloads.
+        ///   Ищет локализованную строку, похожую на An error has occurred. Try again later or download directly from: https://yanderedev.wordpress.com/downloads.
         /// </summary>
         public static string download_eror {
             get {
@@ -250,7 +250,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You are attempting to run the launcher from within the ZIP.\n\nPlease extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it..
+        ///   Ищет локализованную строку, похожую на You are attempting to run the launcher from within the ZIP. Please extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it..
         /// </summary>
         public static string extract_files {
             get {
@@ -385,7 +385,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Yandere Simulator has failed to start.\nWould you like to fresh install the latest version?.
+        ///   Ищет локализованную строку, похожую на Yandere Simulator has failed to start. Would you like to fresh install the latest version?.
         /// </summary>
         public static string start_failed {
             get {
@@ -421,7 +421,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unable to download the game. \n\n The launcher failed to login to Mega.nz&apos;s download service. \n\n Try to download the game (without the launcher) from one of the alternate links at: \n\n yanderedev.wordpress.com/downloads.
+        ///   Ищет локализованную строку, похожую на Unable to download the game. The launcher failed to login to Mega.nz&apos;s download service. Try to download the game (without the launcher) from one of the alternate links at: yanderedev.wordpress.com/downloads.
         /// </summary>
         public static string unable_to_download {
             get {
@@ -430,7 +430,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на The launcher encountered an unknown error. \n\n Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist). \n\n You can also download the game directly from one of the alternate links provided at: \n\n yanderedev.wordpress.com/downloads.
+        ///   Ищет локализованную строку, похожую на The launcher encountered an unknown error. Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist). You can also download the game directly from one of the alternate links provided at: yanderedev.wordpress.com/downloads.
         /// </summary>
         public static string unknown_error {
             get {
@@ -439,7 +439,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Closing the launcher while unpacking files will corrupt them.\n\nDo you wish to force-close the launcher anyway?.
+        ///   Ищет локализованную строку, похожую на Closing the launcher while unpacking files will corrupt them. Do you wish to force-close the launcher anyway?.
         /// </summary>
         public static string unpack_error {
             get {
@@ -520,7 +520,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на The website did not provide a download link that the launcher could recognize. \n\n If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher..
+        ///   Ищет локализованную строку, похожую на The website did not provide a download link that the launcher could recognize.  If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher..
         /// </summary>
         public static string website_not_provide {
             get {
@@ -529,7 +529,7 @@ namespace YandereSimulatorLauncher2.Properties.Lang {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Windows is telling the launcher that it is 32-bit.\n\nYandere Simulator requires 64-bit Windows.\n\nThis change happened on April 10th, 2020. .
+        ///   Ищет локализованную строку, похожую на Windows is telling the launcher that it is 32-bit.Yandere Simulator requires 64-bit Windows. This change happened on April 10th, 2020. .
         /// </summary>
         public static string x64Error {
             get {

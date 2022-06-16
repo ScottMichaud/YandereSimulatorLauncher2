@@ -174,7 +174,7 @@
     <value>Downloading Yandere Simulator:</value>
   </data>
   <data name="download_eror" xml:space="preserve">
-    <value>An error has occurred.\n\n Try again later or download directly from:\n https://yanderedev.wordpress.com/downloads</value>
+    <value>An error has occurred. Try again later or download directly from: https://yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="do_not_submit_to_yandere1" xml:space="preserve">
     <value>Do not</value>
@@ -189,7 +189,7 @@
     <value>Extracting files</value>
   </data>
   <data name="extract_files" xml:space="preserve">
-    <value>You are attempting to run the launcher from within the ZIP.\n\nPlease extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.</value>
+    <value>You are attempting to run the launcher from within the ZIP. Please extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.</value>
   </data>
   <data name="extract_please_title" xml:space="preserve">
     <value>Please extract YandereSimLauncher.zip</value>
@@ -233,7 +233,7 @@
     <value>The install button should be locked.</value>
   </data>
   <data name="start_failed" xml:space="preserve">
-    <value>Yandere Simulator has failed to start.\nWould you like to fresh install the latest version?</value>
+    <value>Yandere Simulator has failed to start. Would you like to fresh install the latest version?</value>
   </data>
   <data name="start_failed_title" xml:space="preserve">
     <value>Failed to launch Yandere Simulator</value>
@@ -247,16 +247,16 @@
     <comment>Twitter title</comment>
   </data>
   <data name="unable_to_download" xml:space="preserve">
-    <value>Unable to download the game. \n\n The launcher failed to login to Mega.nz's download service. \n\n Try to download the game (without the launcher) from one of the alternate links at: \n\n yanderedev.wordpress.com/downloads</value>
+    <value>Unable to download the game. The launcher failed to login to Mega.nz's download service. Try to download the game (without the launcher) from one of the alternate links at: yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="unknown_error" xml:space="preserve">
-    <value>The launcher encountered an unknown error. \n\n Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist). \n\n You can also download the game directly from one of the alternate links provided at: \n\n yanderedev.wordpress.com/downloads</value>
+    <value>The launcher encountered an unknown error. Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist). You can also download the game directly from one of the alternate links provided at: yanderedev.wordpress.com/downloads</value>
   </data>
   <data name="unpacking_text" xml:space="preserve">
     <value>Unpacking...</value>
   </data>
   <data name="unpack_error" xml:space="preserve">
-    <value>Closing the launcher while unpacking files will corrupt them.\n\nDo you wish to force-close the launcher anyway?</value>
+    <value>Closing the launcher while unpacking files will corrupt them. Do you wish to force-close the launcher anyway?</value>
   </data>
   <data name="updates_not_aviable" xml:space="preserve">
     <value>No update aviable</value>
@@ -281,10 +281,10 @@
     <value>Waiting for something to do...</value>
   </data>
   <data name="website_not_provide" xml:space="preserve">
-    <value>The website did not provide a download link that the launcher could recognize. \n\n If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.</value>
+    <value>The website did not provide a download link that the launcher could recognize.  If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.</value>
   </data>
   <data name="x64Error" xml:space="preserve">
-    <value>Windows is telling the launcher that it is 32-bit.\n\nYandere Simulator requires 64-bit Windows.\n\nThis change happened on April 10th, 2020. </value>
+    <value>Windows is telling the launcher that it is 32-bit.Yandere Simulator requires 64-bit Windows. This change happened on April 10th, 2020. </value>
   </data>
   <data name="youtube" xml:space="preserve">
     <value>Youtube</value>
