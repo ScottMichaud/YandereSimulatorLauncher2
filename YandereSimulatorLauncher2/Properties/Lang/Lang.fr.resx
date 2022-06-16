@@ -121,13 +121,40 @@
     <value>À propos de</value>
     <comment>About title</comment>
   </data>
+  <data name="affecting_left" xml:space="preserve">
+    <value>&amp; lt; Report Signaler les bogues affectant le lanceur sur la gauche.</value>
+  </data>
   <data name="blog" xml:space="preserve">
     <value>Blog</value>
     <comment>Blog title</comment>
   </data>
+  <data name="bugs_to_the_link" xml:space="preserve">
+    <value>envoyez launcher bugs au lien ci-dessus.</value>
+  </data>
+  <data name="bug_affets" xml:space="preserve">
+    <value>Si le bogue affecte le jeu, pas le lanceur, soumettez le bogue du jeu à YandereDev via son site Web.</value>
+  </data>
   <data name="bug_report" xml:space="preserve">
     <value>Signaler des bogues</value>
     <comment>Reporting Bugs title</comment>
+  </data>
+  <data name="busy_extracting" xml:space="preserve">
+    <value>Extraction de Fichiers Occupée</value>
+  </data>
+  <data name="cannot_download_game" xml:space="preserve">
+    <value>Impossible de télécharger le jeu</value>
+  </data>
+  <data name="cannot_update" xml:space="preserve">
+    <value>Impossible de mettre à jour le simulateur Yandere</value>
+  </data>
+  <data name="check_status" xml:space="preserve">
+    <value>Vérifiez l'état des bogues signalés en consultant l'onglet Problèmes du projet sur GitHub. Si vous avez un compte,vous pouvez également commenter les problèmes, soumettre des demandes d'extraction et contribuer au lanceur.</value>
+  </data>
+  <data name="check_updates" xml:space="preserve">
+    <value>Vérification de la mise à jour</value>
+  </data>
+  <data name="confirming" xml:space="preserve">
+    <value>Confirmation...</value>
   </data>
   <data name="contact" xml:space="preserve">
     <value>Contact</value>
@@ -137,13 +164,76 @@
     <value>Donate</value>
     <comment>Donate title</comment>
   </data>
+  <data name="downloading_launcher" xml:space="preserve">
+    <value>Téléchargement du nouveau lanceur</value>
+  </data>
+  <data name="downloading_text" xml:space="preserve">
+    <value>Télécharger...</value>
+  </data>
+  <data name="downloading_yandere" xml:space="preserve">
+    <value>Téléchargement du simulateur Yandere :</value>
+  </data>
+  <data name="download_eror" xml:space="preserve">
+    <value>Une erreur s'est produite.\n\n Réessayez plus tard ou téléchargez directement à partir de:\n https://yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="do_not_submit_to_yandere1" xml:space="preserve">
+    <value>Ne pas</value>
+  </data>
+  <data name="do_not_submit_to_yandere2" xml:space="preserve">
+    <value>soumettre les rapports de bogues du lanceur à YandereDev.</value>
+  </data>
+  <data name="email_reports" xml:space="preserve">
+    <value>Le chef de projet accepte les rapports de bogues par courriel à l'adresse suivante:</value>
+  </data>
+  <data name="extracting_process" xml:space="preserve">
+    <value>Extraction des fichiers</value>
+  </data>
+  <data name="extract_files" xml:space="preserve">
+    <value>Vous essayez d'exécuter le lanceur à partir du ZIP.\n\n VEUILLEZ extraire YandereSimulatorLauncher2.exe de YandereSimLauncher.zip avant de l'exécuter.</value>
+  </data>
+  <data name="extract_please_title" xml:space="preserve">
+    <value>Veuillez extraire YandereSimLauncher.zip</value>
+  </data>
   <data name="found_bug" xml:space="preserve">
     <value>Vous avez trouvé un bogue ?</value>
     <comment>Found a bug title</comment>
   </data>
+  <data name="found_bug_launcher" xml:space="preserve">
+    <value>Bug dans le lanceur</value>
+  </data>
+  <data name="game_bug" xml:space="preserve">
+    <value>Bug dans le jeu</value>
+  </data>
+  <data name="install_button" xml:space="preserve">
+    <value>Installer</value>
+  </data>
+  <data name="is_running" xml:space="preserve">
+    <value>Le simulateur Yandere est en cours d'exécution. Veuillez arrêter le jeu avant d'effectuer la mise à jour.</value>
+  </data>
   <data name="launcher_bug" xml:space="preserve">
     <value>Bug dans le lanceur</value>
     <comment>Bug in the launcher title</comment>
+  </data>
+  <data name="launching_test" xml:space="preserve">
+    <value>Départ...</value>
+  </data>
+  <data name="open_source" xml:space="preserve">
+    <value>Le lanceur de simulateur Yandere est un projet open source qui est maintenu par des bénévoles.</value>
+  </data>
+  <data name="play_button" xml:space="preserve">
+    <value>Jouer</value>
+  </data>
+  <data name="retry_install" xml:space="preserve">
+    <value>Réessayez l'installation</value>
+  </data>
+  <data name="revelant_install_task" xml:space="preserve">
+    <value>Le bouton d'installation doit être verrouillé.</value>
+  </data>
+  <data name="start_failed" xml:space="preserve">
+    <value>Le simulateur Yandere n'a pas pu démarrer.\n souhaitez-vous installer la dernière version?</value>
+  </data>
+  <data name="start_failed_title" xml:space="preserve">
+    <value>Échec du lancement de Yandere Simulator</value>
   </data>
   <data name="twitch" xml:space="preserve">
     <value>Twitch</value>
@@ -153,9 +243,42 @@
     <value>Twitter</value>
     <comment>Twitter title</comment>
   </data>
+  <data name="unable_to_download" xml:space="preserve">
+    <value>Impossible de télécharger le jeu. \n\n Le lanceur n'a pas réussi à se connecter Mega.nz service de téléchargement. \n\n Essayez de télécharger le jeu (sans le lanceur) à partir de l'un des liens alternatifs à: \n\n yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="unknown_error" xml:space="preserve">
+    <value>Le lanceur a rencontré une erreur inconnue. \n\n Veuillez réessayer. Si le problème persiste, essayez d'aller dans le dossier du lanceur et de supprimer YandereSimulator.zip et le dossier YandereSimulator (s'ils existent). \n\n Vous pouvez également télécharger le jeu directement à partir de l'un des liens alternatifs fournis sur: \n\n yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="unpacking_text" xml:space="preserve">
+    <value>Déballage...</value>
+  </data>
+  <data name="unpack_error" xml:space="preserve">
+    <value>La fermeture du lanceur lors du déballage des fichiers les corrompra.\n\n Vous souhaitez de toute façon forcer la fermeture du lanceur?</value>
+  </data>
+  <data name="updates_not_aviable" xml:space="preserve">
+    <value>Aucune mise à jour disponible !</value>
+  </data>
+  <data name="update_aviabl" xml:space="preserve">
+    <value>Mises à jour disponibles</value>
+  </data>
+  <data name="update_aviable" xml:space="preserve">
+    <value>Mise à jour du lanceur disponible...</value>
+  </data>
+  <data name="update_check" xml:space="preserve">
+    <value>Vérification des mises à jour...</value>
+  </data>
+  <data name="video_background" xml:space="preserve">
+    <value>Fond d'écran vidéo</value>
+  </data>
   <data name="volunteer" xml:space="preserve">
     <value>Bénévole</value>
     <comment>Volunteer title</comment>
+  </data>
+  <data name="waiting_for_todo" xml:space="preserve">
+    <value>En attendant quelque chose à faire...</value>
+  </data>
+  <data name="website_not_provide" xml:space="preserve">
+    <value>Le site Web ne fournissait pas de lien de téléchargement que le lanceur pouvait reconnaître. \n\n Si le lanceur signale qu'une nouvelle version du lanceur est disponible, téléchargez-la. Sinon, signalez un problème de lanceur à partir du lanceur.</value>
   </data>
   <data name="youtube" xml:space="preserve">
     <value>Youtube</value>

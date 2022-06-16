@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
+             xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -28,9 +29,7 @@
                 </TextBlock>
             </CheckBox>
             <CheckBox x:Name="VideoEnabledCheckbox" Margin="5, 5, 5, 5" Focusable="False" Canvas.Top="21">
-                <TextBlock x:Name="VideoEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1">
-                Video Background
-                </TextBlock>
+                <TextBlock Text="{x:Static language:Lang.video_background}" x:Name="VideoEnabledCheckboxText" Background="#44FFFFFF" Padding="5, 0, 5, 1" />
             </CheckBox>
             <local:ReportBugButton x:Name="ReportBugButton" Canvas.Right="5" Canvas.Top="4">
                 

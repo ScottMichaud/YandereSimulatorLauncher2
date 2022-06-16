@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using System.Windows.Controls;
 using System.ComponentModel;
-using System.Windows.Data;
-using System.Windows.Documents;
+
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using System.Windows.Shell;
 
@@ -37,7 +30,7 @@ namespace YandereSimulatorLauncher2
             UnpackVideoResources();
             InitializeComponent();
             HandleVisualStyles();
-            AddEventHandlers();
+            AddEventHandlers(GetElementYanDereVideoPlayer());
         }
 
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -50,19 +43,19 @@ namespace YandereSimulatorLauncher2
             
             if (Environment.Is64BitOperatingSystem == false)
             {
-                MessageBox.Show("Windows is telling the launcher that it is 32-bit.\n\nYandere Simulator requires 64-bit Windows.\n\nThis change happened on April 10th, 2020.", "Yandere Simulator is not supported on this device", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(Properties.Lang.Lang.x64Error, Properties.Lang.Lang.notSupported, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             if (IsRunningFromTempFileFolder)
             {
                 // Slightly different title bar message so I can tell which is which from screenshots.
-                MessageBox.Show("You are attempting to run the launcher from within the ZIP.\n\nPlease extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.", "Please extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(Properties.Lang.Lang.extract_files, Properties.Lang.Lang.extract_please_title, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             if (IsRunningFromSystemFolder)
             {
                 // Slightly different title bar message so I can tell which is which from screenshots.
-                MessageBox.Show("You are attempting to run the launcher from within the ZIP.\n\nPlease extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.", "Extract YandereSimLauncher.zip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(Properties.Lang.Lang.extract_files, Properties.Lang.Lang.extract_please_title, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             StartYanDereFlipFlop();
@@ -135,11 +128,16 @@ namespace YandereSimulatorLauncher2
             }
         }
 
-        private void AddEventHandlers()
+        private Controls.YanDereVideoPlayer GetElementYanDereVideoPlayer()
+        {
+            return ElementYanDereVideoPlayer;
+        }
+
+        private void AddEventHandlers(Controls.YanDereVideoPlayer elementYanDereVideoPlayer)
         {
             ElementMainPanelActionButtons.InstallButtonClicked += InstallButton_OnClick;
             ElementMainPanelActionButtons.PlayButtonClicked += PlayButton_OnClick;
-            ElementYanDereVideoPlayer.YanDereCheckboxClicked += VideoPlayer_OnDereReset;
+            elementYanDereVideoPlayer.YanDereCheckboxClicked += VideoPlayer_OnDereReset;
         }
 
         private void UnpackVideoResources()
@@ -317,7 +315,7 @@ namespace YandereSimulatorLauncher2
             }
             catch (Exception)
             {
-                MessageBoxResult result = MessageBox.Show("Yandere Simulator has failed to start.\nWould you like to fresh install the latest version?", "Failed to launch Yandere Simulator", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                MessageBoxResult result = MessageBox.Show(Properties.Lang.Lang.start_failed, Properties.Lang.Lang.start_failed_title, MessageBoxButton.YesNo, MessageBoxImage.Error);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -331,7 +329,7 @@ namespace YandereSimulatorLauncher2
             switch (ElementMainPanelActionButtons.CurrentMode)
             {
                 case Controls.YsInstallMode.Unset:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.RetryInstall:
                     await DoInstall();
                     break;
@@ -339,9 +337,9 @@ namespace YandereSimulatorLauncher2
                     await DoInstall();
                     break;
                 case Controls.YsInstallMode.CheckingForUpdates:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.ConfirmingUpdate:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.PromptToCheck:
                     await DoCheckForUpdates();
                     break;
@@ -349,17 +347,17 @@ namespace YandereSimulatorLauncher2
                     await DoUpdate();
                     break;
                 case Controls.YsInstallMode.Downloading:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.Unpacking:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.Launching:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.UpdatingLauncher:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
                 case Controls.YsInstallMode.YouAreUpToDate:
                     break;
                 default:
-                    throw new NotImplementedException("The install button should be locked.");
+                    throw new NotImplementedException(Properties.Lang.Lang.revelant_install_task);
             }
         }
 
@@ -410,48 +408,29 @@ namespace YandereSimulatorLauncher2
             }
             catch(Logic.ServiceNotFoundException)
             {
-                MessageBox.Show("The website did not provide a download link that the launcher could recognize." +
-                    "\n\n" +
-                    "If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.",
-                    "Cannot download game",
+                MessageBox.Show(Properties.Lang.Lang.website_not_provide,
+                    Properties.Lang.Lang.cannot_download_game,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
-            catch(Logic.CannotConnectToMegaException ex)
+            catch (Logic.CannotConnectToMegaException)
             {
-                MessageBox.Show(
-                    "An error has occurred.\n\n" +
-                    "Try again later or download directly from:\n" +
-                    "https://yanderedev.wordpress.com/downloads",
-                    "Cannot download game",
+                MessageBox.Show(Properties.Lang.Lang.download_eror,
+                    Properties.Lang.Lang.cannot_download_game,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
             catch (Logic.CannotLoginToMegaException)
             {
-                MessageBox.Show(
-                    "Unable to download the game." +
-                    "\n\n" +
-                    "The launcher failed to login to Mega.nz's download service." +
-                    "\n\n" +
-                    "Try to download the game (without the launcher) from one of the alternate links at:" +
-                    "\n\n" +
-                    "yanderedev.wordpress.com/downloads",
-                    "Cannot download game",
+                MessageBox.Show(Properties.Lang.Lang.unable_to_download,
+                    Properties.Lang.Lang.cannot_download_game,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show(
-                    "The launcher encountered an unknown error." +
-                    "\n\n" +
-                    "Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist)." +
-                    "\n\n" +
-                    "You can also download the game directly from one of the alternate links provided at:" +
-                    "\n\n" +
-                    "yanderedev.wordpress.com/downloads",
-                    "Cannot download game",
+                MessageBox.Show(Properties.Lang.Lang.unknown_error,
+                    Properties.Lang.Lang.cannot_download_game,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
@@ -498,7 +477,7 @@ namespace YandereSimulatorLauncher2
         {
             if (Logic.UpdatePlayHelpers.IsGameRunning())
             {
-                MessageBox.Show("Yandere Simulator is running. Please shut down the game before performing the update.", "Cannot update Yandere Simulator", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show(Properties.Lang.Lang.is_running, Properties.Lang.Lang.cannot_update, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
@@ -514,16 +493,13 @@ namespace YandereSimulatorLauncher2
             Close();
         }
 
-        private void VideoPlayer_OnDereReset(object sender, EventArgs e)
-        {
-            SetDere();
-        }
+        private void VideoPlayer_OnDereReset(object sender, EventArgs e) => SetDere();
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             if (ElementMainPanelActionButtons.CurrentMode == Controls.YsInstallMode.Unpacking)
             {
-                if (MessageBox.Show("Closing the launcher while unpacking files will corrupt them.\n\nDo you wish to force-close the launcher anyway?", "Busy Extracting Files", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) != MessageBoxResult.Yes)
+                if (MessageBox.Show(Properties.Lang.Lang.unpack_error, Properties.Lang.Lang.busy_extracting, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) != MessageBoxResult.Yes)
                 {
                     e.Cancel = true;
                 }

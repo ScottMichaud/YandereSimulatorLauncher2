@@ -277,13 +277,13 @@ namespace YandereSimulatorLauncher2.Controls
             switch (inMode)
             {
                 case DownloadBarMode.Waiting:
-                    return "Waiting for something to do...";
+                    return Properties.Lang.Lang.waiting_for_todo;
                 case DownloadBarMode.DownloadingGame:
-                    return "Downloading Yandere Simulator:";
+                    return Properties.Lang.Lang.downloading_yandere;
                 case DownloadBarMode.DownloadingLauncher:
-                    return "Downloading new launcher";
+                    return Properties.Lang.Lang.downloading_launcher;
                 case DownloadBarMode.Extracting:
-                    return "Extracting files";
+                    return Properties.Lang.Lang.extracting_process;
                 default:
                     throw new NotImplementedException();
             }

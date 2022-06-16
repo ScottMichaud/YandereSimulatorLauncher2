@@ -121,13 +121,40 @@
     <value>О нас</value>
     <comment>About title</comment>
   </data>
+  <data name="affecting_left" xml:space="preserve">
+    <value>Сообщать об ошибках, влияющих на лаунчер слева.</value>
+  </data>
   <data name="blog" xml:space="preserve">
     <value>Блог</value>
     <comment>Blog title</comment>
   </data>
+  <data name="bugs_to_the_link" xml:space="preserve">
+    <value>отправляйте сообщения об ошибках запуска по приведенной выше ссылке.</value>
+  </data>
+  <data name="bug_affets" xml:space="preserve">
+    <value>Если ошибка затрагивает игру, а не лаунчер, отправьте сообщение об ошибке в игре YandereDev на сайте.</value>
+  </data>
   <data name="bug_report" xml:space="preserve">
     <value>Сообщить о ошибках</value>
     <comment>Reporting Bugs title</comment>
+  </data>
+  <data name="busy_extracting" xml:space="preserve">
+    <value>Занят Извлечением Файлов</value>
+  </data>
+  <data name="cannot_download_game" xml:space="preserve">
+    <value>Не можем скачать игру.</value>
+  </data>
+  <data name="cannot_update" xml:space="preserve">
+    <value>Не можем обновить Yandere Simulator!</value>
+  </data>
+  <data name="check_status" xml:space="preserve">
+    <value>Проверьте статус сообщенных ошибок, просмотрев вкладку с ошибками проекта на GitHub. Если у вас есть учетная запись, вы также можете комментировать ошибки,  вносить свой вклад в развитие лаунчера.</value>
+  </data>
+  <data name="check_updates" xml:space="preserve">
+    <value>Проверка обновления</value>
+  </data>
+  <data name="confirming" xml:space="preserve">
+    <value>Подтверждение..</value>
   </data>
   <data name="contact" xml:space="preserve">
     <value>Связь</value>
@@ -137,13 +164,76 @@
     <value>Пожертвовать</value>
     <comment>Donate title</comment>
   </data>
+  <data name="downloading_launcher" xml:space="preserve">
+    <value>Скачивание нового лаунчера</value>
+  </data>
+  <data name="downloading_text" xml:space="preserve">
+    <value>Скачивание...</value>
+  </data>
+  <data name="downloading_yandere" xml:space="preserve">
+    <value>Скачивание Yandere Simulator</value>
+  </data>
+  <data name="download_eror" xml:space="preserve">
+    <value>Произошла ошибка.\n\n Повторите попытку позже или загрузите непосредственно с:\n https://yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="do_not_submit_to_yandere1" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="do_not_submit_to_yandere2" xml:space="preserve">
+    <value>Отправляйте отчёты с ошибками в лаунчере YandereDev.</value>
+  </data>
+  <data name="email_reports" xml:space="preserve">
+    <value>Руководитель принимает отчёты об ошибках по следующему адресу e-mail:</value>
+  </data>
+  <data name="extracting_process" xml:space="preserve">
+    <value>Распаковка файлов...</value>
+  </data>
+  <data name="extract_files" xml:space="preserve">
+    <value>Вы пытаетесь запустить программу запуска из ZIP-архива.\n\n пожалуйста, извлеките YandereSimulatorLauncher2.exe из YandereSimLauncher.zip перед его запуском.</value>
+  </data>
+  <data name="extract_please_title" xml:space="preserve">
+    <value>Пожалуйста, извлеките YandereSimLauncher.zip</value>
+  </data>
   <data name="found_bug" xml:space="preserve">
     <value>Нашли ошибку?</value>
     <comment>Found a bug title</comment>
   </data>
+  <data name="found_bug_launcher" xml:space="preserve">
+    <value>Ошибка в лаунчере.</value>
+  </data>
+  <data name="game_bug" xml:space="preserve">
+    <value>Ошибка в игре</value>
+  </data>
+  <data name="install_button" xml:space="preserve">
+    <value>Установить</value>
+  </data>
+  <data name="is_running" xml:space="preserve">
+    <value>Yandere Simulator запущен. Пожалуйста, выключите игру перед выполнением обновления.</value>
+  </data>
   <data name="launcher_bug" xml:space="preserve">
     <value>Ошибка в лаунчере</value>
     <comment>Bug in the launcher title</comment>
+  </data>
+  <data name="launching_test" xml:space="preserve">
+    <value>Запуск...</value>
+  </data>
+  <data name="open_source" xml:space="preserve">
+    <value>Лаунчер Yandere Simulator Launcher - это проект с открытым исходным кодом.</value>
+  </data>
+  <data name="play_button" xml:space="preserve">
+    <value>Играть</value>
+  </data>
+  <data name="retry_install" xml:space="preserve">
+    <value>Повторить установку</value>
+  </data>
+  <data name="revelant_install_task" xml:space="preserve">
+    <value>Кнопка установки должна быть заблокирована.</value>
+  </data>
+  <data name="start_failed" xml:space="preserve">
+    <value>Не удалось запустить Yandere Simulator.\n Хотите заново установить последнюю версию?</value>
+  </data>
+  <data name="start_failed_title" xml:space="preserve">
+    <value>Ошибка запуска Yandere Simulator</value>
   </data>
   <data name="twitch" xml:space="preserve">
     <value>Twitch</value>
@@ -153,9 +243,42 @@
     <value>Twitter</value>
     <comment>Twitter title</comment>
   </data>
+  <data name="unable_to_download" xml:space="preserve">
+    <value>Не удалось загрузить игру. \n\n Программе запуска не удалось войти в систему Mega.nz служба загрузки. \n\n Попробуйте загрузить игру (без лаунчера) по одной из альтернативных ссылок по адресу: \n\n yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="unknown_error" xml:space="preserve">
+    <value>Программа запуска столкнулась с неизвестной ошибкой. \n\n Пожалуйста, попробуйте еще раз. Если проблема не устранена, попробуйте зайти в папку запуска и удалить YandereSimulator.zip и папку YandereSimulator (если они существуют). \n\n Вы также можете скачать игру напрямую по одной из альтернативных ссылок, представленных по адресу: \n\n yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="unpacking_text" xml:space="preserve">
+    <value>Распаковка...</value>
+  </data>
+  <data name="unpack_error" xml:space="preserve">
+    <value>Закрытие лаунчера во время распаковки файлов приведет к их повреждению.\n\n Вы все равно хотите принудительно закрыть лаунчер?</value>
+  </data>
+  <data name="updates_not_aviable" xml:space="preserve">
+    <value>Нет доступных обновлений!</value>
+  </data>
+  <data name="update_aviabl" xml:space="preserve">
+    <value>Доступны обновления</value>
+  </data>
+  <data name="update_aviable" xml:space="preserve">
+    <value>Доступно обновление для лаунчера...</value>
+  </data>
+  <data name="update_check" xml:space="preserve">
+    <value>Проверка на обновления...</value>
+  </data>
+  <data name="video_background" xml:space="preserve">
+    <value>Видео обои</value>
+  </data>
   <data name="volunteer" xml:space="preserve">
     <value>Волонтёры</value>
     <comment>Volunteer title</comment>
+  </data>
+  <data name="waiting_for_todo" xml:space="preserve">
+    <value>Ждём каких-либо действий</value>
+  </data>
+  <data name="website_not_provide" xml:space="preserve">
+    <value>Веб-сайт не предоставил ссылку для загрузки, которую могла бы распознать программа запуска. \n\n Если программа запуска сообщает, что доступна новая версия программы запуска, загрузите ее. В противном случае сообщите о проблеме с пусковой установкой из пусковой установки.</value>
   </data>
   <data name="youtube" xml:space="preserve">
     <value>Youtube</value>
