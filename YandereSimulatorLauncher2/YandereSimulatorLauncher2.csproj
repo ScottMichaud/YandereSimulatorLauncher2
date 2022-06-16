@@ -8,10 +8,25 @@
     <AssemblyVersion>2.9.0.0</AssemblyVersion>
     <FileVersion>2.9.0.0</FileVersion>
     <Version>2.9.0</Version>
+    <NeutralLanguage>en</NeutralLanguage>
+    <SignAssembly>False</SignAssembly>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Description>YandereSimulator Launcher.</Description>
+    <PackageProjectUrl>yanderesimulator.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ScottMichaud/YandereSimulatorLauncher2</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
