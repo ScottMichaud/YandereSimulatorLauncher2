@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
+             xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Border x:Name="RootButton" BorderThickness="1" BorderBrush="#95286d" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" MouseDown="OnMouseDown" MouseUp="OnMouseUp" Background="#ff80d3">
-        <TextBlock x:Name="ButtonText" FontFamily="{StaticResource LeagueGothic}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23.75" Foreground="White" Text="Report a bug" Padding="30, 5, 30, 4" />
+        <TextBlock x:Name="ButtonText" FontFamily="{StaticResource LeagueGothic}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23.75" Foreground="White" Text="{x:Static language:Lang.bug_report}" Padding="30, 5, 30, 4" />
     </Border>
 </UserControl>

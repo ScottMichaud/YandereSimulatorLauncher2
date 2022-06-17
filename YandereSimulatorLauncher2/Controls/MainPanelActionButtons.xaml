@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
+             xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200">
     <Grid Width="200">
@@ -14,11 +15,13 @@
         </Grid.RowDefinitions>
 
         <Border x:Name="InstallUpdateButton" Grid.Row="0" Background="#ff80d3" Focusable="False" CornerRadius="22" BorderThickness="1" MouseEnter="Install_OnMouseEnter" MouseLeave="Install_OnMouseLeave" MouseDown="Install_OnMouseDown" MouseUp="Install_OnMouseUp">
-            <TextBlock x:Name="InstallUpdateButtonText" FontFamily="{StaticResource LeagueGothic}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23.75" Foreground="White" Text="Test Install" />
+            <TextBlock x:Name="InstallUpdateButtonText" FontFamily="{StaticResource LeagueGothic}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23.75" Foreground="White" Text="{x:Static language:Lang.install_button}" >
+            </TextBlock>
         </Border>
 
         <Border x:Name="PlayButton" Grid.Row="2" Background="#ff80d3" Focusable="False" CornerRadius="22" BorderThickness="1" MouseEnter="Play_OnMouseEnter" MouseLeave="Play_OnMouseLeave" MouseDown="Play_OnMouseDown" MouseUp="Play_OnMouseUp">
-            <TextBlock x:Name="PlayButtonText" FontFamily="{StaticResource LeagueGothic}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23.75" Foreground="White" Text="Test Play" />
+            <TextBlock x:Name="PlayButtonText" FontFamily="{StaticResource LeagueGothic}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23.75" Foreground="White" Text="{x:Static language:Lang.play_button}" >
+            </TextBlock>
         </Border>
     </Grid>
 </UserControl>

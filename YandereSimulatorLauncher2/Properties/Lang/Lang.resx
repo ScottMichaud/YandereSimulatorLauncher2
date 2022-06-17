@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about" xml:space="preserve">
+    <value>About</value>
+    <comment>About title</comment>
+  </data>
+  <data name="affecting_left" xml:space="preserve">
+    <value>&amp;lt;-- Report bugs affecting the launcher on the left.</value>
+  </data>
+  <data name="blog" xml:space="preserve">
+    <value>Blog</value>
+    <comment>Blog title</comment>
+  </data>
+  <data name="bugs_to_the_link" xml:space="preserve">
+    <value>submit launcher bugs to the above link.</value>
+  </data>
+  <data name="bug_affets" xml:space="preserve">
+    <value>If the bug affects the game, not the launcher, then submit the game bug to YandereDev through his website.</value>
+  </data>
+  <data name="bug_report" xml:space="preserve">
+    <value>Reporting Bugs</value>
+    <comment>Reporting Bugs title</comment>
+  </data>
+  <data name="busy_extracting" xml:space="preserve">
+    <value>Busy Extracting Files</value>
+  </data>
+  <data name="cannot_download_game" xml:space="preserve">
+    <value>Cannot download game</value>
+  </data>
+  <data name="cannot_update" xml:space="preserve">
+    <value>Cannot update Yandere Simulator</value>
+  </data>
+  <data name="check_status" xml:space="preserve">
+    <value>Check out the status of reported bugs by looking at the project's issues tab on GitHub. If you have an account, you may also comment on issues, submit pull requests, and otherwise contribute to the launcher.</value>
+  </data>
+  <data name="check_updates" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="confirming" xml:space="preserve">
+    <value>Confirming...</value>
+  </data>
+  <data name="contact" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact title</comment>
+  </data>
+  <data name="donate" xml:space="preserve">
+    <value>Donate</value>
+    <comment>Donate title</comment>
+  </data>
+  <data name="downloading_launcher" xml:space="preserve">
+    <value>Downloading new launcher</value>
+  </data>
+  <data name="downloading_text" xml:space="preserve">
+    <value>Downloading...</value>
+  </data>
+  <data name="downloading_yandere" xml:space="preserve">
+    <value>Downloading Yandere Simulator:</value>
+  </data>
+  <data name="download_eror" xml:space="preserve">
+    <value>An error has occurred. Try again later or download directly from: https://yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="do_not_submit_to_yandere1" xml:space="preserve">
+    <value>Do not</value>
+  </data>
+  <data name="do_not_submit_to_yandere2" xml:space="preserve">
+    <value>submit launcher bug reports to YandereDev.</value>
+  </data>
+  <data name="email_reports" xml:space="preserve">
+    <value>The project lead accepts bug reports by email at the following address:</value>
+  </data>
+  <data name="extracting_process" xml:space="preserve">
+    <value>Extracting files</value>
+  </data>
+  <data name="extract_files" xml:space="preserve">
+    <value>You are attempting to run the launcher from within the ZIP. Please extract YandereSimulatorLauncher2.exe from YandereSimLauncher.zip before running it.</value>
+  </data>
+  <data name="extract_please_title" xml:space="preserve">
+    <value>Please extract YandereSimLauncher.zip</value>
+  </data>
+  <data name="found_bug" xml:space="preserve">
+    <value>Found a bug?</value>
+    <comment>Found a bug title</comment>
+  </data>
+  <data name="found_bug_launcher" xml:space="preserve">
+    <value>Bug in the launcher</value>
+  </data>
+  <data name="game_bug" xml:space="preserve">
+    <value>Bug in the game</value>
+  </data>
+  <data name="install_button" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="is_running" xml:space="preserve">
+    <value>Yandere Simulator is running. Please shut down the game before performing the update.</value>
+  </data>
+  <data name="launcher_bug" xml:space="preserve">
+    <value>Bug in the launcher</value>
+    <comment>Bug in the launcher title</comment>
+  </data>
+  <data name="launching_test" xml:space="preserve">
+    <value>Launching...</value>
+  </data>
+  <data name="notSupported" xml:space="preserve">
+    <value>Yandere Simulator is not supported on this device.</value>
+  </data>
+  <data name="open_source" xml:space="preserve">
+    <value>The Yandere Simulator launcher is an open-source project that is maintained by volunteers.</value>
+  </data>
+  <data name="play_button" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="retry_install" xml:space="preserve">
+    <value>Retry install</value>
+  </data>
+  <data name="revelant_install_task" xml:space="preserve">
+    <value>The install button should be locked.</value>
+  </data>
+  <data name="start_failed" xml:space="preserve">
+    <value>Yandere Simulator has failed to start. Would you like to fresh install the latest version?</value>
+  </data>
+  <data name="start_failed_title" xml:space="preserve">
+    <value>Failed to launch Yandere Simulator</value>
+  </data>
+  <data name="twitch" xml:space="preserve">
+    <value>Twitch</value>
+    <comment>Twitch title</comment>
+  </data>
+  <data name="twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Twitter title</comment>
+  </data>
+  <data name="unable_to_download" xml:space="preserve">
+    <value>Unable to download the game. The launcher failed to login to Mega.nz's download service. Try to download the game (without the launcher) from one of the alternate links at: yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="unknown_error" xml:space="preserve">
+    <value>The launcher encountered an unknown error. Please try again. If the problem persists, try going into the launcher folder and deleting YandereSimulator.zip and the YandereSimulator folder (if they exist). You can also download the game directly from one of the alternate links provided at: yanderedev.wordpress.com/downloads</value>
+  </data>
+  <data name="unpacking_text" xml:space="preserve">
+    <value>Unpacking...</value>
+  </data>
+  <data name="unpack_error" xml:space="preserve">
+    <value>Closing the launcher while unpacking files will corrupt them. Do you wish to force-close the launcher anyway?</value>
+  </data>
+  <data name="updates_not_aviable" xml:space="preserve">
+    <value>No update aviable</value>
+  </data>
+  <data name="update_aviabl" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="update_aviable" xml:space="preserve">
+    <value>Launcher update available...</value>
+  </data>
+  <data name="update_check" xml:space="preserve">
+    <value>Checking for updates...</value>
+  </data>
+  <data name="video_background" xml:space="preserve">
+    <value>Video background</value>
+  </data>
+  <data name="volunteer" xml:space="preserve">
+    <value>Volunteer</value>
+    <comment>Volunteer title</comment>
+  </data>
+  <data name="waiting_for_todo" xml:space="preserve">
+    <value>Waiting for something to do...</value>
+  </data>
+  <data name="website_not_provide" xml:space="preserve">
+    <value>The website did not provide a download link that the launcher could recognize.  If the launcher is reporting that a new launcher version is available, then download it. Otherwise, report a launcher issue from the launcher.</value>
+  </data>
+  <data name="x64Error" xml:space="preserve">
+    <value>Windows is telling the launcher that it is 32-bit.Yandere Simulator requires 64-bit Windows. This change happened on April 10th, 2020. </value>
+  </data>
+  <data name="youtube" xml:space="preserve">
+    <value>Youtube</value>
+    <comment>Youtube title</comment>
+  </data>
+</root>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:YandereSimulatorLauncher2.Controls"
         xmlns:local="clr-namespace:YandereSimulatorLauncher2"
+        xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
         mc:Ignorable="d"
         
         Title="Yandere Simulator Launcher"
@@ -50,14 +51,14 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <controls:HyperlinkFromText x:Name="LinkAbout" DisplayText="About" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/about/"/>
-                <controls:HyperlinkFromText x:Name="LinkBlog" DisplayText="Blog" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/blog/"/>
-                <controls:HyperlinkFromText x:Name="LinkContact" DisplayText="Contact" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/contact/"/>
-                <controls:HyperlinkFromText x:Name="LinkDonate" DisplayText="Donate" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/donate/"/>
-                <controls:HyperlinkFromText x:Name="LinkVolunteer" DisplayText="Volunteer" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/volunteer/"/>
-                <controls:HyperlinkFromImage x:Name="LinkTwitter" DisplayImage="twitter" Width="25" ImageHeight="20" Grid.Column="6" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://twitter.com/yanderedev"/>
-                <controls:HyperlinkFromImage x:Name="LinkYoutube" DisplayImage="youtube" Width="28" ImageHeight="20" Grid.Column="7" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://www.youtube.com/yanderedev"/>
-                <controls:HyperlinkFromImage x:Name="LinkTwitch" DisplayImage="twitch" Width="19" ImageHeight="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0" LinkedUrl="https://www.twitch.tv/yanderedev"/>
+                <controls:HyperlinkFromText x:Name="LinkAbout" DisplayText="{x:Static language:Lang.about}" Grid.Column="1" Grid.Row="1" Margin="0,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/about/"/>
+                <controls:HyperlinkFromText x:Name="LinkBlog" DisplayText="{x:Static language:Lang.blog}" Grid.Column="2" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/blog/"/>
+                <controls:HyperlinkFromText x:Name="LinkContact" DisplayText="{x:Static language:Lang.contact}" Grid.Column="3" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/contact/"/>
+                <controls:HyperlinkFromText x:Name="LinkDonate" DisplayText="{x:Static language:Lang.donate}" Grid.Column="4" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/donate/"/>
+                <controls:HyperlinkFromText x:Name="LinkVolunteer" DisplayText="{x:Static language:Lang.volunteer}" Grid.Column="5" Grid.Row="1" Margin="12,0,12,0" LinkFontSize="32" LinkedUrl="https://yanderesimulator.com/volunteer/"/>
+                <controls:HyperlinkFromImage x:Name="LinkTwitter" DisplayImage="{x:Static language:Lang.twitter}" Width="25" ImageHeight="20" Grid.Column="6" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://twitter.com/yanderedev"/>
+                <controls:HyperlinkFromImage x:Name="LinkYoutube" DisplayImage="{x:Static language:Lang.youtube}" Width="28" ImageHeight="20" Grid.Column="7" Grid.Row="1" Margin="12,0,12,0" LinkedUrl="https://www.youtube.com/yanderedev"/>
+                <controls:HyperlinkFromImage x:Name="LinkTwitch" DisplayImage="{x:Static language:Lang.twitch}" Width="19" ImageHeight="20" Grid.Column="8" Grid.Row="1" Margin="12,0,0,0" LinkedUrl="https://www.twitch.tv/yanderedev"/>
             </Grid>
             <!-- Main Panel -->
             <Grid x:Name="GridMainPanel" Background="#ff80d3" Grid.Row="2">

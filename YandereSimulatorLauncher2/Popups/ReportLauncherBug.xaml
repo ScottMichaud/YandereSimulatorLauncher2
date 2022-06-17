@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:YandereSimulatorLauncher2.Popups"
         xmlns:controls="clr-namespace:YandereSimulatorLauncher2.Controls"
         mc:Ignorable="d"
-        Title="Reporting Bugs" Height="440" Width="900" Background="#ff80d3" ResizeMode="NoResize">
+        xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
+
+        Title="{x:Static language:Lang.bug_report}" Height="440" Width="900" Background="#ff80d3" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
@@ -14,8 +16,7 @@
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
         <Grid Background="#ee63bb" Grid.Row="0">
-            <TextBlock VerticalAlignment="Center" Padding="15, 0, 0, 0" FontSize="39.75" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
-                Found a bug?
+            <TextBlock Text="{x:Static language:Lang.found_bug}" VerticalAlignment="Center" Padding="15, 0, 0, 0" FontSize="39.75" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
             </TextBlock>
         </Grid>
         <Grid Grid.Row="1">
@@ -34,8 +35,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid>
-                    <TextBlock FontSize="28" FontFamily="{StaticResource LeagueGothic}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        Bug in the launcher
+                    <TextBlock Text="{x:Static language:Lang.found_bug_launcher}" FontSize="28" FontFamily="{StaticResource LeagueGothic}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Row="1" Background="#ee63bb"/>
@@ -48,18 +48,20 @@
                         <RowDefinition Height="92"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="1" TextWrapping="Wrap" Foreground="White" HorizontalAlignment="Center" FontSize="17.25" VerticalAlignment="Center" Background="#ee63bb" Padding="5">
-                        <Italic><Bold>Do not</Bold> submit launcher bug reports to YandereDev.</Italic>
+                    <TextBlock Grid.Row="1" TextWrapping="Wrap" Foreground="White" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Center" Background="#ee63bb" Padding="10" >
+                        <Run FontWeight="Bold" FontStyle="Italic" Text="{x:Static language:Lang.do_not_submit_to_yandere1}" />
+                        <Run FontStyle="Italic" Text="{x:Static language:Lang.do_not_submit_to_yandere2}" />
                     </TextBlock>
                     <TextBlock Grid.Row="2" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15.25" Foreground="White" Padding="6, 3, 6, 3">
-                        The Yandere Simulator launcher is an open-source project that is maintained by volunteers.
-                        The project lead accepts bug reports by email at the following address:
+                        <Run Text="{x:Static language:Lang.open_source}" />
+                        <Run Text="{x:Static language:Lang.email_reports}" />
+                        
                     </TextBlock>
                     <Grid Grid.Row="3">
                         <controls:OtherHyperlinkFromText LinkFontSize="25.75" IsDere="False" DisplayText="scott@loosescrew.ca" LinkedUrl="mailto:scott@loosescrew.ca" />
                     </Grid>
-                    <TextBlock Grid.Row="4" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15.25" Foreground="White" Padding="6, 3, 6, 3">
-                        Check out the status of reported bugs by looking at the project's issues tab on GitHub. If you have an account, you may also comment on issues, submit pull requests, and otherwise contribute to the launcher.
+                    <TextBlock Grid.Row="4" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15.25" Foreground="White" Padding="6, 3, 6, 3" Text="{x:Static language:Lang.check_status}" >
+                        
                     </TextBlock>
                     <Grid Grid.Row="5">
                         <controls:OtherHyperlinkFromText  LinkFontSize="25.75" IsDere="False" DisplayText="YandereSimulatorLauncher2 on GitHub" LinkedUrl="https://github.com/scottmichaud/yanderesimulatorlauncher2"/>
@@ -74,8 +76,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBlock FontSize="28" FontFamily="{StaticResource LeagueGothic}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        Bug in the game
+                    <TextBlock Text="{x:Static language:Lang.game_bug}" FontSize="28" FontFamily="{StaticResource LeagueGothic}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Row="1" Background="#ee63bb"/>
@@ -86,14 +87,16 @@
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="65"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="1" TextWrapping="Wrap" FontSize="15.75" TextAlignment="Justify" Foreground="White" Padding="6, 3, 6, 3">
-                        If the bug affects the game, not the launcher, then submit the game bug to YandereDev through his website.
+                    <TextBlock Text="{x:Static language:Lang.bug_affets}" Grid.Row="1" TextWrapping="Wrap" FontSize="15.75" TextAlignment="Justify" Foreground="White" Padding="6, 3, 6, 3">
                     </TextBlock>
                     <Grid Grid.Row="2">
                         <controls:OtherHyperlinkFromText LinkFontSize="25.75" IsDere="False" DisplayText="yanderesimulator.com/bug-reporting" LinkedUrl="https://yanderesimulator.com/bug-reporting/" />
                     </Grid>
                     <TextBlock Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="15.75" VerticalAlignment="Center" Background="#ee63bb" Padding="5" Margin="5, 0, 5, 0">
-                        <Italic><Bold>Do not</Bold> submit launcher bugs to the above link. <LineBreak/> &lt;-- Report bugs affecting the launcher on the left.</Italic>
+                        <Run FontWeight="Bold" FontStyle="Italic" Text="{x:Static language:Lang.do_not_submit_to_yandere1}" />
+                        <Run FontStyle="Italic" Text="{x:Static language:Lang.bugs_to_the_link}" />
+                        <LineBreak/>    
+                        <Run FontStyle="Italic" Text="{x:Static language:Lang.affecting_left}" />                        
                     </TextBlock>
                 </Grid>
             </Grid>

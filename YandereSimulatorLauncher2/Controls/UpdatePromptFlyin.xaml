@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YandereSimulatorLauncher2.Controls"
+             xmlns:language="clr-namespace:YandereSimulatorLauncher2.Properties.Lang"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -11,10 +12,8 @@
             <Canvas>
                 <Border x:Name="SlidingContainer" Width="600" Height="40" Background="#ff80d3" BorderThickness="1" BorderBrush="#95286d" Canvas.Bottom="-50" Canvas.Left="140">
                     <Canvas>
-                        <TextBlock x:Name="UpdateLabel" Canvas.Left="22" Canvas.Bottom="4" FontSize="24" FontFamily="{StaticResource LeagueGothic}" Foreground="White">
-                            Launcher update available...
-                        </TextBlock>
-                        <local:HyperlinkFromText x:Name="UpdateLink" Canvas.Bottom="4" Canvas.Right="22" DisplayText="https://yanderesimulator.com/download/" LinkFontSize="24" LinkedUrl="https://yanderesimulator.com/download/"/>
+                        <TextBlock Text="{x:Static language:Lang.update_aviable}" x:Name="UpdateLabel" Canvas.Left="22" Canvas.Bottom="4" FontSize="24" FontFamily="{StaticResource LeagueGothic}" Foreground="White" />
+                        <local:HyperlinkFromText x:Name="UpdateLink" Canvas.Bottom="4" Canvas.Right="22" DisplayText="{x:Static language:Lang.install_button}" LinkFontSize="24" LinkedUrl="https://yanderesimulator.com/download/"/>
                     </Canvas>
                 </Border>
             </Canvas>
