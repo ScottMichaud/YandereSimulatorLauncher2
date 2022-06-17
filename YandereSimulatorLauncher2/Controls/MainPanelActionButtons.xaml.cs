@@ -105,67 +105,67 @@ namespace YandereSimulatorLauncher2.Controls
                     break;
                 case YsInstallMode.RetryInstall:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.retry_install;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = true;
                     PlayButton.IsEnabled = false;
                     break;
                 case YsInstallMode.PromptToInstall:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.install_button;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = true;
                     PlayButton.IsEnabled = false;
                     break;
                 case YsInstallMode.CheckingForUpdates:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.update_check;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = true;
                     break;
                 case YsInstallMode.ConfirmingUpdate:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.confirming;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = false;
                     break;
                 case YsInstallMode.PromptToCheck:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.check_updates;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = true;
                     PlayButton.IsEnabled = true;
                     break;
                 case YsInstallMode.PromptToUpdate:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.update_aviabl;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = true;
                     PlayButton.IsEnabled = true;
                     break;
                 case YsInstallMode.YouAreUpToDate:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.updates_not_aviable;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = true;
                     break;
                 case YsInstallMode.Downloading:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.downloading_text;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = false;
                     break;
                 case YsInstallMode.Unpacking:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.unpacking_text;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = false;
                     break;
                 case YsInstallMode.Launching:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.launching_test;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = false;
                     break;
                 case YsInstallMode.UpdatingLauncher:
                     InstallUpdateButtonText.Text = Properties.Lang.Lang.downloading_text;
-                    PlayButtonText.Text = "Play";
+                    PlayButtonText.Text = Properties.Lang.Lang.play_button;
                     InstallUpdateButton.IsEnabled = false;
                     PlayButton.IsEnabled = false;
                     break;
